@@ -3,11 +3,11 @@
   <title>Moist</title>
   
   
-  <link href="https://github.com/sdumoist/sdumoist.github.io/atom.xml" rel="self"/>
+  <link href="https://sdumoist.github.io/atom.xml" rel="self"/>
   
-  <link href="https://github.com/sdumoist/sdumoist.github.io/"/>
+  <link href="https://sdumoist.github.io/"/>
   <updated>2024-03-25T10:50:58.339Z</updated>
-  <id>https://github.com/sdumoist/sdumoist.github.io/</id>
+  <id>https://sdumoist.github.io/</id>
   
   <author>
     <name>SDUMoist</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://github.com/sdumoist/sdumoist.github.io/2024/03/25/hello-world/"/>
-    <id>https://github.com/sdumoist/sdumoist.github.io/2024/03/25/hello-world/</id>
+    <link href="https://sdumoist.github.io/2024/03/25/hello-world/"/>
+    <id>https://sdumoist.github.io/2024/03/25/hello-world/</id>
     <published>2024-03-25T10:50:58.339Z</published>
     <updated>2024-03-25T10:50:58.339Z</updated>
     
