@@ -1,2 +1,8 @@
+https://sdumoist.github.io/categories/index.html
+https://sdumoist.github.io/tags/index.html
+https://sdumoist.github.io/music/index.html
+https://sdumoist.github.io/movies/index.html
+https://sdumoist.github.io/link/index.html
+https://sdumoist.github.io/about/index.html
 https://sdumoist.github.io/2024/03/25/hello-world/
 https://sdumoist.github.io/
