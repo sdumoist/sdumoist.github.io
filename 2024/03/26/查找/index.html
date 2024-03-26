@@ -1,0 +1,1679 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>查找 | Moist</title><meta name="author" content="SDUMoist"><meta name="copyright" content="SDUMoist"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="查找考点总结知识总结                 基本概念查找在数据集合中寻找满足某种条件的数据元素的过程称为查找 查找表（查找结构）用于查找的数据集合称为查找表，它由同一类型的数据元素（或记录）组成 关键字（类似数据库的主键，唯一不重复）数据元素中唯一标识该元素的某个数据项的值，使用基于关键字的查找，查找结构应该是唯一的   常见操作 操作  查找复合条件的数据元素  插入、删除某个数据元素">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查找">
+<meta property="og:url" content="https://sdumoist.github.io/2024/03/26/%E6%9F%A5%E6%89%BE/index.html">
+<meta property="og:site_name" content="Moist">
+<meta property="og:description" content="查找考点总结知识总结                 基本概念查找在数据集合中寻找满足某种条件的数据元素的过程称为查找 查找表（查找结构）用于查找的数据集合称为查找表，它由同一类型的数据元素（或记录）组成 关键字（类似数据库的主键，唯一不重复）数据元素中唯一标识该元素的某个数据项的值，使用基于关键字的查找，查找结构应该是唯一的   常见操作 操作  查找复合条件的数据元素  插入、删除某个数据元素">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sdumoist.github.io/img/background/8.jpeg">
+<meta property="article:published_time" content="2024-03-26T10:36:39.000Z">
+<meta property="article:modified_time" content="2024-03-26T12:38:10.326Z">
+<meta property="article:author" content="SDUMoist">
+<meta property="article:tag" content="查找">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sdumoist.github.io/img/background/8.jpeg"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://sdumoist.github.io/2024/03/26/%E6%9F%A5%E6%89%BE/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: SDUMoist","link":"链接: ","source":"来源: Moist","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '查找',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-26 20:38:10'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Moist" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/background/8.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="Moist"><img class="site-icon" src="/img/logo.png"/><span class="site-name">Moist</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">查找</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-26T10:36:39.000Z" title="发表于 2024-03-26 18:36:39">2024-03-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-26T12:38:10.326Z" title="更新于 2024-03-26 20:38:10">2024-03-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="查找"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h1><h2 id="考点总结"><a href="#考点总结" class="headerlink" title="考点总结"></a>考点总结</h2><h2 id="知识总结"><a href="#知识总结" class="headerlink" title="知识总结"></a>知识总结</h2><p><img src="/./assets/image-20230720151803579.png" alt="image-20230720151803579"></p>
+<p><img src="/./assets/image-20230720163518914.png" alt="image-20230720163518914"></p>
+<p><img src="/./assets/image-20230720171828290.png" alt="image-20230720171828290"></p>
+<p><img src="/./assets/image-20230720193721514.png" alt="image-20230720193721514"></p>
+<p><img src="/./assets/image-20230722161737579.png" alt="image-20230722161737579"></p>
+<p><img src="/./assets/image-20230722202438050.png" alt="image-20230722202438050"></p>
+<p><img src="/./assets/image-20230724142942715.png" alt="image-20230724142942715"></p>
+<p><img src="/./assets/image-20230724163237627.png" alt="image-20230724163237627"></p>
+<p><img src="/./assets/image-20230724163355112.png" alt="image-20230724163355112"></p>
+<p><img src="/./assets/image-20230724163549182.png" alt="image-20230724163549182"></p>
+<p><img src="/./assets/image-20230724173036104.png" alt="image-20230724173036104"></p>
+<p><img src="/./assets/image-20230724181955470.png" alt="image-20230724181955470"></p>
+<p><img src="/./assets/image-20230724195322682.png" alt="image-20230724195322682"></p>
+<p><img src="/./assets/image-20230724202139255.png" alt="image-20230724202139255"></p>
+<p><img src="/./assets/image-20230724213136956.png" alt="image-20230724213136956"></p>
+<p><img src="/./assets/image-20230724220841760.png" alt="image-20230724220841760"></p>
+<p><img src="/./assets/image-20230724221816325.png" alt="image-20230724221816325"></p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="查找-1"><a href="#查找-1" class="headerlink" title="查找"></a>查找</h3><p><strong>在数据集合中寻找满足某种条件的数据元素的过程称为查找</strong></p>
+<h3 id="查找表（查找结构）"><a href="#查找表（查找结构）" class="headerlink" title="查找表（查找结构）"></a>查找表（查找结构）</h3><p>用于查找的数据集合称为查找表，它由同一类型的数据元素（或记录）组成</p>
+<h3 id="关键字（类似数据库的主键，唯一不重复）"><a href="#关键字（类似数据库的主键，唯一不重复）" class="headerlink" title="关键字（类似数据库的主键，唯一不重复）"></a>关键字（类似数据库的主键，唯一不重复）</h3><p>数据元素中唯一标识该元素的某个数据项的值，使用基于关键字的查找，查找结构应该是唯一的</p>
+<p><img src="/./assets/image-20230720145132778.png" alt="image-20230720145132778"></p>
+<p><img src="/./assets/image-20230720150747878.png" alt="image-20230720150747878"></p>
+<h3 id="常见操作"><a href="#常见操作" class="headerlink" title="常见操作"></a>常见操作</h3><ul>
+<li><p>操作</p>
+<ol>
+<li><p>查找复合条件的数据元素</p>
+</li>
+<li><p>插入、删除某个数据元素</p>
+</li>
+</ol>
+</li>
+<li><p>应用</p>
+<ul>
+<li><p>只需进行操作1——静态查找表（仅关注查找速度即可）</p>
+</li>
+<li><p>也要进行操作2——动态查找表（除了查找速度，也要关注插&#x2F;删操作是否方便实现）</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230720151115044.png" alt="image-20230720151115044"></p>
+<h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h3><h4 id="查找长度"><a href="#查找长度" class="headerlink" title="查找长度"></a>查找长度</h4><ul>
+<li>在查找运算中，需要对比关键字的次数称为查找长度</li>
+</ul>
+<h4 id="平均查找长度（ASL，Average-Search-Length"><a href="#平均查找长度（ASL，Average-Search-Length" class="headerlink" title="平均查找长度（ASL，Average Search Length)"></a>平均查找长度（ASL，Average Search Length)</h4><ul>
+<li><p>所有查找过程中进行关键字的比较次数的平均值</p>
+</li>
+<li><p><strong>ASL的数量级反映了查找算法的时间复杂度</strong></p>
+</li>
+</ul>
+<p><img src="/./assets/image-20230720151601756.png" alt="image-20230720151601756"></p>
+<p><img src="/./assets/image-20230720151629670.png" alt="image-20230720151629670"></p>
+<p><img src="/./assets/image-20230720151732726.png" alt="image-20230720151732726"></p>
+<h2 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h2><ul>
+<li>顺序查找，又叫“线性查找”，通常用于线性表（顺序表，链表）</li>
+</ul>
+<h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><ul>
+<li>从头到jio挨个找（反过来也ok）</li>
+</ul>
+<p><img src="/./assets/image-20230720152101739.png" alt="image-20230720152101739"></p>
+<p><img src="/./assets/image-20230720152116493.png" alt="image-20230720152116493"></p>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><h4 id="代码实现（查找失败越界返回-1）"><a href="#代码实现（查找失败越界返回-1）" class="headerlink" title="代码实现（查找失败越界返回-1）"></a>代码实现（查找失败越界返回-1）</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;                     <span class="comment">//查找表的数据结构（顺序表）</span></span><br><span class="line">    Elemtype *elem;                 <span class="comment">//动态数组基址</span></span><br><span class="line">    <span class="type">int</span> TableLen;                   <span class="comment">//表的长度</span></span><br><span class="line">&#125;   SSTable;</span><br><span class="line"></span><br><span class="line"><span class="comment">//顺序查找1</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Search_Seq</span><span class="params">(SSTable ST, Elemtype key)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; ST.TableLen &amp;&amp; ST.elem[i]!= key;++i);</span><br><span class="line">    <span class="comment">//查找成功，则返回元素下标；查找失败，则返回-1</span></span><br><span class="line">    <span class="keyword">return</span> i==ST.TableLen? <span class="number">-1</span>:i;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/./assets/image-20230720153446093.png" alt="image-20230720153446093"></p>
+<p><img src="/./assets/image-20230720153617255.png" alt="image-20230720153617255"></p>
+<h4 id="代码实现（哨兵）"><a href="#代码实现（哨兵）" class="headerlink" title="代码实现（哨兵）"></a>代码实现（哨兵）</h4><ul>
+<li>优点：无需判断是否越界，效率更高</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//顺序查找2（哨兵）</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Search_Seq</span><span class="params">(SSTable ST, Elemtype key)</span></span>&#123;</span><br><span class="line">    ST.elem[<span class="number">0</span>]=key;                 <span class="comment">//“哨兵”</span></span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = ST.TableLen; ST.elem[i]!=key; --i);<span class="comment">//从后往前找</span></span><br><span class="line">    <span class="keyword">return</span> i;                       <span class="comment">//查找成功，则返回元素下标；查找失败，则返回0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./assets/image-20230720154028514.png" alt="image-20230720154028514"></p>
+<p><img src="/./assets/image-20230720154051155.png" alt="image-20230720154051155"></p>
+<h4 id="效率分析"><a href="#效率分析" class="headerlink" title="效率分析"></a>效率分析</h4><p><img src="/./assets/image-20230720154501231.png" alt="image-20230720154501231"></p>
+<h3 id="算法优化"><a href="#算法优化" class="headerlink" title="算法优化"></a>算法优化</h3><h4 id="有序表"><a href="#有序表" class="headerlink" title="有序表"></a>有序表</h4><ul>
+<li>查找判定树</li>
+</ul>
+<p><img src="/./assets/image-20230720154713715.png" alt="image-20230720154713715"></p>
+<h5 id="用查找判定树分析ASL"><a href="#用查找判定树分析ASL" class="headerlink" title="用查找判定树分析ASL"></a>用查找判定树分析ASL</h5><ul>
+<li><p>一个成功节点的查找长度 &#x3D; 自身所在层数</p>
+</li>
+<li><p>一个失败节点的查找长度 &#x3D; 其父节点所在层数</p>
+</li>
+<li><p>默认情况下，各种失败情况或成功情况都等概率发生</p>
+</li>
+</ul>
+<p><img src="/./assets/image-20230720154943367.png" alt="image-20230720154943367"></p>
+<h4 id="被查概率不相等"><a href="#被查概率不相等" class="headerlink" title="被查概率不相等"></a>被查概率不相等</h4><ul>
+<li>被查概率大的放在靠前位置</li>
+</ul>
+<p><img src="/./assets/image-20230720163441562.png" alt="image-20230720163441562"></p>
+<h2 id="折半查找（有序的顺序表）"><a href="#折半查找（有序的顺序表）" class="headerlink" title="折半查找（有序的顺序表）"></a>折半查找（有序的顺序表）</h2><ul>
+<li>折半查找，又叫“二分查找”，仅适用于<strong>有序的顺序表</strong></li>
+<li>顺序表具有随机访问的特性，链表没有</li>
+</ul>
+<h3 id="算法思想-1"><a href="#算法思想-1" class="headerlink" title="算法思想"></a>算法思想</h3><h4 id="查找成功"><a href="#查找成功" class="headerlink" title="查找成功"></a>查找成功</h4><p><img src="/./assets/image-20230720163809803.png" alt="image-20230720163809803"></p>
+<p><img src="/./assets/image-20230720163832693.png" alt="image-20230720163832693"></p>
+<p><img src="/./assets/image-20230720163850632.png" alt="image-20230720163850632"></p>
+<p><img src="/./assets/image-20230720163947281.png" alt="image-20230720163947281"></p>
+<h4 id="查找失败"><a href="#查找失败" class="headerlink" title="查找失败"></a>查找失败</h4><p><img src="/./assets/image-20230720164025165.png" alt="image-20230720164025165"></p>
+<p><img src="/./assets/image-20230720164043841.png" alt="image-20230720164043841"></p>
+<p><img src="/./assets/image-20230720164059749.png" alt="image-20230720164059749"></p>
+<p><img src="/./assets/image-20230720164111054.png" alt="image-20230720164111054"></p>
+<p><img src="/./assets/image-20230720164144253.png" alt="image-20230720164144253"></p>
+<p><img src="/./assets/image-20230720164129188.png" alt="image-20230720164129188"></p>
+<p><img src="/./assets/image-20230720164229668.png" alt="image-20230720164229668"></p>
+<p><img src="/./assets/image-20230720164240561.png" alt="image-20230720164240561"></p>
+<h3 id="算法实现-1"><a href="#算法实现-1" class="headerlink" title="算法实现"></a>算法实现</h3><h4 id="代码实现-升序数组"><a href="#代码实现-升序数组" class="headerlink" title="代码实现(升序数组)"></a>代码实现(升序数组)</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;                             <span class="comment">//查找表的数据结构（顺序表）</span></span><br><span class="line">    Elemtype *elem;                         <span class="comment">//动态数组的基址</span></span><br><span class="line">    <span class="type">int</span> TableLen;                           <span class="comment">//表的长度</span></span><br><span class="line">&#125;SSTable;</span><br><span class="line"></span><br><span class="line"><span class="comment">//折半查找</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Binary_Search</span><span class="params">(SSTable L,Elemtype key)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> low=<span class="number">0</span>, high = L.TableLen<span class="number">-1</span>,mid;</span><br><span class="line">    <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">        mid=(low+high)/<span class="number">2</span>;                   <span class="comment">//取中间位置</span></span><br><span class="line">        <span class="keyword">if</span>(L.elem[mid]==key) <span class="keyword">return</span> mid;    <span class="comment">//查找成功则返回所在位置</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(L.elem[mid] &gt; key) high = mid<span class="number">-1</span>;    <span class="comment">//从前半部分继续查找</span></span><br><span class="line">        <span class="keyword">else</span> low = mid + <span class="number">1</span>;                 <span class="comment">//从后半部分继续查找</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;                              <span class="comment">//查找失败，返回-1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./assets/image-20230720164831854.png" alt="image-20230720164831854"></p>
+<h4 id="效率分析-1"><a href="#效率分析-1" class="headerlink" title="效率分析"></a>效率分析</h4><p><img src="/./assets/image-20230720165155165.png" alt="image-20230720165155165"></p>
+<p><img src="/./assets/image-20230720165232737.png" alt="image-20230720165232737"></p>
+<h3 id="折半查找判定树的构造（重点）"><a href="#折半查找判定树的构造（重点）" class="headerlink" title="折半查找判定树的构造（重点）"></a>折半查找判定树的构造（重点）</h3><h4 id="奇数个"><a href="#奇数个" class="headerlink" title="奇数个"></a>奇数个</h4><p><img src="/./assets/image-20230720165422920.png" alt="image-20230720165422920"></p>
+<p><img src="/./assets/image-20230720165449422.png" alt="image-20230720165449422"></p>
+<h4 id="偶数个"><a href="#偶数个" class="headerlink" title="偶数个"></a>偶数个</h4><ul>
+<li>如果当前low和high之间有偶数个元素，则mid分隔后，左半部分比右半部分少一个元素</li>
+<li>如果当前low和high之间有奇数个元素，则mid分隔后，左右两部分元素个数相等</li>
+<li>mid&#x3D;[(low+high)&#x2F;2]，则对任何一个节点，必有：<strong>右子树节点数-左子树节点数&#x3D;0&#x2F;1</strong>（右子树节点数比左子树多）</li>
+</ul>
+<p><img src="/./assets/image-20230720165535360.png" alt="image-20230720165535360"></p>
+<p><img src="/./assets/image-20230720165555996.png" alt="image-20230720165555996"></p>
+<p><img src="/./assets/image-20230720165908597.png" alt="image-20230720165908597"></p>
+<h4 id="构造方法及性质"><a href="#构造方法及性质" class="headerlink" title="构造方法及性质"></a>构造方法及性质</h4><ul>
+<li>构造的形状唯一</li>
+<li>折半查找的判定树一定是平衡二叉树，只有最下面一层是不满的（元素个数为n时，树高h&#x3D;[log2(n+1)]向上取整）</li>
+<li>新节点优先右子树，但是右子树只能最多比左子树多一个<ul>
+<li>左右子树相等，新节点加到右子树</li>
+<li>左右子树不相等（右子树比左子树节点多），新节点加到左子树</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230720170738197.png" alt="image-20230720170738197"><br><img src="/./assets/image-20230720171045853.png" alt="image-20230720171045853"></p>
+<h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>判定树节点关键字：左&lt;中&lt;右，满足二叉排序树的定义</li>
+<li>失败节点：n+1个（等于成功节点的空链域数量）</li>
+</ul>
+<p><img src="/./assets/image-20230720171259153.png" alt="image-20230720171259153"></p>
+<p><img src="/./assets/image-20230720171558671.png" alt="image-20230720171558671"></p>
+<h4 id="查找效率"><a href="#查找效率" class="headerlink" title="查找效率"></a>查找效率</h4><ul>
+<li>树高h &#x3D; [log2(n+1)]向上取整（不包括失败节点）<ul>
+<li>查找成功：ASL &lt;&#x3D; h</li>
+<li>查找失败：ASL &lt;&#x3D; h</li>
+<li>时间复杂度 &#x3D; O(log2n)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230720172600920.png" alt="image-20230720172600920"></p>
+<h4 id="另一种情况的折半查找"><a href="#另一种情况的折半查找" class="headerlink" title="另一种情况的折半查找"></a>另一种情况的折半查找</h4><ul>
+<li>mid &#x3D; [(low+high)&#x2F;2]向上取整</li>
+</ul>
+<p><img src="/./assets/image-20230720172215927.png" alt="image-20230720172215927"></p>
+<p><img src="/./assets/image-20230720172253774.png" alt="image-20230720172253774"></p>
+<p><img src="/./assets/image-20230720172400811.png" alt="image-20230720172400811"></p>
+<h3 id="折半查找的速度一定比顺序查找更快？"><a href="#折半查找的速度一定比顺序查找更快？" class="headerlink" title="折半查找的速度一定比顺序查找更快？"></a>折半查找的速度一定比顺序查找更快？</h3><ul>
+<li><p>大部分情况下，折半查找更快；但不是任何情况下都更快</p>
+</li>
+<li><p>折半查找时间复杂度 &#x3D; O(log2n)</p>
+</li>
+<li><p>顺序查找的时间复杂度 &#x3D; O(n)</p>
+</li>
+</ul>
+<p><img src="/./assets/image-20230720172019138.png" alt="image-20230720172019138"></p>
+<h2 id="分块查找（选择题）"><a href="#分块查找（选择题）" class="headerlink" title="分块查找（选择题）"></a>分块查找（选择题）</h2><ul>
+<li><strong>分块查找</strong>，又称<strong>索引顺序查找</strong></li>
+</ul>
+<h3 id="算法思想（顺序查找和折半查找的结合）"><a href="#算法思想（顺序查找和折半查找的结合）" class="headerlink" title="算法思想（顺序查找和折半查找的结合）"></a>算法思想（顺序查找和折半查找的结合）</h3><ul>
+<li>索引表：保存每个分块的最大关键字和分块的存储区间</li>
+</ul>
+<p><img src="/./assets/image-20230720174031300.png" alt="image-20230720174031300"></p>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ul>
+<li>算法过程如下：<ol>
+<li>在索引表中确定待查记录所属的分块（可顺序、可折半）（索引表是有序的）<ul>
+<li>查找目标 &gt; 索引值：下一个</li>
+<li>查找目标 &lt;&#x3D; 索引值：选择该索引范围</li>
+</ul>
+</li>
+<li>在块内顺序查找（块内的元素是无序的）</li>
+</ol>
+</li>
+</ul>
+<h4 id="查找成功-1"><a href="#查找成功-1" class="headerlink" title="查找成功"></a>查找成功</h4><p><img src="/./assets/image-20230720174148215.png" alt="image-20230720174148215"></p>
+<p><img src="/./assets/image-20230720174234584.png" alt="image-20230720174234584"></p>
+<p><img src="/./assets/image-20230720174246063.png" alt="image-20230720174246063"></p>
+<p><img src="/./assets/image-20230720174502881.png" alt="image-20230720174502881"></p>
+<p><img src="/./assets/image-20230720174518270.png" alt="image-20230720174518270"></p>
+<h4 id="查找失败-1"><a href="#查找失败-1" class="headerlink" title="查找失败"></a>查找失败</h4><p><img src="/./assets/image-20230720174607035.png" alt="image-20230720174607035"></p>
+<p><img src="/./assets/image-20230720174620988.png" alt="image-20230720174620988"></p>
+<p><img src="/./assets/image-20230720174630296.png" alt="image-20230720174630296"></p>
+<p><img src="/./assets/image-20230720174656119.png" alt="image-20230720174656119"></p>
+<p><img src="/./assets/image-20230720174704687.png" alt="image-20230720174704687"></p>
+<p><img src="/./assets/image-20230720174716649.png" alt="image-20230720174716649"></p>
+<p><img src="/./assets/image-20230720174724729.png" alt="image-20230720174724729"></p>
+<p><img src="/./assets/image-20230720174750762.png" alt="image-20230720174750762"></p>
+<h4 id="用折半查找查索引"><a href="#用折半查找查索引" class="headerlink" title="用折半查找查索引"></a>用折半查找查索引</h4><ul>
+<li>查找目标在索引表里面</li>
+</ul>
+<p><img src="/./assets/image-20230720175129067.png" alt="image-20230720175129067"></p>
+<p><img src="/./assets/image-20230720175213153.png" alt="image-20230720175213153"></p>
+<p><img src="/./assets/image-20230720175252687.png" alt="image-20230720175252687"></p>
+<p><img src="/./assets/image-20230720175232459.png" alt="image-20230720175232459"></p>
+<h4 id="用折半查找查索引2"><a href="#用折半查找查索引2" class="headerlink" title="用折半查找查索引2"></a>用折半查找查索引2</h4><ul>
+<li>查找目标不在索引表里面</li>
+<li>若索引表中不包含目标关键字，则折半查找索引表最终停在low&gt;high,<strong>要在low所指分块中查找</strong><ul>
+<li>原因：最终low左边一定小雨目标关键字，high右边一定大雨目标关键字。而分块存储的索引表中保存的是各个分块的最大关键字</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230720175443863.png" alt="image-20230720175443863"></p>
+<p><img src="/./assets/image-20230720175500012.png" alt="image-20230720175500012"></p>
+<p><img src="/./assets/image-20230720175516433.png" alt="image-20230720175516433"></p>
+<p><img src="/./assets/image-20230720175535318.png" alt="image-20230720175535318"></p>
+<p><img src="/./assets/image-20230720175606707.png" alt="image-20230720175606707"></p>
+<p><img src="/./assets/image-20230720175624368.png" alt="image-20230720175624368"></p>
+<p><img src="/./assets/image-20230720192236475.png" alt="image-20230720192236475"></p>
+<p><img src="/./assets/image-20230720192252235.png" alt="image-20230720192252235"></p>
+<p><img src="/./assets/image-20230720192305940.png" alt="image-20230720192305940"></p>
+<h4 id="查找失败-2"><a href="#查找失败-2" class="headerlink" title="查找失败"></a>查找失败</h4><p><img src="/./assets/image-20230720192347781.png" alt="image-20230720192347781"></p>
+<h3 id="查找效率分析（ASL）"><a href="#查找效率分析（ASL）" class="headerlink" title="查找效率分析（ASL）"></a>查找效率分析（ASL）</h3><h4 id="查找成功-2"><a href="#查找成功-2" class="headerlink" title="查找成功"></a>查找成功</h4><p><img src="/./assets/image-20230720192435475.png" alt="image-20230720192435475"></p>
+<p><img src="/./assets/image-20230720192531733.png" alt="image-20230720192531733"></p>
+<ul>
+<li>30：4次</li>
+<li>27：不是2次。因为27不在索引表中，要增加三次直到找到索引表的位置</li>
+</ul>
+<p><img src="/./assets/image-20230720192735045.png" alt="image-20230720192735045"></p>
+<h4 id="查找失败-3"><a href="#查找失败-3" class="headerlink" title="查找失败"></a>查找失败</h4><p><img src="/./assets/image-20230720192825925.png" alt="image-20230720192825925"></p>
+<h4 id="效率优化"><a href="#效率优化" class="headerlink" title="效率优化"></a>效率优化</h4><ul>
+<li><p>假设：长度为n的查找表被均匀地分为b块，每块s个元素          n&#x3D;s*b</p>
+</li>
+<li><p>设索引查找和块内查找的平均查找长度分别为L1、L2，则分块查找的平均查找长度为ASL&#x3D;Li+Ls</p>
+<ul>
+<li>用<strong>顺序查找</strong>查索引表<ul>
+<li>ASL&#x3D;1&#x2F;2*s + n&#x2F;2*s + 1</li>
+<li>最小的ASL &#x3D; 根号n+1（当s &#x3D; 根号n，b &#x3D; 根号n）</li>
+</ul>
+</li>
+<li>用<strong>折半查找</strong>查索引表</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230720193338939.png" alt="image-20230720193338939"></p>
+<p><img src="/./assets/image-20230720193658770.png" alt="image-20230720193658770"></p>
+<h2 id="树形查找"><a href="#树形查找" class="headerlink" title="树形查找"></a>树形查找</h2><h3 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>二叉排序树，又称二叉查找树（<strong>BST</strong>，Binary Search Tree）</li>
+<li>一棵二叉树或者是空二叉树，或者是具有如下性质的二叉树：<ul>
+<li>左子树上所有节点的关键字均小于根节点的关键字</li>
+<li>右子树上所有节点的关键字均大于根节点的关键字</li>
+<li>左子树和右子树又各是一棵二叉排序树</li>
+</ul>
+</li>
+<li>左子树节点值 &lt; 根节点值 &lt; 右子树节点值<ul>
+<li>进行中序遍历，可以得到一个递增的有序序列</li>
+</ul>
+</li>
+<li>二叉排序树可用于元素的有序组织、搜索</li>
+</ul>
+<p><img src="/./assets/image-20230721222332589.png" alt="image-20230721222332589"></p>
+<h4 id="查找操作"><a href="#查找操作" class="headerlink" title="查找操作"></a>查找操作</h4><ul>
+<li>若树非空，目标值与根节点的值比较：<ul>
+<li>若相等，则查找成功</li>
+<li>若小于根节点，则在左子树上查找，否则在右子树上查找</li>
+</ul>
+</li>
+<li>查找成功，返回节点指针</li>
+<li>查找失败返回NULL</li>
+</ul>
+<h5 id="查找成功-3"><a href="#查找成功-3" class="headerlink" title="查找成功"></a>查找成功</h5><p><img src="/./assets/image-20230721222616468.png" alt="image-20230721222616468"></p>
+<p><img src="/./assets/image-20230721223154791.png" alt="image-20230721223154791"></p>
+<h5 id="查找失败-4"><a href="#查找失败-4" class="headerlink" title="查找失败"></a>查找失败</h5><p><img src="/./assets/image-20230721223604519.png" alt="image-20230721223604519"></p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><ul>
+<li>有两种实现方式<ul>
+<li>一种是非递归<ul>
+<li>while(T !&#x3D; NULL &amp;&amp; key !&#x3D; T-&gt;key);</li>
+</ul>
+</li>
+<li>一种是递归<ul>
+<li>return BST_Search2(T-&gt;lchild, key);</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//二叉排序树节点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">BSTNode</span>&#123;</span><br><span class="line">    <span class="type">int</span> key;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">BSTNode</span> *lchild, *rchild;</span><br><span class="line">&#125;BSTNode, *BSTree;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//在二叉排序树中查找值为key的节点（非递归）</span></span><br><span class="line"><span class="function">BSTNode *<span class="title">BST_Search</span><span class="params">(BSTree T, <span class="type">int</span> key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(T != <span class="literal">NULL</span> &amp;&amp; key != T-&gt;key)&#123;      <span class="comment">//若树空或等于根节点值，则结束循环</span></span><br><span class="line">        <span class="keyword">if</span>(key &lt; T-&gt;key) T = T -&gt; lchild;   <span class="comment">//小于，则在左子树上查找</span></span><br><span class="line">        <span class="keyword">else</span> T = T-&gt;rchild;                 <span class="comment">//大于，则在右子树上查找</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//二叉排序树中寻找值为key的节点（递归）</span></span><br><span class="line"><span class="function">BSTNode *<span class="title">BST_Search2</span><span class="params">(BSTree T, <span class="type">int</span> key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;                <span class="comment">//查找失败</span></span><br><span class="line">    <span class="keyword">if</span>(key == T-&gt;key)  <span class="keyword">return</span> T;            <span class="comment">//查找成功</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(key &lt; T-&gt;key) <span class="keyword">return</span> <span class="built_in">BST_Search2</span>(T-&gt;lchild, key);       <span class="comment">//在左子树中找</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">BST_Search2</span>(T-&gt;rchild, key);                        <span class="comment">//在右子树中找</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/./assets/image-20230722130753338.png" alt="image-20230722130753338"></p>
+<h4 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h4><ul>
+<li>若原二叉排序树为空，则直接插入节点</li>
+<li>若二叉排序树不为空<ul>
+<li>若关键字k小于根节点值，则插入到左子树</li>
+<li>若关键字k大于根节点值，则插入到右子树</li>
+</ul>
+</li>
+</ul>
+<h5 id="算法实现-2"><a href="#算法实现-2" class="headerlink" title="算法实现"></a>算法实现</h5><p><img src="/./assets/image-20230722143338669.png" alt="image-20230722143338669"></p>
+<h5 id="代码实现（递归）"><a href="#代码实现（递归）" class="headerlink" title="代码实现（递归）"></a>代码实现（递归）</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在二叉排序树插入关键字为k的新节点（递归实现）</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">BST_Insert</span><span class="params">(BSTree &amp;T, <span class="type">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T==<span class="literal">NULL</span>)&#123;                            <span class="comment">//原数为空，新插入的节点为根节点</span></span><br><span class="line">        T=(BSTree)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(BSTNode));</span><br><span class="line">        T-&gt;key = k;</span><br><span class="line">        T-&gt;lchild=<span class="literal">NULL</span>;</span><br><span class="line">        T-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">        <span class="comment">//T-&gt;lchild = T-&gt;rchild = NULL;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;                           <span class="comment">//返回1，插入成功</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(k==T-&gt;key)                      <span class="comment">//树中存在相同关键字的结点，插入失败</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(k&lt;T-&gt;key)                       <span class="comment">//插入T的左子树</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">BST_Insert</span>(T-&gt;lchild, k);  </span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">BST_Insert</span>(T-&gt;rchild, k);   <span class="comment">//插入T的右子树</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="代码实现（非递归）"><a href="#代码实现（非递归）" class="headerlink" title="代码实现（非递归）"></a>代码实现（非递归）</h5><h4 id="二叉排序树的构造"><a href="#二叉排序树的构造" class="headerlink" title="二叉排序树的构造"></a>二叉排序树的构造</h4><ul>
+<li>不同的关键字序列可能得到同款二叉排序树</li>
+</ul>
+<p><img src="/./assets/image-20230722143918303.png" alt="image-20230722143918303"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按照str[]中的关键字序列建立二叉排序树</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Creat_BST</span><span class="params">(BSTree &amp;T, <span class="type">int</span> str[], <span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    T = <span class="literal">NULL</span>;                               <span class="comment">//初始时，T为空树</span></span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; n)&#123;                           <span class="comment">//依次将每个关键字插入到二叉排序树中</span></span><br><span class="line">        <span class="built_in">BST_Insert</span>(T,str[i]);</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>相同的关键字，不同排列可能得到不同款的二叉排序树</li>
+</ul>
+<p><img src="/./assets/image-20230722143956854.png" alt="image-20230722143956854"></p>
+<h4 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h4><ul>
+<li>先搜索找到目标节点<ul>
+<li>若被删除节点z是叶子节点，则直接删除，不会破坏二叉排序树的性质</li>
+<li>若被删除节点z只有一棵左子树或右子树，则让z的子树成为z父节点的子树，代替z的位置</li>
+<li>若被删除节点z有左右两棵子树，则令z的直接后继（或直接前驱）代替z，然后从二叉排序树中删去这个直接后继（或直接前驱），这样就转换成了第一或第二种情况<ul>
+<li>原理<ul>
+<li>左子树 &lt; 根节点 &lt; 右子树</li>
+<li>进行中序遍历，可以得到一个递增的有序序列</li>
+<li>所以将左子树中最后一个被中序遍历的（左边最大的），或者右子树中最早一个被中序遍历的（右边最小的）删去，放到删除的节点上，就可以保证中序遍历结果不变，且能保持二叉排序树</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230722144151517.png" alt="image-20230722144151517"></p>
+<p><img src="/./assets/image-20230722144258357.png" alt="image-20230722144258357"></p>
+<p><img src="/./assets/image-20230722144902838.png" alt="image-20230722144902838"></p>
+<p><img src="/./assets/image-20230722145007236.png" alt="image-20230722145007236"></p>
+<p><img src="/./assets/image-20230722145028053.png" alt="image-20230722145028053"></p>
+<p><img src="/./assets/image-20230722145040306.png" alt="image-20230722145040306"></p>
+<h4 id="查找效率分析"><a href="#查找效率分析" class="headerlink" title="查找效率分析"></a>查找效率分析</h4><ul>
+<li>查找长度<ul>
+<li>在查找运算中，需要对比关键字的次数称为查找长度，反映了查找操作时间复杂度</li>
+</ul>
+</li>
+</ul>
+<h5 id="查找成功-4"><a href="#查找成功-4" class="headerlink" title="查找成功"></a>查找成功</h5><ul>
+<li><p>ASL，查找成功的平均查找长度</p>
+</li>
+<li><p>若树高h，找到最下层的一个节点需要对比h次</p>
+</li>
+<li><p>最好情况</p>
+<ul>
+<li>n个节点的二叉树最小高度为[log2n]向下取整+1</li>
+<li>平均查找长度 &#x3D; O(log2n)</li>
+</ul>
+</li>
+<li><p>最坏情况</p>
+<ul>
+<li>每个节点只有一个分支</li>
+<li>树高h &#x3D; 节点数n</li>
+<li>平均查找长度 &#x3D; O(n)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230722145307895.png" alt="image-20230722145307895"></p>
+<h5 id="查找失败-5"><a href="#查找失败-5" class="headerlink" title="查找失败"></a>查找失败</h5><p><img src="/./assets/image-20230722145836191.png" alt="image-20230722145836191"></p>
+<h5 id="最好情况"><a href="#最好情况" class="headerlink" title="最好情况"></a>最好情况</h5><ul>
+<li>平衡二叉树，树上任一节点的左子树和右子树的深度之差不超过1</li>
+</ul>
+<p><img src="/./assets/image-20230722145755248.png" alt="image-20230722145755248"></p>
+<h3 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h3><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>平衡二叉树（Balanced Binary Tree），简称平衡树（AVL树）<ul>
+<li>树上任一节点的左子树和右子树的高度之差不超过1</li>
+</ul>
+</li>
+<li>结点的平衡因子 &#x3D; 左子树高 - 右子树高<ul>
+<li>平衡二叉树节点的平衡因子值只可能是-1，0，1</li>
+<li>只要有任一节点的平衡因子绝对值大于1，就不是平衡二叉树</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230722151329439.png" alt="image-20230722151329439"></p>
+<ul>
+<li>结构体定义</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//平衡二叉树结构体定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">AVLNode</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> key;                        <span class="comment">//数据域</span></span><br><span class="line">    <span class="type">int</span> balancel;                    <span class="comment">//平衡因子</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">AVLNode</span> *lchild, *rchild;    </span><br><span class="line">&#125;AVLNode, *AVLTree;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="插入操作-1"><a href="#插入操作-1" class="headerlink" title="插入操作"></a>插入操作</h4><ul>
+<li>每次插入新节点后，调整<strong>最小不平衡子树</strong></li>
+<li>在插入操作中，只要将最小不平衡子树调整平衡，则其他祖先节点都会恢复平衡</li>
+</ul>
+<p><img src="/./assets/image-20230722151905858.png" alt="image-20230722151905858"></p>
+<h4 id="插入新节点后如何调整“不平衡”问题"><a href="#插入新节点后如何调整“不平衡”问题" class="headerlink" title="插入新节点后如何调整“不平衡”问题"></a>插入新节点后如何调整“不平衡”问题</h4><h5 id="不平衡情况"><a href="#不平衡情况" class="headerlink" title="不平衡情况"></a>不平衡情况</h5><ul>
+<li>LL：在A的左孩子的左子树中插入导致不平衡</li>
+<li>RR：在A的右孩子的右子树中插入导致不平衡</li>
+<li>LR：在A的左孩子的右子树中插入导致不平衡</li>
+<li>RL：在A的右孩子的左子树中插入导致不平衡</li>
+</ul>
+<p><img src="/./assets/image-20230722152244959.png" alt="image-20230722152244959"></p>
+<h5 id="调整最小不平衡子树"><a href="#调整最小不平衡子树" class="headerlink" title="调整最小不平衡子树"></a>调整最小不平衡子树</h5><ul>
+<li><p>插入新节点前，应该是有平衡因子为1或-1的情况，即左子树与右子树不相等</p>
+</li>
+<li><p>插入新节点后，平衡因子为2或-2导致不平衡</p>
+</li>
+<li><p>目标</p>
+<ul>
+<li>恢复平衡</li>
+<li>保持二叉排序树的特性<ul>
+<li>左子树节点值 &lt; 根节点值 &lt; 右子树节点值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>LL：右单旋转</p>
+<ul>
+<li>原因：在节点A的左孩子的左子树上插入了新节点，A的平衡因子由1增加到2</li>
+<li>操作：将A的左孩子B向右上旋转代替A成为根节点，将A节点向右下旋转成为B右子树的根节点，B原右子树作为A的左子树</li>
+</ul>
+</li>
+<li><p>RR：左单旋转</p>
+<ul>
+<li>在节点A的右孩子的右子树上插入了新节点，A的平衡因子由-1减小到-2</li>
+<li>操作：将A的右孩子B向左上旋转代替A成为根节点，将A节点向左下旋转成为B的左子树的根节点，而B的原左子树则作为A节点的右子树</li>
+</ul>
+</li>
+</ul>
+<h6 id="LL：右旋"><a href="#LL：右旋" class="headerlink" title="LL：右旋"></a>LL：右旋</h6><ul>
+<li>原因：在节点A的左孩子的左子树上插入了新节点，A的平衡因子由1增加到2</li>
+<li>操作：将A的左孩子B向右上旋转代替A成为根节点，将A节点向右下旋转成为B右子树的根节点，B原右子树作为A的左子树</li>
+</ul>
+<p><img src="/./assets/image-20230722152648580.png" alt="image-20230722152648580"></p>
+<h6 id="RR：左旋"><a href="#RR：左旋" class="headerlink" title="RR：左旋"></a>RR：左旋</h6><ul>
+<li>在节点A的右孩子的右子树上插入了新节点，A的平衡因子由-1减小到-2</li>
+<li>操作：将A的右孩子B向左上旋转代替A成为根节点，将A节点向左下旋转成为B的左子树的根节点，而B的原左子树则作为A节点的右子树</li>
+</ul>
+<p><img src="/./assets/image-20230722153725461.png" alt="image-20230722153725461"></p>
+<h6 id="代码思路"><a href="#代码思路" class="headerlink" title="代码思路"></a>代码思路</h6><p><img src="/./assets/image-20230722154139187.png" alt="image-20230722154139187"></p>
+<h6 id="LR：先左后右"><a href="#LR：先左后右" class="headerlink" title="LR：先左后右"></a>LR：先左后右</h6><ul>
+<li>原因：由于在A的左孩子的右子树上插入新节点，A的平衡因子由1增加到2</li>
+<li>操作：先将A节点的左孩子B的右子树的根节点C向左上旋转提升到B节点的位置，然后再把C节点向右上旋转提升到A节点的位置</li>
+</ul>
+<p><img src="/./assets/image-20230722154639021.png" alt="image-20230722154639021"></p>
+<p><img src="/./assets/image-20230722154709712.png" alt="image-20230722154709712"></p>
+<p><img src="/./assets/image-20230722154725853.png" alt="image-20230722154725853"></p>
+<h6 id="RL：先右再左"><a href="#RL：先右再左" class="headerlink" title="RL：先右再左"></a>RL：先右再左</h6><ul>
+<li>原因：在A的右孩子的左子树上插入新节点，A的平衡因子由-1减到-2，导致以A为根的子树失去平衡</li>
+<li>操作：先将A节点的左孩子B的根节点C向右上旋转提升到B节点的位置，然后再把该C节点向左上旋转提升到A节点的位置</li>
+</ul>
+<p><img src="/./assets/image-20230722154920933.png" alt="image-20230722154920933"></p>
+<p><img src="/./assets/image-20230722154933284.png" alt="image-20230722154933284"></p>
+<p><img src="/./assets/image-20230722154945762.png" alt="image-20230722154945762"></p>
+<h6 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h6><ul>
+<li>只有左孩子才能右上旋</li>
+<li>只有右孩子才能左上旋</li>
+</ul>
+<p><img src="/./assets/image-20230722155327108.png" alt="image-20230722155327108"></p>
+<h5 id="只要调整最小平衡子树，其他祖先节点就能恢复平衡"><a href="#只要调整最小平衡子树，其他祖先节点就能恢复平衡" class="headerlink" title="只要调整最小平衡子树，其他祖先节点就能恢复平衡"></a>只要调整最小平衡子树，其他祖先节点就能恢复平衡</h5><ul>
+<li>插入操作导致“最小不平衡子树”高度+1，经过调整后高度恢复</li>
+</ul>
+<p><img src="/./assets/image-20230722155532175.png" alt="image-20230722155532175"></p>
+<p><img src="/./assets/image-20230722155716901.png" alt="image-20230722155716901"></p>
+<p><img src="/./assets/image-20230722155730461.png" alt="image-20230722155730461"></p>
+<h6 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h6><ul>
+<li>RR<ul>
+<li>找到第一个不平衡的点</li>
+<li>往下数一个节点——作为新的跟节点</li>
+<li>旧根节点作为新根节点的左子树</li>
+<li>新根节点原来的左子树变成左子树的右子树</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230722160123223.png" alt="image-20230722160123223"></p>
+<p><img src="/./assets/image-20230722160133825.png" alt="image-20230722160133825"></p>
+<ul>
+<li>RL<ul>
+<li>找到第一个不平衡的节点</li>
+<li>往下数两个节点——新的根节点</li>
+<li>往下数的第一个节点是新根节点的左节点，旧根节点是新根节点的右节点</li>
+<li>新根节点原先的左子树给到左边的右子树</li>
+<li>新根节点原来的右子树给到右边的左子树</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230722160145092.png" alt="image-20230722160145092"></p>
+<p><img src="/./assets/image-20230722160404268.png" alt="image-20230722160404268"></p>
+<p><img src="/./assets/image-20230722160548581.png" alt="image-20230722160548581"></p>
+<ul>
+<li>LR</li>
+</ul>
+<p><img src="/./assets/image-20230722160839925.png" alt="image-20230722160839925"></p>
+<p><img src="/./assets/image-20230722160851663.png" alt="image-20230722160851663"></p>
+<h4 id="查找效率分析-1"><a href="#查找效率分析-1" class="headerlink" title="查找效率分析"></a>查找效率分析</h4><ul>
+<li>若树高为h，最坏情况下查找一个关键字最多需要对比h次，即查找操作的时间复杂度不肯呢个超过O(h)</li>
+<li>所以应该尽可能降低树高<ul>
+<li>假设以nh表示深度为h的平衡树中含有的最少节点数</li>
+<li>则有n0 &#x3D; 0, n1 &#x3D; 1, n2 &#x3D; 2,并且nh &#x3D; n(h-1) + n(h-2) + 1（n(h-1)：h-1层最少的节点数；n(h-2)：h-2层最少的节点数）</li>
+</ul>
+</li>
+<li>平均查找长度：O(log2n)</li>
+</ul>
+<p><img src="/./assets/image-20230722161325806.png" alt="image-20230722161325806"></p>
+<h4 id="删除操作-1"><a href="#删除操作-1" class="headerlink" title="删除操作"></a>删除操作</h4><h5 id="插入-VS-删除"><a href="#插入-VS-删除" class="headerlink" title="插入 VS 删除"></a>插入 VS 删除</h5><ul>
+<li>平衡二叉树的插入操作<ul>
+<li>插入新节点后，要保持二叉排序树的特性不变（左&lt;中&lt;右）</li>
+<li>若插入新节点导致不平衡，则需要调整平衡</li>
+</ul>
+</li>
+<li>平衡二叉树的删除操作<ul>
+<li>删除节点后，要保持二叉排序树的特性不变</li>
+<li>若删除节点导致不平衡，则需要调整平衡</li>
+</ul>
+</li>
+</ul>
+<h5 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h5><ul>
+<li>平衡二叉树删除操作<ul>
+<li>删除节点（方法同“二叉排序树”）<ul>
+<li>若被删除节点z是叶子节点，则直接删除，不会破坏二叉排序树的性质</li>
+<li>若被删除节点z只有一棵左子树或右子树，则让z的子树成为z父节点的子树，代替z的位置</li>
+<li>若被删除节点z有左右两棵子树，则令z的直接后继（或直接前驱）代替z，然后从二叉排序树中删去这个直接后继（或直接前驱），这样就转换成了第一或第二种情况</li>
+</ul>
+</li>
+<li>一路向上找到最小不平衡子树，找不到就完结撒花</li>
+<li>找最小不平衡子树下，个头最高的儿子、孙子</li>
+<li>根据孙子的位置，调整平衡（LL&#x2F;RR&#x2F;LR&#x2F;RL）</li>
+<li>如果不平衡向上传导，继续2</li>
+</ul>
+</li>
+</ul>
+<h5 id="例一：未出现不平衡现象"><a href="#例一：未出现不平衡现象" class="headerlink" title="例一：未出现不平衡现象"></a>例一：未出现不平衡现象</h5><p><img src="/./assets/image-20230722170523667.png" alt="image-20230722170523667"></p>
+<h5 id="例二：出现不平衡现象"><a href="#例二：出现不平衡现象" class="headerlink" title="例二：出现不平衡现象"></a>例二：出现不平衡现象</h5><p><img src="/./assets/image-20230722170659751.png" alt="image-20230722170659751"></p>
+<ul>
+<li>寻找最小不平衡子树</li>
+</ul>
+<p><img src="/./assets/image-20230722170711073.png" alt="image-20230722170711073"></p>
+<ul>
+<li>寻找个头最高的儿子、孙子</li>
+</ul>
+<p><img src="/./assets/image-20230722170841722.png" alt="image-20230722170841722"></p>
+<ul>
+<li>根据孙子的位置，调整平衡</li>
+</ul>
+<p><img src="/./assets/image-20230722171008471.png" alt="image-20230722171008471"></p>
+<p><img src="/./assets/image-20230722171059051.png" alt="image-20230722171059051"></p>
+<ul>
+<li>检查不平衡性是否向上传导（高度减少引起的）</li>
+</ul>
+<p><img src="/./assets/image-20230722171140684.png" alt="image-20230722171140684"></p>
+<h5 id="例三：出现不平衡现象"><a href="#例三：出现不平衡现象" class="headerlink" title="例三：出现不平衡现象"></a>例三：出现不平衡现象</h5><ul>
+<li>删除节点</li>
+</ul>
+<p><img src="/./assets/image-20230722171239949.png" alt="image-20230722171239949"></p>
+<ul>
+<li>找到最小不平衡子树</li>
+</ul>
+<p><img src="/./assets/image-20230722171327214.png" alt="image-20230722171327214"></p>
+<ul>
+<li>找个头最高的儿子、孙子</li>
+</ul>
+<p><img src="/./assets/image-20230722171353783.png" alt="image-20230722171353783"></p>
+<ul>
+<li>根据孙子的位置，调整平衡</li>
+</ul>
+<p><img src="/./assets/image-20230722174330718.png" alt="image-20230722174330718"></p>
+<p><img src="/./assets/image-20230722174426010.png" alt="image-20230722174426010"></p>
+<p><img src="/./assets/image-20230722174437084.png" alt="image-20230722174437084"></p>
+<ul>
+<li>寻找传导</li>
+</ul>
+<p><img src="/./assets/image-20230722174450964.png" alt="image-20230722174450964"></p>
+<h5 id="例四：出现不平衡传导现象"><a href="#例四：出现不平衡传导现象" class="headerlink" title="例四：出现不平衡传导现象"></a>例四：出现不平衡传导现象</h5><ul>
+<li>删除节点</li>
+</ul>
+<p><img src="/./assets/image-20230722174533792.png" alt="image-20230722174533792"></p>
+<ul>
+<li>找到最小不平衡子树</li>
+</ul>
+<p><img src="/./assets/image-20230722174546095.png" alt="image-20230722174546095"></p>
+<ul>
+<li>找到向上传导的不平衡子树</li>
+</ul>
+<p><img src="/./assets/image-20230722174556963.png" alt="image-20230722174556963"></p>
+<ul>
+<li>找到最小不平衡子树</li>
+</ul>
+<p><img src="/./assets/image-20230722174608517.png" alt="image-20230722174608517"></p>
+<ul>
+<li>找到个头最高的儿子、孙子</li>
+</ul>
+<p><img src="/./assets/image-20230722174626038.png" alt="image-20230722174626038"></p>
+<ul>
+<li>根据孙子位置，调整平衡</li>
+</ul>
+<p><img src="/./assets/image-20230722174636891.png" alt="image-20230722174636891"></p>
+<p><img src="/./assets/image-20230722174647349.png" alt="image-20230722174647349"></p>
+<ul>
+<li>寻找向上传导的不平衡</li>
+</ul>
+<p><img src="/./assets/image-20230722174747828.png" alt="image-20230722174747828"></p>
+<h5 id="例五：删除的节点不是叶子节点（前驱-后继-不太可能考）"><a href="#例五：删除的节点不是叶子节点（前驱-后继-不太可能考）" class="headerlink" title="例五：删除的节点不是叶子节点（前驱&#x2F;后继  不太可能考）"></a>例五：删除的节点不是叶子节点（前驱&#x2F;后继  不太可能考）</h5><ul>
+<li>按照二叉排序树的顺序，删除叶子节点</li>
+</ul>
+<p><img src="/./assets/image-20230722174804992.png" alt="image-20230722174804992"></p>
+<p><img src="/./assets/image-20230722201032502.png" alt="image-20230722201032502"></p>
+<p><img src="/./assets/image-20230722201306385.png" alt="image-20230722201306385"></p>
+<ul>
+<li>寻找最小不平衡树</li>
+</ul>
+<p><img src="/./assets/image-20230722201429690.png" alt="image-20230722201429690"></p>
+<ul>
+<li>找到个头最高的儿子、孙子</li>
+</ul>
+<p><img src="/./assets/image-20230722201455517.png" alt="image-20230722201455517"></p>
+<ul>
+<li>根据孙子的位置，调整平衡</li>
+</ul>
+<p><img src="/./assets/image-20230722201520289.png" alt="image-20230722201520289"></p>
+<ul>
+<li>寻找向上传导的不平衡子树</li>
+</ul>
+<p><img src="/./assets/image-20230722201551458.png" alt="image-20230722201551458"></p>
+<h5 id="例六：孙子-儿子个头相等（不太可能考）"><a href="#例六：孙子-儿子个头相等（不太可能考）" class="headerlink" title="例六：孙子&#x2F;儿子个头相等（不太可能考）"></a>例六：孙子&#x2F;儿子个头相等（不太可能考）</h5><ul>
+<li>删除节点</li>
+</ul>
+<p><img src="/./assets/image-20230722201847149.png" alt="image-20230722201847149"></p>
+<p><img src="/./assets/image-20230722201857078.png" alt="image-20230722201857078"></p>
+<ul>
+<li>找到最小不平衡子树</li>
+</ul>
+<p><img src="/./assets/image-20230722201908691.png" alt="image-20230722201908691"></p>
+<ul>
+<li>找到个头最高的儿子、孙子（这里孙子个头相等）</li>
+<li>假设选择右孙子</li>
+</ul>
+<p><img src="/./assets/image-20230722201921210.png" alt="image-20230722201921210"></p>
+<p><img src="/./assets/image-20230722201955749.png" alt="image-20230722201955749"></p>
+<ul>
+<li>寻找传导</li>
+</ul>
+<p><img src="/./assets/image-20230722202222835.png" alt="image-20230722202222835"></p>
+<ul>
+<li>找到个头最高的儿子、孙子（这里孙子个头相等）</li>
+<li>假设选择左孙子</li>
+</ul>
+<p><img src="/./assets/image-20230722202307745.png" alt="image-20230722202307745"></p>
+<ul>
+<li>RL：调整平衡</li>
+</ul>
+<p><img src="/./assets/image-20230722202329133.png" alt="image-20230722202329133"></p>
+<p><img src="/./assets/image-20230722202346340.png" alt="image-20230722202346340"></p>
+<ul>
+<li>寻找传导</li>
+</ul>
+<p><img src="/./assets/image-20230722202402979.png" alt="image-20230722202402979"></p>
+<h3 id="红黑树（RBT）"><a href="#红黑树（RBT）" class="headerlink" title="红黑树（RBT）"></a>红黑树（RBT）</h3><h4 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h4><h5 id="为什么要发明红黑树？"><a href="#为什么要发明红黑树？" class="headerlink" title="为什么要发明红黑树？"></a>为什么要发明红黑树？</h5><ul>
+<li><p>为什么要发明红黑树？</p>
+<ul>
+<li><p>平衡二叉树AVL</p>
+<ul>
+<li>插入&#x2F;删除太麻烦了，适用于以查为主，很少插入&#x2F;删除的场景</li>
+<li>插入&#x2F;删除很容易破坏“平衡”特性，需要频繁调整树的形态</li>
+<li>插入操作导致不平衡，则需先计算平衡因子，找到最小不平衡子树（时间开销大），再进行LL&#x2F;RR&#x2F;LR&#x2F;RL调整</li>
+</ul>
+</li>
+<li><p>红黑树RBT</p>
+<ul>
+<li>适用于频繁删除&#x2F;插入的场景，实用性更强</li>
+<li>插入&#x2F;删除 很多时候不会破坏“红黑”特性，无需频繁调整树的形态。</li>
+<li>即使需要调整，一般都可以在常数级时间内完成</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230722203124639.png" alt="image-20230722203124639"></p>
+<h5 id="红黑树大概会怎么考？"><a href="#红黑树大概会怎么考？" class="headerlink" title="红黑树大概会怎么考？"></a>红黑树大概会怎么考？</h5><p><img src="/./assets/image-20230722204326527.png" alt="image-20230722204326527"></p>
+<h5 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h5><ul>
+<li>红黑树是二叉排序树<ul>
+<li>左子树节点值 &lt; 根节点值 &lt; 右子树节点值</li>
+</ul>
+</li>
+<li>与普通BST相比有什么要求？<ul>
+<li>每个节点或是红的，或是黑的</li>
+<li><strong>根节点是黑的</strong></li>
+<li><strong>叶节点</strong>（外部节点、NULL节点、失败节点）均是<strong>黑色</strong>的</li>
+<li><strong>不存在两个相邻的红节点</strong>（即红节点的父节点和孩子节点均是黑色的）</li>
+<li>对每个节点，从该节点到任一叶节点的简单路径上，所含<strong>黑节点的数目</strong>相同</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230722205005924.png" alt="image-20230722205005924"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> Elemtype int</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">RBNode</span>&#123;              <span class="comment">//红黑树的节点定义</span></span><br><span class="line">    <span class="type">int</span> key;                <span class="comment">//关键字的值</span></span><br><span class="line">    RBNode* parent;         <span class="comment">//父节点指针</span></span><br><span class="line">    RBNode *lchild;         <span class="comment">//左孩子指针</span></span><br><span class="line">    RBNode *rchild;         <span class="comment">//右孩子指针</span></span><br><span class="line">    <span class="type">int</span> color;              <span class="comment">//节点颜色，如：可用0/1 表示 黑/红，也可以用枚举类型enum表示颜色</span></span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/./assets/image-20230722205045602.png" alt="image-20230722205045602"></p>
+<h4 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h4><p><img src="/./assets/image-20230722205411210.png" alt="image-20230722205411210"></p>
+<p><img src="/./assets/image-20230722205423079.png" alt="image-20230722205423079"></p>
+<p><img src="/./assets/image-20230722205753797.png" alt="image-20230722205753797"></p>
+<p><img src="/./assets/image-20230722205902071.png" alt="image-20230722205902071"></p>
+<p><img src="/./assets/image-20230722205918687.png" alt="image-20230722205918687"></p>
+<h4 id="节点的黑高bh"><a href="#节点的黑高bh" class="headerlink" title="节点的黑高bh"></a>节点的黑高bh</h4><ul>
+<li>从某节点出发（不含该节点）到达任一空叶节点的路径上黑节点总数</li>
+</ul>
+<p><img src="/./assets/image-20230722210040059.png" alt="image-20230722210040059"></p>
+<h4 id="性质-1"><a href="#性质-1" class="headerlink" title="性质"></a>性质</h4><ul>
+<li><p>节点的黑高bh——从某节点出发（不含该节点）到达任一叶节点的路径上黑节点总数</p>
+</li>
+<li><p>根节点黑高为h的红黑树，内部节点数（关键字）至少有多少个</p>
+<ul>
+<li>满二叉树，并且节点全为黑</li>
+<li>内部节点个数至少为2^h-1</li>
+</ul>
+</li>
+<li><p>根节点黑高为h的红黑树，内部节点最多有多少个？</p>
+<ul>
+<li>h层黑节点，每一层黑节点下都铺满一层红节点。共2h层的满树状态</li>
+<li>最多有2^2h - 1个</li>
+</ul>
+</li>
+<li><p>性质一：<strong>从根节点到叶节点的最长路径不大于最短路径的二倍</strong></p>
+<ul>
+<li>左右子树的高度相差不到2倍（条件更宽松，不太容易被破坏）</li>
+<li>而平衡二叉树AVL要求左右子树高度差不超过1（条件更严格，很容易被破坏）</li>
+<li>任何一条查找失败路径上黑节点数量都是相同的，而路径上不能连续出现两个红节点，即红节点只能穿插在各个黑节点中间</li>
+</ul>
+</li>
+<li><p>性质二：<strong>有n个内部节点的红黑树高度 h &lt;&#x3D; 2log2(n+1)</strong></p>
+<ul>
+<li>若红黑树总高度&#x3D;h，则根节点黑高&gt;h&#x2F;2，因此内部节点数n&gt;&#x3D;2^(h&#x2F;2)-1，由此推出h &lt;&#x3D; 2log2(n+1)</li>
+</ul>
+</li>
+<li><p>查找时间复杂度 &#x3D; O(log2n)</p>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724161947156.png" alt="image-20230724161947156"></p>
+<p><img src="/./assets/image-20230724162337908.png" alt="image-20230724162337908"></p>
+<p><img src="/./assets/image-20230722210146870.png" alt="image-20230722210146870"></p>
+<p><img src="/./assets/image-20230724162601947.png" alt="image-20230724162601947"></p>
+<h4 id="插入操作-2"><a href="#插入操作-2" class="headerlink" title="插入操作"></a>插入操作</h4><ul>
+<li>先查找，确认插入位置（原理同二叉排序树），插入新节点</li>
+<li>新节点是<strong>根</strong>——染为黑色</li>
+<li>新节点是非根——染为红色<ul>
+<li>若插入新节点后依然满足红黑树的定义，则插入结束</li>
+<li>若插入新节点后不满足红黑树的定义，需要调整，使其重新满足红黑树定义<ul>
+<li>黑叔：旋转+染色<ul>
+<li>LL型：右单旋转，父换爷+染色</li>
+<li>RR型：左单旋转，父换爷+染色</li>
+<li>LR型：左、右双旋，儿换爷+染色</li>
+<li>RL型：右、左双旋，儿换爷+染色</li>
+</ul>
+</li>
+<li>红叔：染色+变新<ul>
+<li>叔父爷染色，爷变为新节点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230723233820042.png" alt="image-20230723233820042"></p>
+<h5 id="插入操作举例"><a href="#插入操作举例" class="headerlink" title="插入操作举例"></a>插入操作举例</h5><ul>
+<li><p>左根右：按照二叉排序树的方式插入</p>
+</li>
+<li><p>根叶黑：很容易添加和判断，根节点和为NULL的叶子节点</p>
+</li>
+<li><p>黑路同：添加的都是非根节点，都为红色，所以不会破坏</p>
+</li>
+<li><p><strong>不红红</strong></p>
+<ul>
+<li>是添加新节点所破坏的特性</li>
+<li>看叔叔颜色</li>
+</ul>
+</li>
+<li><p>黑叔叔：旋转+染色</p>
+<ul>
+<li>LL：右单旋转，父爷染色</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724135626653.png" alt="image-20230724135626653"></p>
+<ul>
+<li>红叔叔：染色+变新<ul>
+<li>叔父爷（三个）染色，爷变为新节点（有可能爷违反不红红特性）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724140956016.png" alt="image-20230724140956016"></p>
+<ul>
+<li>黑叔叔：旋转+染色<ul>
+<li>RR：左单旋转，父爷染色</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724141105719.png" alt="image-20230724141105719"></p>
+<ul>
+<li>红叔叔：染色+变新<ul>
+<li>叔父爷染色，爷变为新节点</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724141150466.png" alt="image-20230724141150466"></p>
+<ul>
+<li>不需要变色</li>
+</ul>
+<p><img src="/./assets/image-20230724141235255.png" alt="image-20230724141235255"></p>
+<ul>
+<li>黑叔叔：旋转+染色<ul>
+<li>LL：右单旋转，父爷染色</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724141251547.png" alt="image-20230724141251547"></p>
+<ul>
+<li>红叔叔：染色+变新<ul>
+<li>叔父爷染色，爷变为新节点</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724141330082.png" alt="image-20230724141330082"></p>
+<ul>
+<li>不需要变色</li>
+</ul>
+<p><img src="/./assets/image-20230724141531171.png" alt="image-20230724141531171"></p>
+<ul>
+<li>不需要变色</li>
+</ul>
+<p><img src="/./assets/image-20230724141557266.png" alt="image-20230724141557266"></p>
+<ul>
+<li>不需要变色</li>
+</ul>
+<p><img src="/./assets/image-20230724141700165.png" alt="image-20230724141700165"></p>
+<ul>
+<li>红叔叔：染色+变新<ul>
+<li>叔父爷染色，爷变为新节点</li>
+<li>如果根节点变为红色，要变成黑色</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724141717596.png" alt="image-20230724141717596"></p>
+<ul>
+<li>黑叔叔：旋转+染色<ul>
+<li>LR型：左右双旋，儿爷染色</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724142107748.png" alt="image-20230724142107748"></p>
+<ul>
+<li>黑叔叔：旋转+染色<ul>
+<li>LR型：左右双旋，儿爷染色</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724142204185.png" alt="image-20230724142204185"></p>
+<ul>
+<li>黑叔叔：旋转+染色<ul>
+<li>LR：左右双旋，儿爷染色</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724142241883.png" alt="image-20230724142241883"></p>
+<ul>
+<li>黑叔叔：旋转+染色<ul>
+<li>LR型：左右双旋，儿爷染色</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724142320887.png" alt="image-20230724142320887"></p>
+<ul>
+<li>红叔叔：染色+变新<ul>
+<li>叔父爷染色，爷变为新节点</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724142400447.png" alt="image-20230724142400447"></p>
+<ul>
+<li>红叔叔：染色+变新<ul>
+<li>叔父爷染色，爷变为新节点</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724142430892.png" alt="image-20230724142430892"></p>
+<ul>
+<li>黑叔叔：旋转+染色<ul>
+<li>LR型：左右双旋，儿爷染色</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724142519774.png" alt="image-20230724142519774"></p>
+<ul>
+<li>黑叔叔：旋转+染色<ul>
+<li>LR型：左右双旋，儿换爷+染色</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724142555702.png" alt="image-20230724142555702"></p>
+<ul>
+<li>黑叔叔：旋转+染色<ul>
+<li>LR型：左右双旋，儿爷染色</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724142634110.png" alt="image-20230724142634110"></p>
+<ul>
+<li>黑叔叔：旋转+染色<ul>
+<li>LR型：左右双旋，儿爷染色</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724142709720.png" alt="image-20230724142709720"></p>
+<ul>
+<li>不需要变色</li>
+</ul>
+<p><img src="/./assets/image-20230724142753160.png" alt="image-20230724142753160"></p>
+<ul>
+<li>黑叔叔：旋转+染色<ul>
+<li>RL型：右左双旋，儿爷染色</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724142805621.png" alt="image-20230724142805621"></p>
+<p><img src="/./assets/image-20230724142851819.png" alt="image-20230724142851819"></p>
+<p><img src="/./assets/image-20230724142908091.png" alt="image-20230724142908091"></p>
+<p><img src="/./assets/image-20230724142918548.png" alt="image-20230724142918548"></p>
+<h4 id="删除操作（不考）"><a href="#删除操作（不考）" class="headerlink" title="删除操作（不考）"></a>删除操作（不考）</h4><h5 id="性质-2"><a href="#性质-2" class="headerlink" title="性质"></a>性质</h5><ul>
+<li>红黑树删除操作的时间复杂度&#x3D;O(log2n)</li>
+<li>在红黑树中删除节点的处理方式和“二叉排序树的删除一样”</li>
+<li>按上述删除节点后，可能破坏红黑树特性，此时需要调整及诶单颜色、位置，使其在此满足红黑树特性</li>
+</ul>
+<p><img src="/./assets/image-20230724163228077.png" alt="image-20230724163228077"></p>
+<h3 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h3><ul>
+<li>考察的主要是性质和手算方法</li>
+<li>如果每个节点只有一个关键字——二叉排序树</li>
+</ul>
+<h4 id="节点定义"><a href="#节点定义" class="headerlink" title="节点定义"></a>节点定义</h4><p><img src="/./assets/image-20230724164208501.png" alt="image-20230724164208501"></p>
+<ul>
+<li>二叉排序树节点</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">BSTNode</span>&#123;</span><br><span class="line">  <span class="type">int</span> key;</span><br><span class="line">  <span class="keyword">struct</span> <span class="title class_">BSTNode</span> *lchild, *rchild;</span><br><span class="line">&#125;BSTNode, *BSTree;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>5叉排序树</li>
+</ul>
+<p><img src="/./assets/image-20230724164413840.png" alt="image-20230724164413840"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span>&#123;</span><br><span class="line">    Elemtype keys[<span class="number">4</span>];                   <span class="comment">//最多4个关键字</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Node</span>* child[<span class="number">55</span>];             <span class="comment">//最多5个孩子</span></span><br><span class="line">    <span class="type">int</span> num;                            <span class="comment">//节点中有几个关键字</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="查找操作-1"><a href="#查找操作-1" class="headerlink" title="查找操作"></a>查找操作</h4><ul>
+<li>节点中keys是顺序排放的，每个节点内也可以采用折半查找</li>
+</ul>
+<h5 id="查找成功-5"><a href="#查找成功-5" class="headerlink" title="查找成功"></a>查找成功</h5><p><img src="/./assets/image-20230724165022783.png" alt="image-20230724165022783"></p>
+<p><img src="/./assets/image-20230724165036215.png" alt="image-20230724165036215"></p>
+<h5 id="查找失败-6"><a href="#查找失败-6" class="headerlink" title="查找失败"></a>查找失败</h5><p><img src="/./assets/image-20230724165157934.png" alt="image-20230724165157934"></p>
+<p><img src="/./assets/image-20230724165216572.png" alt="image-20230724165216572"></p>
+<h4 id="如何保证查找效率"><a href="#如何保证查找效率" class="headerlink" title="如何保证查找效率"></a>如何保证查找效率</h4><h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><ul>
+<li><p>若每个节点内关键字太少，导致树变高，要查更多层节点，效率变低</p>
+</li>
+<li><p>不够平衡，树会很高，要查很多层节点</p>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724170105992.png" alt="image-20230724170105992"></p>
+<p><img src="/./assets/image-20230724170133321.png" alt="image-20230724170133321"></p>
+<h5 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h5><ul>
+<li><p>m叉查找树中，规定除了根节点外，任何节点至少有[m&#x2F;2]个分叉，即至少含有 [m&#x2F;2]-1 个关键字</p>
+<ul>
+<li><p>Eg：5叉排序树，规定除了根节点外，任何节点都至少有3个分叉，2个关键字</p>
+</li>
+<li><p>为什么除了根节点外？</p>
+<ul>
+<li>如果整个树只有一个元素，根节点只有两个分叉</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>m叉排序素中，规定对于任何一个节点，其所有子树的高度都要相同</p>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724165555484.png" alt="image-20230724165555484"></p>
+<p><img src="/./assets/image-20230724165844965.png" alt="image-20230724165844965"></p>
+<p><img src="/./assets/image-20230724170138709.png" alt="image-20230724170138709"></p>
+<h4 id="B树定义"><a href="#B树定义" class="headerlink" title="B树定义"></a>B树定义</h4><ul>
+<li>B树，又称多路平衡查找树<ul>
+<li>B树中所被允许的孩子个数的最大值成为<strong>B树的阶</strong>，通常用m表示</li>
+<li>一棵m阶B树或为空树，或为满足以下特性的m叉树<ul>
+<li>树中每个节点最多有m棵子树，即至多含有m-1个关键字</li>
+<li>若根节点不是终端节点，则至少有两棵子树</li>
+<li>除根节点外的所有非叶节点至少有  <strong>[m&#x2F;2]向上取整</strong>  棵子树，即至少含有[m&#x2F;2]-1个关键字</li>
+<li>所有的叶节点都出现在同一层次上，并且不带信息（可以视为外部节点或类似于折半查找判定树的查找失败节点，实际上这些节点不存在，指向这些节点的指针为空）</li>
+<li>所有非叶子节点的结构如下：<ul>
+<li>n：节点中关键字的个数（[m&#x2F;2]-1 &lt;&#x3D; n &lt;&#x3D; m-1）</li>
+<li>Ki：节点的关键字，且满足 K1 &lt; K2 &lt; …. &lt; Kn</li>
+<li>Pi：指向子树根节点的指针，且指针Pi-1所指子树中所有节点的关键字均小于Ki，Pi所指子树中所有节点的关键字均大于Ki</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724170426451.png" alt="image-20230724170426451"></p>
+<p><img src="/./assets/image-20230724171123621.png" alt="image-20230724171123621"></p>
+<h4 id="核心特性"><a href="#核心特性" class="headerlink" title="核心特性"></a>核心特性</h4><ol>
+<li><p>根节点的子树数[2,m]，关键字数[1,m-1]</p>
+<p>其他节点的子树数[m&#x2F;2,m]，关键字数[[m&#x2F;2-1,m-1]]</p>
+</li>
+<li><p>对任一节点，其所有子树高度相同</p>
+</li>
+<li><p>关键字的值：子树0 &lt; 关键字1 &lt; 子树1 &lt; 关键字2 &lt; 子树2 &lt;…（类似二叉查找树 左 &lt; 中 &lt; 右）</p>
+</li>
+</ol>
+<p><img src="/./assets/image-20230724171823380.png" alt="image-20230724171823380"></p>
+<h4 id="B树的高度"><a href="#B树的高度" class="headerlink" title="B树的高度"></a>B树的高度</h4><ul>
+<li><p>B树的高度不包括叶子节点（失败节点）</p>
+</li>
+<li><p>含有n个关键字的m阶B树，最小高度、最大高度是多少？</p>
+<ul>
+<li><p>最小高度——让每个节点尽可能的满，有m-1个关键字，m个分叉，则有</p>
+<p>n &lt;&#x3D; (m-1)(1 + m + m^2 + m^3 +… + m^(h-1)) &#x3D; m^h -1</p>
+<p>h &gt;&#x3D; logm(n+1)</p>
+</li>
+<li><p>最大高度——让各层的分叉尽可能的少，即根节点只有两个分叉，其他节点只有[m&#x2F;2]个分叉</p>
+<p>各层的节点至少有：第一层 1、第二层 2、第三层 2[m&#x2F;2] … 第h层2([m&#x2F;2])^(h-2)</p>
+<p>第h+1层共有叶子节点（失败节点） 2([m&#x2F;2])^(h-1) 个</p>
+<p>n个关键字的B树必有n+1个叶子节点，则 n+1 &gt;&#x3D; 2([m&#x2F;2])^(h-1)，即 h&lt;&#x3D;log[m&#x2F;2]((n+1)&#x2F;2+1)</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724172944340.png" alt="image-20230724172944340"></p>
+<p><img src="/./assets/image-20230724171843466.png" alt="image-20230724171843466"></p>
+<p><img src="/./assets/image-20230724172635714.png" alt="image-20230724172635714"></p>
+<p><img src="/./assets/image-20230724172903538.png" alt="image-20230724172903538"></p>
+<h4 id="插入操作-3"><a href="#插入操作-3" class="headerlink" title="插入操作"></a>插入操作</h4><ul>
+<li><p>在插入key后，若导致原节点关键字数超过上限</p>
+<ul>
+<li><p>从中间位置（[m&#x2F;2]）将其中的关键字分为两部分</p>
+</li>
+<li><p>左部分包含的关键字放在原节点中</p>
+</li>
+<li><p>右部分包含的关键字放到新节点中</p>
+</li>
+<li><p>中间位置（[m&#x2F;2]）的节点插入原节点的父节点</p>
+</li>
+<li><p>若此时导致其<strong>⽗结点的关键字个数</strong>也超过了上限，则继续进⾏这种分裂操作，直⾄这个过程传到根结点为⽌，进</p>
+<p>⽽导致<em>B</em>树<strong>⾼度增<em>1</em></strong>。</p>
+</li>
+</ul>
+</li>
+<li><p>新元素一定是插入到最底层“终端节点”，用查找来确定插入位置</p>
+<ul>
+<li>原因：B树的失败节点只能出现在最下面一层</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724173338522.png" alt="image-20230724173338522"></p>
+<p><img src="/./assets/image-20230724173316457.png" alt="image-20230724173316457"></p>
+<p><img src="/./assets/image-20230724174442318.png" alt="image-20230724174442318"></p>
+<h5 id="错误示范"><a href="#错误示范" class="headerlink" title="错误示范"></a>错误示范</h5><p><img src="/./assets/image-20230724174452820.png" alt="image-20230724174452820"></p>
+<h5 id="正确示范"><a href="#正确示范" class="headerlink" title="正确示范"></a>正确示范</h5><p><img src="/./assets/image-20230724174612505.png" alt="image-20230724174612505"></p>
+<p><img src="/./assets/image-20230724174624053.png" alt="image-20230724174624053"></p>
+<p><img src="/./assets/image-20230724174723342.png" alt="image-20230724174723342"></p>
+<p><img src="/./assets/image-20230724174737753.png" alt="image-20230724174737753"></p>
+<p><img src="/./assets/image-20230724174750008.png" alt="image-20230724174750008"></p>
+<p><img src="/./assets/image-20230724174801298.png" alt="image-20230724174801298"></p>
+<p><img src="/./assets/image-20230724174917720.png" alt="image-20230724174917720"></p>
+<p><img src="/./assets/image-20230724174927975.png" alt="image-20230724174927975"></p>
+<p><img src="/./assets/image-20230724174938113.png" alt="image-20230724174938113"></p>
+<p><img src="/./assets/image-20230724174949101.png" alt="image-20230724174949101"></p>
+<p><img src="/./assets/image-20230724174959449.png" alt="image-20230724174959449"></p>
+<p><img src="/./assets/image-20230724175010391.png" alt="image-20230724175010391"></p>
+<p><img src="/./assets/image-20230724175022162.png" alt="image-20230724175022162"></p>
+<p><img src="/./assets/image-20230724175113722.png" alt="image-20230724175113722"></p>
+<h5 id="核心要求"><a href="#核心要求" class="headerlink" title="核心要求"></a>核心要求</h5><ol>
+<li>对于m阶B树——除根节点外，节点关键字个数[m&#x2F;2]-1 &lt;&#x3D; n &lt;&#x3D; m-1</li>
+<li>子树0 &lt; 关键字1 &lt; 子树1 &lt; 关键字2 &lt; 子树2 &lt; …</li>
+</ol>
+<p>新元素一定是插入到最底层“终端节点”，用“查找”来确定插入位置</p>
+<p>在插入key后，若导致原节点关键字数超过上限</p>
+<ul>
+<li><p>从中间位置（[m&#x2F;2]）将其中的关键字分为两部分</p>
+</li>
+<li><p>左部分包含的关键字放在原节点中</p>
+</li>
+<li><p>右部分包含的关键字放到新节点中</p>
+</li>
+<li><p>中间位置（[m&#x2F;2]）的节点插入原节点的父节点</p>
+</li>
+<li><p>若此时导致其<strong>⽗结点的关键字个数</strong>也超过了上限，则继续进⾏这种分裂操作，直⾄这个过程传到根结点为⽌，进</p>
+<p>⽽导致<em>B</em>树<strong>⾼度增<em>1</em></strong>。</p>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724175515975.png" alt="image-20230724175515975"></p>
+<h4 id="删除操作-2"><a href="#删除操作-2" class="headerlink" title="删除操作"></a>删除操作</h4><ul>
+<li><p>本质：要永远保证 ⼦树0&lt;关键字1&lt;⼦树1&lt;关键字2&lt;⼦树2&lt;…</p>
+</li>
+<li><p>若被删除关键字在<strong>终端节点</strong>，则直接删除该关键字（要注意节点关键字个数是否低于下限[m&#x2F;2]-1）</p>
+<ul>
+<li><p>关键字个数高于下限，直接删除</p>
+</li>
+<li><p>关键字个数低于下限</p>
+<ul>
+<li><p>兄弟够借：若与此节点右（或左）兄弟节点的关键字个数还很宽裕，则需要调整该节点、右（或左）兄弟节点及其双亲节点（父子换位法）</p>
+<p>用当前节点的后继、后继的后继来填补空缺</p>
+</li>
+<li><p>兄弟不够：若被删除关键字所在节点删除前的关键字个数低于下限，且此时与该节点相邻的左、右兄弟节点的关键字个数均 &#x3D; [m&#x2F;2]-1，则将关键字删除后与<strong>左（或右）兄弟节点及双亲节点中的关键字</strong>进行合并</p>
+<ul>
+<li><p>在合并过程中，双亲结点中的关键字个数会减<em>1</em>。若<strong>其双亲结点是根结点且关键字个数减少⾄<em>0</em></strong>（根结点关键</p>
+<p>字个数为<em>1</em>时，有<em>2</em>棵⼦树），则直接将根结点删除，合并后的新结点成为根；若双亲结点不是根结点，且关</p>
+<p>键字个数减少到 ，则⼜要与它⾃⼰的兄弟结点进⾏调整或合并操作，并重复上述步骤，直⾄符合<em>B</em></p>
+<p>树的要求为⽌。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>若被删除关键字在<strong>非终端节点</strong>，则用<strong>直接前驱</strong>或<strong>直接后继</strong>来替代被删除的关键字</p>
+<ul>
+<li>对非终端节点关键字的删除，必然可以转化为对终端节点的删除操作</li>
+<li>直接前驱：当前关键字左侧指针所指子树中“最右下”的元素</li>
+<li>直接后继：当前关键字右侧指针所指子树中“最左下”的元素</li>
+</ul>
+</li>
+<li><p>删除60（终端节点，关键字个数大于下限）</p>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724175642625.png" alt="image-20230724175642625"></p>
+<p><img src="/./assets/image-20230724175703525.png" alt="image-20230724175703525"></p>
+<ul>
+<li>删除80（非终端节点）</li>
+</ul>
+<p><img src="/./assets/image-20230724180158230.png" alt="image-20230724180158230"></p>
+<ul>
+<li>删除38（终端节点，关键字个数低于下限（[m&#x2F;2]-1，右兄弟够借）</li>
+</ul>
+<p><img src="/./assets/image-20230724180706078.png" alt="image-20230724180706078"></p>
+<p><img src="/./assets/image-20230724180801039.png" alt="image-20230724180801039"></p>
+<p><img src="/./assets/image-20230724180743887.png" alt="image-20230724180743887"></p>
+<p><img src="/./assets/image-20230724180820612.png" alt="image-20230724180820612"></p>
+<p><img src="/./assets/image-20230724180834789.png" alt="image-20230724180834789"></p>
+<ul>
+<li>删除90（终端节点，关键字个数低于下限（[m&#x2F;2]-1，左兄弟够借）</li>
+</ul>
+<p><img src="/./assets/image-20230724181054994.png" alt="image-20230724181054994"></p>
+<p><img src="/./assets/image-20230724181106247.png" alt="image-20230724181106247"></p>
+<p><img src="/./assets/image-20230724181139105.png" alt="image-20230724181139105"></p>
+<ul>
+<li>删除49（终端节点，关键字个数低于下限（[m&#x2F;2]-1，左右兄弟不够借）</li>
+</ul>
+<p><img src="/./assets/image-20230724181548842.png" alt="image-20230724181548842"></p>
+<p><img src="/./assets/image-20230724181600641.png" alt="image-20230724181600641"></p>
+<p><img src="/./assets/image-20230724181612150.png" alt="image-20230724181612150"></p>
+<p><img src="/./assets/image-20230724181623803.png" alt="image-20230724181623803"></p>
+<p><img src="/./assets/image-20230724181640464.png" alt="image-20230724181640464"></p>
+<p><img src="/./assets/image-20230724181710337.png" alt="image-20230724181710337"></p>
+<p><img src="/./assets/image-20230724181721590.png" alt="image-20230724181721590"></p>
+<p><img src="/./assets/image-20230724181735840.png" alt="image-20230724181735840"></p>
+<p><img src="/./assets/image-20230724181748109.png" alt="image-20230724181748109"></p>
+<h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><p><img src="/./assets/image-20230724190455779.png" alt="image-20230724190455779"></p>
+<h4 id="分块查找"><a href="#分块查找" class="headerlink" title="分块查找"></a>分块查找</h4><p><img src="/./assets/image-20230724191732976.png" alt="image-20230724191732976"></p>
+<h4 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>一棵m阶的B+树需满足下列条件：<ul>
+<li>每个分支节点最多有m棵子树（孩子节点）</li>
+<li>非叶根节点至少两棵子树，其他每个分支节点至少有[m&#x2F;2]棵子树（保证每个节点不要太空）</li>
+<li><strong>节点的子树个数与关键字个数相等</strong></li>
+<li>所有叶节点包含全部<strong>关键字及指向对应记录的指针</strong>，叶节点中将关键字<strong>按大小顺序排列</strong>，并且相邻叶节点按大小顺序相互连接起来</li>
+<li>所有分支节点中仅包含它的各个子节点中关键字的最大值及指向其子节点的指针</li>
+</ul>
+</li>
+<li>B+树支持顺序查找，每个节点中都有顺序，有节点p将叶子节点中的数据从小到大连接起来</li>
+</ul>
+<p><img src="/./assets/image-20230724191752521.png" alt="image-20230724191752521"></p>
+<ul>
+<li>非叶根节点至少两棵子树，其他每个分支节点至少有[m&#x2F;2]棵子树</li>
+</ul>
+<p><img src="/./assets/image-20230724192047266.png" alt="image-20230724192047266"></p>
+<h4 id="查找操作-2"><a href="#查找操作-2" class="headerlink" title="查找操作"></a>查找操作</h4><ul>
+<li>要一直找到<strong>叶子节点</strong></li>
+</ul>
+<h5 id="查找成功-6"><a href="#查找成功-6" class="headerlink" title="查找成功"></a>查找成功</h5><p><img src="/./assets/image-20230724192553775.png" alt="image-20230724192553775"></p>
+<p><img src="/./assets/image-20230724193232557.png" alt="image-20230724193232557"></p>
+<h5 id="查找失败-7"><a href="#查找失败-7" class="headerlink" title="查找失败"></a>查找失败</h5><p><img src="/./assets/image-20230724193244882.png" alt="image-20230724193244882"></p>
+<p><img src="/./assets/image-20230724193310419.png" alt="image-20230724193310419"></p>
+<h5 id="对比：B树的查找"><a href="#对比：B树的查找" class="headerlink" title="对比：B树的查找"></a>对比：B树的查找</h5><ul>
+<li>查找成功可能停在任何一层</li>
+</ul>
+<p><img src="/./assets/image-20230724193808032.png" alt="image-20230724193808032"></p>
+<h5 id="顺序查找-1"><a href="#顺序查找-1" class="headerlink" title="顺序查找"></a>顺序查找</h5><p><img src="/./assets/image-20230724194007548.png" alt="image-20230724194007548"></p>
+<p><img src="/./assets/image-20230724194017044.png" alt="image-20230724194017044"></p>
+<h5 id="B树-VS-B-树"><a href="#B树-VS-B-树" class="headerlink" title="B树 VS B+树"></a>B树 VS B+树</h5><ul>
+<li><p>m阶B+树</p>
+<ul>
+<li><p>节点中n个关键字对应n棵子树</p>
+</li>
+<li><p>根节点的关键字数n∈[1, m]</p>
+<p> 其他结点的关键字数n∈[⌈<em>m</em>&#x2F;2⌉, m]</p>
+</li>
+<li><p>在B+树中，叶节点包含全部的关键字，非叶节点中出现过的关键字也会出现在叶节点中</p>
+</li>
+<li><p>在B+树中，<strong>叶结点包含信息</strong>，所有<strong>⾮叶结点仅起索引作⽤</strong>，⾮叶结点中的每个索引项只含有对应⼦</p>
+<p>树的<strong>最⼤关键字</strong>和指向<strong>该⼦树的指针</strong>，不含有该关键字对应记录的存储地址</p>
+</li>
+</ul>
+</li>
+<li><p>m阶B树</p>
+<ul>
+<li><p>结点中的n个关键字对应n+1棵⼦树</p>
+</li>
+<li><p>根节点的关键字数n∈[1, m-1]。</p>
+<p>其他结点的关键字数n∈[⌈<em>m</em>&#x2F;2⌉-1, m-1]</p>
+</li>
+<li><p>在B树中，各结点中包含的关键字是不重复的</p>
+</li>
+<li><p>B树的节点中都包含了关键字对应的记录的存储地址</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724194041626.png" alt="image-20230724194041626"></p>
+<p><img src="/./assets/image-20230724194115738.png" alt="image-20230724194115738"></p>
+<p><img src="/./assets/image-20230724194707895.png" alt="image-20230724194707895"></p>
+<h4 id="应用（与操作系统有关）"><a href="#应用（与操作系统有关）" class="headerlink" title="应用（与操作系统有关）"></a>应用（与操作系统有关）</h4><ul>
+<li>B+树仅保存索引表，非叶节点不含有该关键字对应记录的存储地址<ul>
+<li>可以使一个磁盘快可以包含更多个关键字，使得B+树的阶更大，树高更矮，读磁盘次数更少，查找更快</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724195012681.png" alt="image-20230724195012681"></p>
+<h2 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h2><ul>
+<li>通常不考代码，着重掌握手算分析方法</li>
+</ul>
+<h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><h4 id="散列表、散裂函数"><a href="#散列表、散裂函数" class="headerlink" title="散列表、散裂函数"></a>散列表、散裂函数</h4><ul>
+<li><p>散列表（哈希表，Hash Table）</p>
+<ul>
+<li>一种数据结构</li>
+<li>特点：可以根据数据元素的关键字计算出它在散列表中的存储地址<ul>
+<li>查找<ul>
+<li>先根据散列函数 H(key) 计算出目标元素在散列表中的存储地址</li>
+<li>然后检查这个位置的元素就可以知道是查找成功还是失败</li>
+</ul>
+</li>
+<li>理想情况下，在散列表中查找一个元素的时间复杂度为O(1)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>散列函数（哈希函数）</p>
+<ul>
+<li>Addr &#x3D; H(key) 建立了<strong>“关键字”-&gt;“存储地址”</strong>的映射关系</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724200816330.png" alt="image-20230724200816330"></p>
+<h4 id="冲突、同义词"><a href="#冲突、同义词" class="headerlink" title="冲突、同义词"></a>冲突、同义词</h4><ul>
+<li><p>冲突（碰撞）</p>
+<ul>
+<li>在散列表中插入一个数据元素时，需要根据关键字的值确定其存储地址</li>
+<li>若该地址已经存储了其他元素，则称这种情况为“冲突（碰撞）”</li>
+</ul>
+</li>
+<li><p>同义词</p>
+<ul>
+<li>若不同的关键字通过散列函数映射到同一个存储地址，则称它们为“同义词”</li>
+</ul>
+</li>
+<li><p>如何减少冲突？</p>
+<ul>
+<li>构造更合适的散列函数，让各个关键字尽可能的映射到不同的存储位置，从而减少“冲突”</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724201328970.png" alt="image-20230724201328970"></p>
+<p><img src="/./assets/image-20230724201711759.png" alt="image-20230724201711759"></p>
+<h4 id="如何处理冲突"><a href="#如何处理冲突" class="headerlink" title="如何处理冲突"></a>如何处理冲突</h4><h5 id="拉链法（链接法、链地址法）"><a href="#拉链法（链接法、链地址法）" class="headerlink" title="拉链法（链接法、链地址法）"></a>拉链法（链接法、链地址法）</h5><ul>
+<li>把所有“同义词”存储到一个链表中</li>
+</ul>
+<p><img src="/./assets/image-20230724202026658.png" alt="image-20230724202026658"></p>
+<h5 id="开放定址法"><a href="#开放定址法" class="headerlink" title="开放定址法"></a>开放定址法</h5><ul>
+<li><p>如果发生冲突，就给新元素找一个空闲位置</p>
+</li>
+<li><p>用什么规则确定另一个空闲位置？</p>
+</li>
+</ul>
+<h3 id="构造操作"><a href="#构造操作" class="headerlink" title="构造操作"></a>构造操作</h3><p><img src="/./assets/image-20230724202339055.png" alt="image-20230724202339055"></p>
+<h4 id="设计散列函数"><a href="#设计散列函数" class="headerlink" title="设计散列函数"></a>设计散列函数</h4><h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><ul>
+<li><p>定义域必须涵盖<strong>所有</strong>可能出现的<strong>关键字</strong></p>
+</li>
+<li><p>值域<strong>不能超出</strong>散列表的地址范围</p>
+</li>
+<li><p>尽可能<strong>减少冲突</strong>。</p>
+</li>
+<li><p>散列表计算出来的地址应尽可能<strong>均匀分布</strong>在整个地址空间</p>
+</li>
+<li><p>散列函数尽可能<strong>简单</strong>，能够快速计算出任意一个关键字对应的散列地址</p>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724202936639.png" alt="image-20230724202936639"></p>
+<h5 id="核心目标"><a href="#核心目标" class="headerlink" title="核心目标"></a>核心目标</h5><ul>
+<li><strong>散列函数要尽可能减少冲突</strong></li>
+</ul>
+<h5 id="除留余数法（最常用）"><a href="#除留余数法（最常用）" class="headerlink" title="除留余数法（最常用）"></a>除留余数法（最常用）</h5><ul>
+<li><strong>H(key) &#x3D; key % p</strong></li>
+<li>散列表表长为m，取一个不大于m但最接近或等于m的质数p<ul>
+<li>原因：对质数取余，可以分布更均匀，从而减少冲突</li>
+</ul>
+</li>
+<li>使用场景：较为通用，只要关键字是整数即可</li>
+</ul>
+<p><img src="/./assets/image-20230724203058513.png" alt="image-20230724203058513"></p>
+<p><img src="/./assets/image-20230724203405020.png" alt="image-20230724203405020"></p>
+<h5 id="直接定址法"><a href="#直接定址法" class="headerlink" title="直接定址法"></a>直接定址法</h5><ul>
+<li><strong>直接定址法 —— H(key) &#x3D; key 或 H(key) &#x3D; a*key + b</strong><ul>
+<li>a和b是常数。</li>
+<li>计算简单，且不会产生冲突。</li>
+<li>缺点：若关键字分布不连续，空位较多，则会造成存储空间的浪费</li>
+</ul>
+</li>
+<li>使用场景：关键字分布基本连续</li>
+</ul>
+<p><img src="/./assets/image-20230724203504603.png" alt="image-20230724203504603"></p>
+<h5 id="数字分析法"><a href="#数字分析法" class="headerlink" title="数字分析法"></a>数字分析法</h5><ul>
+<li>选取数码分布较为平均的若干位作为散列地址</li>
+<li>设关键字是r进制数（如十进制数），而r个数码在各位上出现的概率不一定相同，可能在某些位上分布均匀一些，每种数码出现的机会均等；而在某些位上分布不均匀，只有某几种数码经常出现，此时可以选取数码分布较为均匀的若干位作为散列地址</li>
+<li>适用场景：<strong>关键字集合已知，且关键字的某几个数码位分布均匀</strong></li>
+</ul>
+<p><img src="/./assets/image-20230724203734399.png" alt="image-20230724203734399"></p>
+<h5 id="平方取中法"><a href="#平方取中法" class="headerlink" title="平方取中法"></a>平方取中法</h5><ul>
+<li>取关键字的平方值的中间几位作为散列地址</li>
+<li>具体取多少位要视实际情况而定。这种方法得到的散列地址与关键字的每位都有关系，因此使得散列地址分布比较均匀</li>
+<li>适用场景：<strong>关键字的每位取值都不够均匀</strong></li>
+</ul>
+<p><img src="/./assets/image-20230724210926083.png" alt="image-20230724210926083"></p>
+<h3 id="拉链法"><a href="#拉链法" class="headerlink" title="拉链法"></a>拉链法</h3><h4 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h4><ul>
+<li>把所有“同义词”存储在一个链表中</li>
+</ul>
+<h4 id="插入操作（默认头插法）"><a href="#插入操作（默认头插法）" class="headerlink" title="插入操作（默认头插法）"></a>插入操作（默认头插法）</h4><ul>
+<li>结合散列函数计算新元素的散列地址</li>
+<li>将新元素插入散列地址对应的链表（可用头插法，也可用尾插法）</li>
+</ul>
+<p><img src="/./assets/image-20230724212211642.png" alt="image-20230724212211642"></p>
+<p><img src="/./assets/image-20230724212425671.png" alt="image-20230724212425671"></p>
+<h5 id="插入操作的优化"><a href="#插入操作的优化" class="headerlink" title="插入操作的优化"></a>插入操作的优化</h5><ul>
+<li>新元素插入链表时，保持链表有序，可以略微提高查找效率</li>
+</ul>
+<h4 id="查找操作-3"><a href="#查找操作-3" class="headerlink" title="查找操作"></a>查找操作</h4><ul>
+<li>先计算散列地址</li>
+<li>再查找散列地址里的链表元素</li>
+</ul>
+<h5 id="查找长度-1"><a href="#查找长度-1" class="headerlink" title="查找长度"></a>查找长度</h5><ul>
+<li>在查找计算中，需要对比关键字的次数称为查找长度</li>
+</ul>
+<h5 id="查找成功-7"><a href="#查找成功-7" class="headerlink" title="查找成功"></a>查找成功</h5><ul>
+<li>查找 27，查找长度&#x3D;2</li>
+</ul>
+<p><img src="/./assets/image-20230724212458312.png" alt="image-20230724212458312"></p>
+<ul>
+<li>查找 20，查找长度&#x3D;1</li>
+</ul>
+<p><img src="/./assets/image-20230724212608907.png" alt="image-20230724212608907"></p>
+<h5 id="查找失败-8"><a href="#查找失败-8" class="headerlink" title="查找失败"></a>查找失败</h5><ul>
+<li>查找 66，查找长度 &#x3D; 4</li>
+</ul>
+<p><img src="/./assets/image-20230724212708434.png" alt="image-20230724212708434"></p>
+<ul>
+<li>查找21，查找长度&#x3D;0</li>
+</ul>
+<p><img src="/./assets/image-20230724212849726.png" alt="image-20230724212849726"></p>
+<h4 id="删除操作-3"><a href="#删除操作-3" class="headerlink" title="删除操作"></a>删除操作</h4><ul>
+<li>先查找<ul>
+<li>查找成功：删除成功</li>
+<li>查找失败：删除失败</li>
+</ul>
+</li>
+</ul>
+<h5 id="删除成功"><a href="#删除成功" class="headerlink" title="删除成功"></a>删除成功</h5><p><img src="/./assets/image-20230724213007356.png" alt="image-20230724213007356"></p>
+<p><img src="/./assets/image-20230724213021343.png" alt="image-20230724213021343"></p>
+<h5 id="删除失败"><a href="#删除失败" class="headerlink" title="删除失败"></a>删除失败</h5><p><img src="/./assets/image-20230724213108823.png" alt="image-20230724213108823"></p>
+<h3 id="开放定址法-1"><a href="#开放定址法-1" class="headerlink" title="开放定址法"></a>开放定址法</h3><p><img src="/./assets/image-20230724213538954.png" alt="image-20230724213538954"></p>
+<h4 id="核心思想-1"><a href="#核心思想-1" class="headerlink" title="核心思想"></a>核心思想</h4><ul>
+<li>如果发生冲突，就给新元素找另一个空闲位置</li>
+<li>开放定址？<ul>
+<li>一个散列地址，既对同义词开放，也对非同义词开放</li>
+</ul>
+</li>
+<li>用什么规则确定“另一个空闲位置”？<ul>
+<li>需要确定一个探测顺序：从初始散列地址出发，去寻找下一个空闲位置</li>
+</ul>
+</li>
+</ul>
+<h4 id="插入操作（自己理解的）"><a href="#插入操作（自己理解的）" class="headerlink" title="插入操作（自己理解的）"></a>插入操作（自己理解的）</h4><ul>
+<li>插入元素，先按照散列函数插入<ul>
+<li>如果插入位置为空（一个位置一个元素），则直接插入</li>
+<li>如果插入位置有人，则根据探测规则 Hi &#x3D; （H(key) + di）% m 找新位置进行插入，重复以上步骤</li>
+</ul>
+</li>
+<li>查找元素，先按照散列函数求值查找<ul>
+<li>如果查找的位置有元素<ul>
+<li>查找的元素和存储的元素相同，则查找成功</li>
+<li>查找的元素与存储的元素不同，则根据探测规则 Hi &#x3D; （H(key) + di）% m 找下一个元素进行对比，重复上述过程</li>
+</ul>
+</li>
+<li>如果查找的位置没有元素，查找失败</li>
+</ul>
+</li>
+</ul>
+<h4 id="查找操作-4"><a href="#查找操作-4" class="headerlink" title="查找操作"></a>查找操作</h4><ul>
+<li>（自己理解的）查找元素，先按照散列函数求值查找<ul>
+<li>如果查找的位置有元素<ul>
+<li>查找的元素和存储的元素相同，则查找成功</li>
+<li>查找的元素与存储的元素不同，则根据探测规则 Hi &#x3D; （H(key) + di）% m 找下一个元素进行对比，重复上述过程</li>
+</ul>
+</li>
+<li>如果查找的位置没有元素，查找失败</li>
+</ul>
+</li>
+<li>（视频里的）查找操作<ul>
+<li>与插入操作类似</li>
+<li>根据探测序列依次对比各存储单元内的关键字<ul>
+<li>若探测到目标关键字，则查找成功</li>
+<li>若探测到空单元，则查找失败</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724213643794.png" alt="image-20230724213643794"></p>
+<p><img src="/./assets/image-20230724213917963.png" alt="image-20230724213917963"></p>
+<p><img src="/./assets/image-20230724214018852.png" alt="image-20230724214018852"></p>
+<h4 id="探测方法"><a href="#探测方法" class="headerlink" title="探测方法"></a>探测方法</h4><h5 id="线性探测法"><a href="#线性探测法" class="headerlink" title="线性探测法"></a>线性探测法</h5><ul>
+<li><p>线性探测法，<strong>d****i</strong> <strong>&#x3D; 0, 1, 2, 3, …, m-1</strong></p>
+</li>
+<li><p>不同序列，探测规则相同</p>
+</li>
+<li><p>可以探测到散列表的每个地址</p>
+</li>
+<li><p>插入操作</p>
+<ul>
+<li>先根据散列函数计算插入的位置<ul>
+<li>如果插入位置为空（一个位置一个元素），则直接插入</li>
+<li>如果插入位置有人，则根据探测规则di 找新位置进行插入，重复以上步骤</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查找操作</p>
+<ul>
+<li>与插入操作类似</li>
+<li>根据探测序列依次对比各存储单元内的关键字<ul>
+<li>若探测到目标关键字，则查找成功</li>
+<li>若探测到空单元，则查找失败</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724214234998.png" alt="image-20230724214234998"></p>
+<h5 id="平方探测法（二次探测法）"><a href="#平方探测法（二次探测法）" class="headerlink" title="平方探测法（二次探测法）"></a>平方探测法（二次探测法）</h5><ul>
+<li><p>跟线性探测法相同</p>
+</li>
+<li><p>平⽅探测法，<em>d**i</em> <em>&#x3D; 0*<em>2</em></em>, 1<strong>2</strong>, -1<strong>2</strong>, 2<strong>2</strong>, -2<strong>2</strong>, …, k<strong>2</strong>, -k*<em>2</em>。</p>
+<p>其中<em>k≤m&#x2F;2</em></p>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724215054488.png" alt="image-20230724215054488"></p>
+<h5 id="双散列法"><a href="#双散列法" class="headerlink" title="双散列法"></a>双散列法</h5><ul>
+<li>双散列法，<em>di</em> <em>&#x3D; i×hash*<em>2</em></em>(key)*</li>
+<li><em>hash*<em>2</em></em>(key)&#x3D;13-(key %13)&#x3D;12*</li>
+<li>不同的序列，探测规则不同</li>
+</ul>
+<p><img src="/./assets/image-20230724215231918.png" alt="image-20230724215231918"></p>
+<h5 id="伪随机序列法"><a href="#伪随机序列法" class="headerlink" title="伪随机序列法"></a>伪随机序列法</h5><ul>
+<li><em>d**i</em> 是⼀个伪随机序列，由题⽬可知 <em>d*<em>i</em></em>&#x3D; 0, 5, 3, 11, …*</li>
+</ul>
+<p><img src="/./assets/image-20230724215728836.png" alt="image-20230724215728836"></p>
+<h4 id="删除操作-4"><a href="#删除操作-4" class="headerlink" title="删除操作"></a>删除操作</h4><ul>
+<li>先根据散列函数算出散列地址，并对比关键字是否匹配。<ul>
+<li>若匹配，则查找成功</li>
+<li>若不匹配，则根据“探测序列”对比下一个地址的关键字，直到“查找成功”或“查找失败”</li>
+</ul>
+</li>
+<li>若查找成功，则删除找到的元素（逻辑删除，做一个已删除的标记）</li>
+</ul>
+<p><img src="/./assets/image-20230724220231531.png" alt="image-20230724220231531"></p>
+<h5 id="特别注意（不能物理删除）"><a href="#特别注意（不能物理删除）" class="headerlink" title="特别注意（不能物理删除）"></a>特别注意（不能物理删除）</h5><ul>
+<li>删除元素不能简单地将被删元素的空间置为零，否则将截断在它之后的探测路径，可以做一个“已删除”标记，进行<strong>逻辑删除</strong></li>
+</ul>
+<h6 id="错误示范-1"><a href="#错误示范-1" class="headerlink" title="错误示范"></a>错误示范</h6><p><img src="/./assets/image-20230724220319072.png" alt="image-20230724220319072"></p>
+<p><img src="/./assets/image-20230724220328667.png" alt="image-20230724220328667"></p>
+<h6 id="正确示范-1"><a href="#正确示范-1" class="headerlink" title="正确示范"></a>正确示范</h6><p><img src="/./assets/image-20230724220422397.png" alt="image-20230724220422397"></p>
+<p><img src="/./assets/image-20230724220634586.png" alt="image-20230724220634586"></p>
+<h6 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h6><ul>
+<li>查找效率低下，散列表看起来很满，实则很空</li>
+<li>需要<strong>不定期整理</strong>散列表内的数据</li>
+<li><strong>新元素可以插入到已被逻辑删除的地址</strong></li>
+</ul>
+<p><img src="/./assets/image-20230724220753600.png" alt="image-20230724220753600"></p>
+<h4 id="探测覆盖率"><a href="#探测覆盖率" class="headerlink" title="探测覆盖率"></a>探测覆盖率</h4><h5 id="线性探测法-1"><a href="#线性探测法-1" class="headerlink" title="线性探测法"></a>线性探测法</h5><ul>
+<li>一定可以探测到散列表的每个位置</li>
+<li>只要散列表中有空闲位置，就一定可以插入成功</li>
+</ul>
+<p><img src="/./assets/image-20230724220929567.png" alt="image-20230724220929567"></p>
+<h5 id="平方探测"><a href="#平方探测" class="headerlink" title="平方探测"></a>平方探测</h5><ul>
+<li>不能探测到所有位置，只可以探测到散列表中至少一半的位置</li>
+<li>即使散列表中有空闲位置，也未必能插入成功</li>
+<li>解决方法<ul>
+<li>若散列表长度 m 是一个可以表示为 4j+3 的素数（如 7,11,19），平方探测法就能探测到所有位置</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724221122254.png" alt="image-20230724221122254"></p>
+<h5 id="双散列法-1"><a href="#双散列法-1" class="headerlink" title="双散列法"></a>双散列法</h5><ul>
+<li>未必能探测到散列表的所有位置</li>
+<li>覆盖率取决于第二个散列函数设计的是否合理</li>
+<li>结局方法<ul>
+<li>如果 hash2 计算得到的值与散列表表长 m 互质，就能保证双散列法可以探测到所有单元</li>
+<li>令表长 m 本身就是质数，hash2(key)&#x3D;m-(key%m)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230724221318939.png" alt="image-20230724221318939"></p>
+<h5 id="伪随机序列"><a href="#伪随机序列" class="headerlink" title="伪随机序列"></a>伪随机序列</h5><ul>
+<li>di 是一个伪随机序列，由程序员人为设计</li>
+<li>采用伪随机序列法，是否能探测到散列表中全部位置，取决于伪随机序列的设计是否合理</li>
+</ul>
+<p><img src="/./assets/image-20230724221535492.png" alt="image-20230724221535492"></p>
+<p><img src="/./assets/image-20230724221801664.png" alt="image-20230724221801664"></p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><h4 id="1-若查找表是“动态查找表”，有没有更好的实现方式：链式存储"><a href="#1-若查找表是“动态查找表”，有没有更好的实现方式：链式存储" class="headerlink" title="1. 若查找表是“动态查找表”，有没有更好的实现方式：链式存储"></a>1. 若查找表是“动态查找表”，有没有更好的实现方式：链式存储</h4><p><img src="./assets/image-20230720193917761.png" alt="image-20230720193917761" style="zoom:33%;" /><img src="./assets/image-20230720194024307.png" alt="image-20230720194024307" style="zoom:33%;" /></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://sdumoist.github.io">SDUMoist</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://sdumoist.github.io/2024/03/26/%E6%9F%A5%E6%89%BE/">https://sdumoist.github.io/2024/03/26/%E6%9F%A5%E6%89%BE/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://sdumoist.github.io" target="_blank">Moist</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9F%A5%E6%89%BE/">查找</a></div><div class="post_share"><div class="social-share" data-image="/img/background/8.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/26/%E6%8E%92%E5%BA%8F/" title="排序"><img class="cover" src="/img/background/10.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">排序</div></div></a></div><div class="next-post pull-right"><a href="/2024/03/26/%E5%9B%BE/" title="图"><img class="cover" src="/img/background/9.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">图</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">SDUMoist</div><div class="author-info__description">一个会点拍照，会点写作，会点生活的程序员</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sdumoist"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/sdumoist" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/2076520410@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-number">1.</span> <span class="toc-text">查找</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E7%82%B9%E6%80%BB%E7%BB%93"><span class="toc-number">1.1.</span> <span class="toc-text">考点总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93"><span class="toc-number">1.2.</span> <span class="toc-text">知识总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E8%A1%A8%EF%BC%88%E6%9F%A5%E6%89%BE%E7%BB%93%E6%9E%84%EF%BC%89"><span class="toc-number">1.3.2.</span> <span class="toc-text">查找表（查找结构）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%88%E7%B1%BB%E4%BC%BC%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%B8%BB%E9%94%AE%EF%BC%8C%E5%94%AF%E4%B8%80%E4%B8%8D%E9%87%8D%E5%A4%8D%EF%BC%89"><span class="toc-number">1.3.3.</span> <span class="toc-text">关键字（类似数据库的主键，唯一不重复）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.4.</span> <span class="toc-text">常见操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87"><span class="toc-number">1.3.5.</span> <span class="toc-text">评价指标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E9%95%BF%E5%BA%A6"><span class="toc-number">1.3.5.1.</span> <span class="toc-text">查找长度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B3%E5%9D%87%E6%9F%A5%E6%89%BE%E9%95%BF%E5%BA%A6%EF%BC%88ASL%EF%BC%8CAverage-Search-Length"><span class="toc-number">1.3.5.2.</span> <span class="toc-text">平均查找长度（ASL，Average Search Length)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE"><span class="toc-number">1.4.</span> <span class="toc-text">顺序查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3"><span class="toc-number">1.4.1.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.4.2.</span> <span class="toc-text">算法实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%EF%BC%88%E6%9F%A5%E6%89%BE%E5%A4%B1%E8%B4%A5%E8%B6%8A%E7%95%8C%E8%BF%94%E5%9B%9E-1%EF%BC%89"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">代码实现（查找失败越界返回-1）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%EF%BC%88%E5%93%A8%E5%85%B5%EF%BC%89"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">代码实现（哨兵）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%88%E7%8E%87%E5%88%86%E6%9E%90"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">效率分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96"><span class="toc-number">1.4.3.</span> <span class="toc-text">算法优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E8%A1%A8"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">有序表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%A8%E6%9F%A5%E6%89%BE%E5%88%A4%E5%AE%9A%E6%A0%91%E5%88%86%E6%9E%90ASL"><span class="toc-number">1.4.3.1.1.</span> <span class="toc-text">用查找判定树分析ASL</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A2%AB%E6%9F%A5%E6%A6%82%E7%8E%87%E4%B8%8D%E7%9B%B8%E7%AD%89"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">被查概率不相等</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%EF%BC%88%E6%9C%89%E5%BA%8F%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">折半查找（有序的顺序表）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3-1"><span class="toc-number">1.5.1.</span> <span class="toc-text">算法思想</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%88%90%E5%8A%9F"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">查找成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%A4%B1%E8%B4%A5"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">查找失败</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0-1"><span class="toc-number">1.5.2.</span> <span class="toc-text">算法实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-%E5%8D%87%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">代码实现(升序数组)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%88%E7%8E%87%E5%88%86%E6%9E%90-1"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">效率分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E5%88%A4%E5%AE%9A%E6%A0%91%E7%9A%84%E6%9E%84%E9%80%A0%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-number">1.5.3.</span> <span class="toc-text">折半查找判定树的构造（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A5%87%E6%95%B0%E4%B8%AA"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">奇数个</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%81%B6%E6%95%B0%E4%B8%AA"><span class="toc-number">1.5.3.2.</span> <span class="toc-text">偶数个</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E5%8F%8A%E6%80%A7%E8%B4%A8"><span class="toc-number">1.5.3.3.</span> <span class="toc-text">构造方法及性质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%B4%A8"><span class="toc-number">1.5.3.4.</span> <span class="toc-text">性质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%95%88%E7%8E%87"><span class="toc-number">1.5.3.5.</span> <span class="toc-text">查找效率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%83%85%E5%86%B5%E7%9A%84%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE"><span class="toc-number">1.5.3.6.</span> <span class="toc-text">另一种情况的折半查找</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E7%9A%84%E9%80%9F%E5%BA%A6%E4%B8%80%E5%AE%9A%E6%AF%94%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE%E6%9B%B4%E5%BF%AB%EF%BC%9F"><span class="toc-number">1.5.4.</span> <span class="toc-text">折半查找的速度一定比顺序查找更快？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%9D%97%E6%9F%A5%E6%89%BE%EF%BC%88%E9%80%89%E6%8B%A9%E9%A2%98%EF%BC%89"><span class="toc-number">1.6.</span> <span class="toc-text">分块查找（选择题）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3%EF%BC%88%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE%E5%92%8C%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E7%9A%84%E7%BB%93%E5%90%88%EF%BC%89"><span class="toc-number">1.6.1.</span> <span class="toc-text">算法思想（顺序查找和折半查找的结合）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B"><span class="toc-number">1.6.2.</span> <span class="toc-text">过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%88%90%E5%8A%9F-1"><span class="toc-number">1.6.2.1.</span> <span class="toc-text">查找成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%A4%B1%E8%B4%A5-1"><span class="toc-number">1.6.2.2.</span> <span class="toc-text">查找失败</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E6%9F%A5%E7%B4%A2%E5%BC%95"><span class="toc-number">1.6.2.3.</span> <span class="toc-text">用折半查找查索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E6%9F%A5%E7%B4%A2%E5%BC%952"><span class="toc-number">1.6.2.4.</span> <span class="toc-text">用折半查找查索引2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%A4%B1%E8%B4%A5-2"><span class="toc-number">1.6.2.5.</span> <span class="toc-text">查找失败</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%95%88%E7%8E%87%E5%88%86%E6%9E%90%EF%BC%88ASL%EF%BC%89"><span class="toc-number">1.6.3.</span> <span class="toc-text">查找效率分析（ASL）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%88%90%E5%8A%9F-2"><span class="toc-number">1.6.3.1.</span> <span class="toc-text">查找成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%A4%B1%E8%B4%A5-3"><span class="toc-number">1.6.3.2.</span> <span class="toc-text">查找失败</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96"><span class="toc-number">1.6.3.3.</span> <span class="toc-text">效率优化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E5%BD%A2%E6%9F%A5%E6%89%BE"><span class="toc-number">1.7.</span> <span class="toc-text">树形查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91"><span class="toc-number">1.7.1.</span> <span class="toc-text">二叉排序树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.7.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%93%8D%E4%BD%9C"><span class="toc-number">1.7.1.2.</span> <span class="toc-text">查找操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%88%90%E5%8A%9F-3"><span class="toc-number">1.7.1.2.1.</span> <span class="toc-text">查找成功</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%A4%B1%E8%B4%A5-4"><span class="toc-number">1.7.1.2.2.</span> <span class="toc-text">查找失败</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.7.1.3.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C"><span class="toc-number">1.7.1.4.</span> <span class="toc-text">插入操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0-2"><span class="toc-number">1.7.1.4.1.</span> <span class="toc-text">算法实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%EF%BC%88%E9%80%92%E5%BD%92%EF%BC%89"><span class="toc-number">1.7.1.4.2.</span> <span class="toc-text">代码实现（递归）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%EF%BC%88%E9%9D%9E%E9%80%92%E5%BD%92%EF%BC%89"><span class="toc-number">1.7.1.4.3.</span> <span class="toc-text">代码实现（非递归）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E7%9A%84%E6%9E%84%E9%80%A0"><span class="toc-number">1.7.1.5.</span> <span class="toc-text">二叉排序树的构造</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C"><span class="toc-number">1.7.1.6.</span> <span class="toc-text">删除操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%95%88%E7%8E%87%E5%88%86%E6%9E%90"><span class="toc-number">1.7.1.7.</span> <span class="toc-text">查找效率分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%88%90%E5%8A%9F-4"><span class="toc-number">1.7.1.7.1.</span> <span class="toc-text">查找成功</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%A4%B1%E8%B4%A5-5"><span class="toc-number">1.7.1.7.2.</span> <span class="toc-text">查找失败</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%80%E5%A5%BD%E6%83%85%E5%86%B5"><span class="toc-number">1.7.1.7.3.</span> <span class="toc-text">最好情况</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.7.2.</span> <span class="toc-text">平衡二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="toc-number">1.7.2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C-1"><span class="toc-number">1.7.2.2.</span> <span class="toc-text">插入操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%96%B0%E8%8A%82%E7%82%B9%E5%90%8E%E5%A6%82%E4%BD%95%E8%B0%83%E6%95%B4%E2%80%9C%E4%B8%8D%E5%B9%B3%E8%A1%A1%E2%80%9D%E9%97%AE%E9%A2%98"><span class="toc-number">1.7.2.3.</span> <span class="toc-text">插入新节点后如何调整“不平衡”问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8D%E5%B9%B3%E8%A1%A1%E6%83%85%E5%86%B5"><span class="toc-number">1.7.2.3.1.</span> <span class="toc-text">不平衡情况</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%B0%83%E6%95%B4%E6%9C%80%E5%B0%8F%E4%B8%8D%E5%B9%B3%E8%A1%A1%E5%AD%90%E6%A0%91"><span class="toc-number">1.7.2.3.2.</span> <span class="toc-text">调整最小不平衡子树</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#LL%EF%BC%9A%E5%8F%B3%E6%97%8B"><span class="toc-number">1.7.2.3.2.1.</span> <span class="toc-text">LL：右旋</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#RR%EF%BC%9A%E5%B7%A6%E6%97%8B"><span class="toc-number">1.7.2.3.2.2.</span> <span class="toc-text">RR：左旋</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%80%9D%E8%B7%AF"><span class="toc-number">1.7.2.3.2.3.</span> <span class="toc-text">代码思路</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#LR%EF%BC%9A%E5%85%88%E5%B7%A6%E5%90%8E%E5%8F%B3"><span class="toc-number">1.7.2.3.2.4.</span> <span class="toc-text">LR：先左后右</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#RL%EF%BC%9A%E5%85%88%E5%8F%B3%E5%86%8D%E5%B7%A6"><span class="toc-number">1.7.2.3.2.5.</span> <span class="toc-text">RL：先右再左</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.7.2.3.2.6.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%AA%E8%A6%81%E8%B0%83%E6%95%B4%E6%9C%80%E5%B0%8F%E5%B9%B3%E8%A1%A1%E5%AD%90%E6%A0%91%EF%BC%8C%E5%85%B6%E4%BB%96%E7%A5%96%E5%85%88%E8%8A%82%E7%82%B9%E5%B0%B1%E8%83%BD%E6%81%A2%E5%A4%8D%E5%B9%B3%E8%A1%A1"><span class="toc-number">1.7.2.3.3.</span> <span class="toc-text">只要调整最小平衡子树，其他祖先节点就能恢复平衡</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-number">1.7.2.3.3.1.</span> <span class="toc-text">练习</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%95%88%E7%8E%87%E5%88%86%E6%9E%90-1"><span class="toc-number">1.7.2.4.</span> <span class="toc-text">查找效率分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C-1"><span class="toc-number">1.7.2.5.</span> <span class="toc-text">删除操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8F%92%E5%85%A5-VS-%E5%88%A0%E9%99%A4"><span class="toc-number">1.7.2.5.1.</span> <span class="toc-text">插入 VS 删除</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.7.2.5.2.</span> <span class="toc-text">具体步骤</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B%E4%B8%80%EF%BC%9A%E6%9C%AA%E5%87%BA%E7%8E%B0%E4%B8%8D%E5%B9%B3%E8%A1%A1%E7%8E%B0%E8%B1%A1"><span class="toc-number">1.7.2.5.3.</span> <span class="toc-text">例一：未出现不平衡现象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B%E4%BA%8C%EF%BC%9A%E5%87%BA%E7%8E%B0%E4%B8%8D%E5%B9%B3%E8%A1%A1%E7%8E%B0%E8%B1%A1"><span class="toc-number">1.7.2.5.4.</span> <span class="toc-text">例二：出现不平衡现象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B%E4%B8%89%EF%BC%9A%E5%87%BA%E7%8E%B0%E4%B8%8D%E5%B9%B3%E8%A1%A1%E7%8E%B0%E8%B1%A1"><span class="toc-number">1.7.2.5.5.</span> <span class="toc-text">例三：出现不平衡现象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B%E5%9B%9B%EF%BC%9A%E5%87%BA%E7%8E%B0%E4%B8%8D%E5%B9%B3%E8%A1%A1%E4%BC%A0%E5%AF%BC%E7%8E%B0%E8%B1%A1"><span class="toc-number">1.7.2.5.6.</span> <span class="toc-text">例四：出现不平衡传导现象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B%E4%BA%94%EF%BC%9A%E5%88%A0%E9%99%A4%E7%9A%84%E8%8A%82%E7%82%B9%E4%B8%8D%E6%98%AF%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%EF%BC%88%E5%89%8D%E9%A9%B1-%E5%90%8E%E7%BB%A7-%E4%B8%8D%E5%A4%AA%E5%8F%AF%E8%83%BD%E8%80%83%EF%BC%89"><span class="toc-number">1.7.2.5.7.</span> <span class="toc-text">例五：删除的节点不是叶子节点（前驱&#x2F;后继  不太可能考）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B%E5%85%AD%EF%BC%9A%E5%AD%99%E5%AD%90-%E5%84%BF%E5%AD%90%E4%B8%AA%E5%A4%B4%E7%9B%B8%E7%AD%89%EF%BC%88%E4%B8%8D%E5%A4%AA%E5%8F%AF%E8%83%BD%E8%80%83%EF%BC%89"><span class="toc-number">1.7.2.5.8.</span> <span class="toc-text">例六：孙子&#x2F;儿子个头相等（不太可能考）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91%EF%BC%88RBT%EF%BC%89"><span class="toc-number">1.7.3.</span> <span class="toc-text">红黑树（RBT）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="toc-number">1.7.3.1.</span> <span class="toc-text">定义</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8F%91%E6%98%8E%E7%BA%A2%E9%BB%91%E6%A0%91%EF%BC%9F"><span class="toc-number">1.7.3.1.1.</span> <span class="toc-text">为什么要发明红黑树？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91%E5%A4%A7%E6%A6%82%E4%BC%9A%E6%80%8E%E4%B9%88%E8%80%83%EF%BC%9F"><span class="toc-number">1.7.3.1.2.</span> <span class="toc-text">红黑树大概会怎么考？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89"><span class="toc-number">1.7.3.1.3.</span> <span class="toc-text">基本定义</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0-1"><span class="toc-number">1.7.3.2.</span> <span class="toc-text">练习</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E7%9A%84%E9%BB%91%E9%AB%98bh"><span class="toc-number">1.7.3.3.</span> <span class="toc-text">节点的黑高bh</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%B4%A8-1"><span class="toc-number">1.7.3.4.</span> <span class="toc-text">性质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C-2"><span class="toc-number">1.7.3.5.</span> <span class="toc-text">插入操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.7.3.5.1.</span> <span class="toc-text">插入操作举例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%8D%E8%80%83%EF%BC%89"><span class="toc-number">1.7.3.6.</span> <span class="toc-text">删除操作（不考）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%80%A7%E8%B4%A8-2"><span class="toc-number">1.7.3.6.1.</span> <span class="toc-text">性质</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B%E6%A0%91"><span class="toc-number">1.7.4.</span> <span class="toc-text">B树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="toc-number">1.7.4.1.</span> <span class="toc-text">节点定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%93%8D%E4%BD%9C-1"><span class="toc-number">1.7.4.2.</span> <span class="toc-text">查找操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%88%90%E5%8A%9F-5"><span class="toc-number">1.7.4.2.1.</span> <span class="toc-text">查找成功</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%A4%B1%E8%B4%A5-6"><span class="toc-number">1.7.4.2.2.</span> <span class="toc-text">查找失败</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%9F%A5%E6%89%BE%E6%95%88%E7%8E%87"><span class="toc-number">1.7.4.3.</span> <span class="toc-text">如何保证查找效率</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.7.4.3.1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AD%96%E7%95%A5"><span class="toc-number">1.7.4.3.2.</span> <span class="toc-text">策略</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#B%E6%A0%91%E5%AE%9A%E4%B9%89"><span class="toc-number">1.7.4.4.</span> <span class="toc-text">B树定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7"><span class="toc-number">1.7.4.5.</span> <span class="toc-text">核心特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#B%E6%A0%91%E7%9A%84%E9%AB%98%E5%BA%A6"><span class="toc-number">1.7.4.6.</span> <span class="toc-text">B树的高度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C-3"><span class="toc-number">1.7.4.7.</span> <span class="toc-text">插入操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E7%A4%BA%E8%8C%83"><span class="toc-number">1.7.4.7.1.</span> <span class="toc-text">错误示范</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E7%A4%BA%E8%8C%83"><span class="toc-number">1.7.4.7.2.</span> <span class="toc-text">正确示范</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E8%A6%81%E6%B1%82"><span class="toc-number">1.7.4.7.3.</span> <span class="toc-text">核心要求</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C-2"><span class="toc-number">1.7.4.8.</span> <span class="toc-text">删除操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E6%A0%91"><span class="toc-number">1.7.5.</span> <span class="toc-text">B+树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%9D%97%E6%9F%A5%E6%89%BE"><span class="toc-number">1.7.5.1.</span> <span class="toc-text">分块查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-3"><span class="toc-number">1.7.5.2.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%93%8D%E4%BD%9C-2"><span class="toc-number">1.7.5.3.</span> <span class="toc-text">查找操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%88%90%E5%8A%9F-6"><span class="toc-number">1.7.5.3.1.</span> <span class="toc-text">查找成功</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%A4%B1%E8%B4%A5-7"><span class="toc-number">1.7.5.3.2.</span> <span class="toc-text">查找失败</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%EF%BC%9AB%E6%A0%91%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="toc-number">1.7.5.3.3.</span> <span class="toc-text">对比：B树的查找</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE-1"><span class="toc-number">1.7.5.3.4.</span> <span class="toc-text">顺序查找</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#B%E6%A0%91-VS-B-%E6%A0%91"><span class="toc-number">1.7.5.3.5.</span> <span class="toc-text">B树 VS B+树</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%EF%BC%88%E4%B8%8E%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9C%89%E5%85%B3%EF%BC%89"><span class="toc-number">1.7.5.4.</span> <span class="toc-text">应用（与操作系统有关）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%A3%E5%88%97%E8%A1%A8"><span class="toc-number">1.8.</span> <span class="toc-text">散列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="toc-number">1.8.1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%A3%E5%88%97%E8%A1%A8%E3%80%81%E6%95%A3%E8%A3%82%E5%87%BD%E6%95%B0"><span class="toc-number">1.8.1.1.</span> <span class="toc-text">散列表、散裂函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%B2%E7%AA%81%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D"><span class="toc-number">1.8.1.2.</span> <span class="toc-text">冲突、同义词</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%86%B2%E7%AA%81"><span class="toc-number">1.8.1.3.</span> <span class="toc-text">如何处理冲突</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8B%89%E9%93%BE%E6%B3%95%EF%BC%88%E9%93%BE%E6%8E%A5%E6%B3%95%E3%80%81%E9%93%BE%E5%9C%B0%E5%9D%80%E6%B3%95%EF%BC%89"><span class="toc-number">1.8.1.3.1.</span> <span class="toc-text">拉链法（链接法、链地址法）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E5%AE%9A%E5%9D%80%E6%B3%95"><span class="toc-number">1.8.1.3.2.</span> <span class="toc-text">开放定址法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E6%93%8D%E4%BD%9C"><span class="toc-number">1.8.2.</span> <span class="toc-text">构造操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0"><span class="toc-number">1.8.2.1.</span> <span class="toc-text">设计散列函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">1.8.2.1.1.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%9B%AE%E6%A0%87"><span class="toc-number">1.8.2.1.2.</span> <span class="toc-text">核心目标</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%99%A4%E7%95%99%E4%BD%99%E6%95%B0%E6%B3%95%EF%BC%88%E6%9C%80%E5%B8%B8%E7%94%A8%EF%BC%89"><span class="toc-number">1.8.2.1.3.</span> <span class="toc-text">除留余数法（最常用）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%AE%9A%E5%9D%80%E6%B3%95"><span class="toc-number">1.8.2.1.4.</span> <span class="toc-text">直接定址法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E5%88%86%E6%9E%90%E6%B3%95"><span class="toc-number">1.8.2.1.5.</span> <span class="toc-text">数字分析法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B9%B3%E6%96%B9%E5%8F%96%E4%B8%AD%E6%B3%95"><span class="toc-number">1.8.2.1.6.</span> <span class="toc-text">平方取中法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%89%E9%93%BE%E6%B3%95"><span class="toc-number">1.8.3.</span> <span class="toc-text">拉链法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-number">1.8.3.1.</span> <span class="toc-text">核心思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C%EF%BC%88%E9%BB%98%E8%AE%A4%E5%A4%B4%E6%8F%92%E6%B3%95%EF%BC%89"><span class="toc-number">1.8.3.2.</span> <span class="toc-text">插入操作（默认头插法）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-number">1.8.3.2.1.</span> <span class="toc-text">插入操作的优化</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%93%8D%E4%BD%9C-3"><span class="toc-number">1.8.3.3.</span> <span class="toc-text">查找操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E9%95%BF%E5%BA%A6-1"><span class="toc-number">1.8.3.3.1.</span> <span class="toc-text">查找长度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%88%90%E5%8A%9F-7"><span class="toc-number">1.8.3.3.2.</span> <span class="toc-text">查找成功</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%A4%B1%E8%B4%A5-8"><span class="toc-number">1.8.3.3.3.</span> <span class="toc-text">查找失败</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C-3"><span class="toc-number">1.8.3.4.</span> <span class="toc-text">删除操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%88%90%E5%8A%9F"><span class="toc-number">1.8.3.4.1.</span> <span class="toc-text">删除成功</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%A4%B1%E8%B4%A5"><span class="toc-number">1.8.3.4.2.</span> <span class="toc-text">删除失败</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E5%AE%9A%E5%9D%80%E6%B3%95-1"><span class="toc-number">1.8.4.</span> <span class="toc-text">开放定址法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3-1"><span class="toc-number">1.8.4.1.</span> <span class="toc-text">核心思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C%EF%BC%88%E8%87%AA%E5%B7%B1%E7%90%86%E8%A7%A3%E7%9A%84%EF%BC%89"><span class="toc-number">1.8.4.2.</span> <span class="toc-text">插入操作（自己理解的）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%93%8D%E4%BD%9C-4"><span class="toc-number">1.8.4.3.</span> <span class="toc-text">查找操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A2%E6%B5%8B%E6%96%B9%E6%B3%95"><span class="toc-number">1.8.4.4.</span> <span class="toc-text">探测方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%8E%A2%E6%B5%8B%E6%B3%95"><span class="toc-number">1.8.4.4.1.</span> <span class="toc-text">线性探测法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B9%B3%E6%96%B9%E6%8E%A2%E6%B5%8B%E6%B3%95%EF%BC%88%E4%BA%8C%E6%AC%A1%E6%8E%A2%E6%B5%8B%E6%B3%95%EF%BC%89"><span class="toc-number">1.8.4.4.2.</span> <span class="toc-text">平方探测法（二次探测法）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%8C%E6%95%A3%E5%88%97%E6%B3%95"><span class="toc-number">1.8.4.4.3.</span> <span class="toc-text">双散列法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%AA%E9%9A%8F%E6%9C%BA%E5%BA%8F%E5%88%97%E6%B3%95"><span class="toc-number">1.8.4.4.4.</span> <span class="toc-text">伪随机序列法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C-4"><span class="toc-number">1.8.4.5.</span> <span class="toc-text">删除操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E5%88%AB%E6%B3%A8%E6%84%8F%EF%BC%88%E4%B8%8D%E8%83%BD%E7%89%A9%E7%90%86%E5%88%A0%E9%99%A4%EF%BC%89"><span class="toc-number">1.8.4.5.1.</span> <span class="toc-text">特别注意（不能物理删除）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E7%A4%BA%E8%8C%83-1"><span class="toc-number">1.8.4.5.1.1.</span> <span class="toc-text">错误示范</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E7%A4%BA%E8%8C%83-1"><span class="toc-number">1.8.4.5.1.2.</span> <span class="toc-text">正确示范</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="toc-number">1.8.4.5.1.3.</span> <span class="toc-text">问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A2%E6%B5%8B%E8%A6%86%E7%9B%96%E7%8E%87"><span class="toc-number">1.8.4.6.</span> <span class="toc-text">探测覆盖率</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%8E%A2%E6%B5%8B%E6%B3%95-1"><span class="toc-number">1.8.4.6.1.</span> <span class="toc-text">线性探测法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B9%B3%E6%96%B9%E6%8E%A2%E6%B5%8B"><span class="toc-number">1.8.4.6.2.</span> <span class="toc-text">平方探测</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%8C%E6%95%A3%E5%88%97%E6%B3%95-1"><span class="toc-number">1.8.4.6.3.</span> <span class="toc-text">双散列法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%AA%E9%9A%8F%E6%9C%BA%E5%BA%8F%E5%88%97"><span class="toc-number">1.8.4.6.4.</span> <span class="toc-text">伪随机序列</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.9.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">1.9.1.</span> <span class="toc-text">思考题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%8B%A5%E6%9F%A5%E6%89%BE%E8%A1%A8%E6%98%AF%E2%80%9C%E5%8A%A8%E6%80%81%E6%9F%A5%E6%89%BE%E8%A1%A8%E2%80%9D%EF%BC%8C%E6%9C%89%E6%B2%A1%E6%9C%89%E6%9B%B4%E5%A5%BD%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%EF%BC%9A%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8"><span class="toc-number">1.9.1.1.</span> <span class="toc-text">1. 若查找表是“动态查找表”，有没有更好的实现方式：链式存储</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/121-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="121. 买卖股票的最佳时机"><img src="/img/background/11.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="121. 买卖股票的最佳时机"/></a><div class="content"><a class="title" href="/2024/03/26/121-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="121. 买卖股票的最佳时机">121. 买卖股票的最佳时机</a><time datetime="2024-03-26T12:09:11.000Z" title="发表于 2024-03-26 20:09:11">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/%E6%8E%92%E5%BA%8F/" title="排序"><img src="/img/background/10.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="排序"/></a><div class="content"><a class="title" href="/2024/03/26/%E6%8E%92%E5%BA%8F/" title="排序">排序</a><time datetime="2024-03-26T10:37:39.000Z" title="发表于 2024-03-26 18:37:39">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/%E6%9F%A5%E6%89%BE/" title="查找"><img src="/img/background/8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="查找"/></a><div class="content"><a class="title" href="/2024/03/26/%E6%9F%A5%E6%89%BE/" title="查找">查找</a><time datetime="2024-03-26T10:36:39.000Z" title="发表于 2024-03-26 18:36:39">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/%E5%9B%BE/" title="图"><img src="/img/background/9.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="图"/></a><div class="content"><a class="title" href="/2024/03/26/%E5%9B%BE/" title="图">图</a><time datetime="2024-03-26T10:35:39.000Z" title="发表于 2024-03-26 18:35:39">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" title="树与二叉树"><img src="/img/background/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="树与二叉树"/></a><div class="content"><a class="title" href="/2024/03/26/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" title="树与二叉树">树与二叉树</a><time datetime="2024-03-26T10:34:39.000Z" title="发表于 2024-03-26 18:34:39">2024-03-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By SDUMoist</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://sdumoist.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
