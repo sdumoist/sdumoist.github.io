@@ -1,0 +1,1186 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Moist | Moist</title><meta name="author" content="SDUMoist"><meta name="copyright" content="SDUMoist"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="图考点总结 有向无环图才存在拓扑排序  检验有向图是否有环 深度优先遍历 从有向图上的某个顶点 u 出发，在 DFS(u) 结束之前出现一条从顶点 v 到 u 的边，由于 v 在生成树上是 u 的子孙，则图中必定存在包含 u 和 v 的环   拓扑序列 存在无法找到下一个可以加入拓扑序列的顶点 一直存在有入度大于 0 的顶点     在拓扑排序算法中为暂存入度为 0 的顶点，可以用栈，也可以用队列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Moist">
+<meta property="og:url" content="https://sdumoist.github.io/2023/07/06/%E5%9B%BE/index.html">
+<meta property="og:site_name" content="Moist">
+<meta property="og:description" content="图考点总结 有向无环图才存在拓扑排序  检验有向图是否有环 深度优先遍历 从有向图上的某个顶点 u 出发，在 DFS(u) 结束之前出现一条从顶点 v 到 u 的边，由于 v 在生成树上是 u 的子孙，则图中必定存在包含 u 和 v 的环   拓扑序列 存在无法找到下一个可以加入拓扑序列的顶点 一直存在有入度大于 0 的顶点     在拓扑排序算法中为暂存入度为 0 的顶点，可以用栈，也可以用队列">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sdumoist.github.io/img/background/9.jpeg">
+<meta property="article:published_time" content="2023-07-06T03:35:47.185Z">
+<meta property="article:modified_time" content="2023-08-18T11:19:36.336Z">
+<meta property="article:author" content="SDUMoist">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sdumoist.github.io/img/background/9.jpeg"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://sdumoist.github.io/2023/07/06/%E5%9B%BE/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: SDUMoist","link":"链接: ","source":"来源: Moist","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Moist',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-18 19:19:36'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Moist" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/background/9.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="Moist"><img class="site-icon" src="/img/logo.png"/><span class="site-name">Moist</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-06T03:35:47.185Z" title="发表于 2023-07-06 11:35:47">2023-07-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-18T11:19:36.336Z" title="更新于 2023-08-18 19:19:36">2023-08-18</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h2 id="考点总结"><a href="#考点总结" class="headerlink" title="考点总结"></a>考点总结</h2><ul>
+<li><p><strong>有向无环图才存在拓扑排序</strong></p>
+<ul>
+<li>检验有向图是否有环<ul>
+<li>深度优先遍历<ul>
+<li>从有向图上的某个顶点 u 出发，在 DFS(u) 结束之前出现一条从顶点 v 到 u 的边，由于 v 在生成树上是 u 的子孙，则图中必定存在包含 u 和 v 的环</li>
+</ul>
+</li>
+<li>拓扑序列<ul>
+<li>存在无法找到下一个可以加入拓扑序列的顶点</li>
+<li>一直存在有入度大于 0 的顶点</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>在拓扑排序算法中为暂存入度为 0 的顶点，可以用栈，也可以用队列</strong><ul>
+<li>若两个节点之间不存在祖先或子孙关系，则它们在拓扑序列中的关系是任意的（即前后关系任意），因此使用栈和队列都可以</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>有向图中如果存在顶点数大于 1 的强连通分量，那么这意味着图中存在环。</strong></p>
+<ul>
+<li>强连通分量是指在有向图中，任意两个顶点之间都存在双向路径的一组顶点。</li>
+<li>如果一个有向图中没有环，那么每个顶点都可以看作是一个独立的强连通分量，因为没有循环路径可以连接不同的顶点。</li>
+</ul>
+</li>
+<li><p>最短路径</p>
+<ul>
+<li>BFS：无权图</li>
+<li>Dijkstra：不含负权回路的有向图和无向图<ul>
+<li>与有向无向无关</li>
+<li>与有无环路无关</li>
+</ul>
+</li>
+<li>Floyd 算法：不可以有负权的环路</li>
+</ul>
+</li>
+</ul>
+<h3 id="深度优先生成树和广度优先生成树"><a href="#深度优先生成树和广度优先生成树" class="headerlink" title="深度优先生成树和广度优先生成树"></a>深度优先生成树和广度优先生成树</h3><ul>
+<li>结论<ul>
+<li>深度优先生成树的高度大于等于广度优先生成树的高度</li>
+</ul>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://data.biancheng.net/view/45.html">原文链接</a></p>
+<p>本章的第一节中，介绍了有关生成树和生成森林的有关知识，本节来解决对于给定的无向图，如何构建它们相对应的生成树或者生成森林。</p>
+<p>其实在对无向图进行遍历的时候，遍历过程中所经历过的图中的顶点和边的组合，就是图的生成树或者生成森林。</p>
+<p><img src="/./assets/image-20230818141145777.png" alt="image-20230818141145777"></p>
+<p>例如，图 1 中的无向图是由 V1～V7 的顶点和编号分别为 a～i 的边组成。当使用深度优先搜索 DFS算法时，假设 V1 作为遍历的起始点，涉及到的顶点和边的遍历顺序为（不唯一）：<br><img src="/./assets/2-1F912163444395.png" alt="img"></p>
+<p><img src="/./assets/image-20230818140957690.png" alt="image-20230818140957690"></p>
+<p>由深度优先搜索得到的树为深度优先生成树。同理，广度优先搜索 DFS生成的树为广度优先生成树，图 1 无向图以顶点 V1 为起始点进行广度优先搜索遍历得到的树，如图 3 所示：</p>
+<p><img src="/./assets/image-20230818141122476.png" alt="image-20230818141122476"></p>
+<h2 id="知识总结"><a href="#知识总结" class="headerlink" title="知识总结"></a>知识总结</h2><p><img src="/./assets/image-20230706150442768.png" alt="image-20230706150442768"></p>
+<p><img src="/./assets/image-20230706154227052.png" alt="image-20230706154227052"></p>
+<p><img src="/./assets/image-20230717194724763.png" alt="image-20230717194724763"></p>
+<p><img src="/./assets/image-20230718000407288.png" alt="image-20230718000407288"></p>
+<p><img src="/./assets/image-20230718011416173.png" alt="image-20230718011416173"></p>
+<p><img src="/./assets/image-20230718124704785.png" alt="image-20230718124704785"></p>
+<p><img src="/./assets/image-20230718151002528.png" alt="image-20230718151002528"></p>
+<p><img src="/./assets/image-20230718164320442.png" alt="image-20230718164320442"></p>
+<p><img src="/./assets/image-20230719010308328.png" alt="image-20230719010308328"></p>
+<p><img src="/./assets/image-20230720144250289.png" alt="image-20230720144250289"></p>
+<p><img src="/./assets/image-20230720144312170.png" alt="image-20230720144312170"></p>
+<h2 id="图的基本概念"><a href="#图的基本概念" class="headerlink" title="图的基本概念"></a>图的基本概念</h2><h3 id="图的定义"><a href="#图的定义" class="headerlink" title="图的定义"></a>图的定义</h3><ul>
+<li><p>图G由<strong>顶点集V</strong>和<strong>边集E</strong>组成，记为G&#x3D;(V,E)</p>
+</li>
+<li><p>V(G)表示图G中顶点的有限非空集；</p>
+</li>
+<li><p>E(G)表示图G中顶点之间的关系（边）集合</p>
+</li>
+<li><p>若V&#x3D;{v1,v2…vn},则用|V|表示图G中顶点的个数，也称<strong>图G的阶</strong></p>
+</li>
+<li><p>E&#x3D;{(u,v)|u属于V,v属于V}</p>
+</li>
+<li><p>用**|E|<strong>表示图G中</strong>边的条数**</p>
+</li>
+</ul>
+<blockquote>
+<p>线性表可以是空表，树可以是空树，但图不可以是空图，即V一定是非空集，但是图的边集E可以是空集</p>
+</blockquote>
+<p><img src="/./assets/image-20230706114614606.png" alt="image-20230706114614606"></p>
+<h3 id="逻辑结构的应用"><a href="#逻辑结构的应用" class="headerlink" title="逻辑结构的应用"></a>逻辑结构的应用</h3><ul>
+<li>铁路网络：V 车站       E 铁路</li>
+<li>公路交通：V 路口       E 道路</li>
+<li>微信好友关系——边是没有方向的（好友关系是相互的）</li>
+<li>微博粉丝关系——边是有方向的（关注是单向的）</li>
+</ul>
+<h3 id="无向图、有向图"><a href="#无向图、有向图" class="headerlink" title="无向图、有向图"></a>无向图、有向图</h3><ul>
+<li>无向边：边	 (v,w)&#x3D;(w,v): v和w是顶点</li>
+<li>有向边：弧     &lt;v,w&gt;: v是弧尾，w是弧头，方向从v-&gt;w(弧尾指向弧头)</li>
+</ul>
+<p><img src="/./assets/image-20230706115317748.png" alt="image-20230706115317748"></p>
+<h3 id="简单图、多重图"><a href="#简单图、多重图" class="headerlink" title="简单图、多重图"></a>简单图、多重图</h3><p><img src="/./assets/image-20230706115823764.png" alt="image-20230706115823764"></p>
+<h3 id="顶点的度、入度、出度"><a href="#顶点的度、入度、出度" class="headerlink" title="顶点的度、入度、出度"></a>顶点的度、入度、出度</h3><ul>
+<li>对于无向图：顶点v的度是指依附于该顶点的边的条数，记为TD(v)<ul>
+<li>所有顶点的度之和 &#x3D; 2 * |E|（顶点数目的二倍）</li>
+</ul>
+</li>
+<li>对于有向图<ul>
+<li>入度：以顶点v为终点的有向边的数目，记为ID(v)    (进入)</li>
+<li>出度：以顶点v为起点的有向边的数目，记为OD(v)  (发射)</li>
+<li>顶点v的度等于其入度和出度之和，即TD(v)&#x3D;ID(v)+OD(v)</li>
+<li>入度 &#x3D;&#x3D; 出度</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230706120450792.png" alt="image-20230706120450792"></p>
+<h3 id="顶点-顶点的关系描述"><a href="#顶点-顶点的关系描述" class="headerlink" title="顶点-顶点的关系描述"></a>顶点-顶点的关系描述</h3><ul>
+<li><p>路径</p>
+<ul>
+<li>顶点Vp到Vq之间的一条路径是指顶点序列，Vp,V1,V2,…..,Vq</li>
+<li>顶点之间可能不存在路径</li>
+<li>有向图的路径也是有向的</li>
+</ul>
+</li>
+<li><p>回路：第一个顶点和最后一个顶点相同的路径称为回路或环</p>
+</li>
+<li><p>简单路径：在路径序列中，顶点不重复出现的路径称为简单路径</p>
+</li>
+<li><p>简单回路：除第一个顶点和最后一个顶点外，其余顶点不重复出现的回路称为简单回路</p>
+</li>
+<li><p>路径长度：路径上边的数目</p>
+</li>
+<li><p>点到点的距离</p>
+<ul>
+<li>从顶点u出发到顶点v的最短路径若存在，则<strong>此路径的长度为从u到v的距离</strong></li>
+<li>若从u到v不存在路径，在记该距离为无穷</li>
+</ul>
+</li>
+<li><p>无向图中，若从顶点v到顶点w有路径存在，则称v和w是<strong>连通</strong>的</p>
+</li>
+<li><p>有向图中</p>
+<ul>
+<li>若从顶点v到顶点w和从顶点w到顶点v之间都有路径，则称这两个顶点是<strong>强连通</strong>的</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230706121444298.png" alt="image-20230706121444298"></p>
+<h3 id="连通图、强连通图"><a href="#连通图、强连通图" class="headerlink" title="连通图、强连通图"></a>连通图、强连通图</h3><ul>
+<li>无向图：若图G中任意两个顶点都是连通的，则称图G为连通图，否则称为非连通图<ul>
+<li>对于n个顶点的无向图<ul>
+<li>若G是连通图，则最少有n-1条边                          （一个顶点连接其余n-1个顶点）</li>
+<li>若G是非连通图，则最多可能有C(2,n-1)条边        （一个顶点没有边，其余n-1个顶点两两相连）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>有向图：若图中任何一对顶点都是强连通的，则称此图为强连通图<ul>
+<li>对于n个顶点的有向图G<ul>
+<li>若G是强连通图，则最少有n条边（形成回路）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230706143401002.png" alt="image-20230706143401002"></p>
+<h3 id="子图、生成子图"><a href="#子图、生成子图" class="headerlink" title="子图、生成子图"></a>子图、生成子图</h3><ul>
+<li><p>设有两个图G&#x3D;(V,E)和G1&#x3D;(V1,E1),若V1是V的子集，且E1是E的子集，则称G1是G的子图</p>
+<ul>
+<li>并非任意挑几个点、几条边都能构成子图（首先要能是个图）</li>
+</ul>
+</li>
+<li><p>若有满足V(G1)&#x3D;V(G)的子图G1，则称其为G的<strong>生成子图</strong>（点都有，可以去除几条边）</p>
+</li>
+</ul>
+<p><img src="/./assets/image-20230706143820933.png" alt="image-20230706143820933"></p>
+<h3 id="连通分量、强连通分量"><a href="#连通分量、强连通分量" class="headerlink" title="连通分量、强连通分量"></a>连通分量、强连通分量</h3><ul>
+<li>无向图中的<strong>极大连通子图</strong>称为<strong>连通分量</strong>（只要有能连通的点就要包含到里面）<ul>
+<li>子图必须连通，且包含尽可能多的顶点和边</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230706144148600.png" alt="image-20230706144148600"></p>
+<ul>
+<li>有向图中的极大强连通子图称为有向图的强连通分量<ul>
+<li>子图必须强连通，同时保留尽可能多的边</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230706144306901.png" alt="image-20230706144306901"></p>
+<h3 id="生成树、生成森林（一种保持连通的临界）"><a href="#生成树、生成森林（一种保持连通的临界）" class="headerlink" title="生成树、生成森林（一种保持连通的临界）"></a>生成树、生成森林（一种保持连通的临界）</h3><ul>
+<li><p>连通图的生成树是<strong>包含图中所有顶点的一个极小连通子图</strong></p>
+<ul>
+<li>连通图都是无向的</li>
+<li>边尽可能少，但要保持连通</li>
+<li>一个连通图可能有多个生成树</li>
+</ul>
+</li>
+<li><p>若图中顶点数为n，则它的生成树含有n-1条边。</p>
+<ul>
+<li>对生成树而言，若砍去它的一条边，则会变成非连通图</li>
+<li>若加上一条边则会形成一条回路</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230706144815318.png" alt="image-20230706144815318"></p>
+<ul>
+<li>在非连通图中，连通分量的生成树构成了非连通图的生成森林</li>
+</ul>
+<p><img src="/./assets/image-20230706144954104.png" alt="image-20230706144954104"></p>
+<h3 id="边的权、带权图-网"><a href="#边的权、带权图-网" class="headerlink" title="边的权、带权图&#x2F;网"></a>边的权、带权图&#x2F;网</h3><ul>
+<li>边的权——在一个图中，每条边都可以标上具有某种含义的数值，该数值称为该边的权值</li>
+<li>带权图&#x2F;网——边上带有权值的图称为带权图，也称网</li>
+<li>带权路径长度——当图是带权图时，一条路径上所有边的权值之和，称为该路径的带权路径长度</li>
+</ul>
+<p><img src="/./assets/image-20230706145438969.png" alt="image-20230706145438969"></p>
+<h3 id="几种特殊状态的图"><a href="#几种特殊状态的图" class="headerlink" title="几种特殊状态的图"></a>几种特殊状态的图</h3><h4 id="无向完全图"><a href="#无向完全图" class="headerlink" title="无向完全图"></a>无向完全图</h4><ul>
+<li>无向图中任意两个顶点之间都存在边</li>
+<li>若无向图的顶点数|V|&#x3D;n，则|E|&#x3D;n(n-1)&#x2F;2</li>
+</ul>
+<h4 id="有向完全图"><a href="#有向完全图" class="headerlink" title="有向完全图"></a>有向完全图</h4><ul>
+<li>有向图中任意两个顶点之间都存在方向相反的两条弧</li>
+</ul>
+<p><img src="/./assets/image-20230706145813009.png" alt="image-20230706145813009"></p>
+<h4 id="稀疏图"><a href="#稀疏图" class="headerlink" title="稀疏图"></a>稀疏图</h4><ul>
+<li>边数很少的图</li>
+<li>只是相对来说，没有明确的界限，一般认为|E|&lt;|V|log|V|就是稀疏图</li>
+</ul>
+<h4 id="稠密图"><a href="#稠密图" class="headerlink" title="稠密图"></a>稠密图</h4><ul>
+<li>边数很多的图</li>
+</ul>
+<p><img src="/./assets/image-20230706145910441.png" alt="image-20230706145910441"></p>
+<h4 id="树、有向树"><a href="#树、有向树" class="headerlink" title="树、有向树"></a>树、有向树</h4><ul>
+<li>连通图，各个点之间时连通的<ul>
+<li>n个顶点的树，必有n-1条边</li>
+<li>n个顶点的图，若|E|&gt;n-1，则一定有回路</li>
+<li>若|E|&lt;n-1,则一定有孤零的顶点（森林）</li>
+</ul>
+</li>
+<li>有向树：一个顶点的入度为0，其余顶点的入度均为1的有向图，称为有向树<ul>
+<li>有向树不是强连通图</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230706150357216.png" alt="image-20230706150357216"></p>
+<h2 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h2><h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><ul>
+<li>数组实现的顺序存储，空间复杂度高，不适合存储稀疏图</li>
+</ul>
+<h4 id="存储无权图"><a href="#存储无权图" class="headerlink" title="存储无权图"></a>存储无权图</h4><ul>
+<li>无向图：<ul>
+<li>1: 有一条边，两顶点邻接                        0: 没有边，两个顶点不邻接</li>
+<li>一条边对应两个1: (A,B)是1，(B,A)也是1</li>
+</ul>
+</li>
+<li>有向图：<ul>
+<li>1: 有一条行元素指向列元素的边			0: 没有行元素指向列元素的边</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MaxVertexNum 100                    <span class="comment">//顶点数目的最大值</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//邻接矩阵</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</span><br><span class="line">    <span class="type">char</span> Vex[MaxVertexNum];                 <span class="comment">//顶点表（存放顶点名称，这里是A B C...,可以换成更复杂的比如北京、上海...)</span></span><br><span class="line">    <span class="type">int</span> Edge[MaxVertexNum][MaxVertexNum];   <span class="comment">//邻接矩阵、边表(可以换成bool类型和枚举类型，int：4B, bool: 1B)</span></span><br><span class="line">    <span class="type">int</span> vexnum,arcnum;                      <span class="comment">//图的当前顶点数和边数/弧数</span></span><br><span class="line">&#125; MGragh;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/./assets/image-20230706151618291.png" alt="image-20230706151618291"></p>
+<p><img src="/./assets/image-20230706151758698.png" alt="image-20230706151758698"></p>
+<ul>
+<li>求顶点的度、出度、入度：<ul>
+<li>无向图<ul>
+<li>查找顶点所在的一行&#x2F;一列一共有几个1，度就是几</li>
+<li>第i个顶点的度 &#x3D; 第i行（或第i列）的非零元素个数        O(n)</li>
+</ul>
+</li>
+<li>有向图（1表示存在行元素指向列元素的边）：<ul>
+<li>出度：第i行的非零元素个数                              O(n)</li>
+<li>入度：第i列的非零元素个数                              O(n)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="存储带权图（网）"><a href="#存储带权图（网）" class="headerlink" title="存储带权图（网）"></a>存储带权图（网）</h4><ul>
+<li>如果邻接矩阵的值为0&#x2F;无穷，则说明两点之间没有边</li>
+</ul>
+<p><img src="/./assets/image-20230706153022014.png" alt="image-20230706153022014"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MaxVertexNum 100                    <span class="comment">//顶点数目的最大值</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INFINITY 2147483647                 <span class="comment">//最大的int值 (2^31)-1=2147483647</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">char</span> VertexType;                    <span class="comment">//顶点的数据类型</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> EdgeType;                       <span class="comment">//带权图中边上权值的数据类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//邻接矩阵（有权图）</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</span><br><span class="line">    VertexType Vex[MaxVertexNum];           <span class="comment">//顶点</span></span><br><span class="line">    EdgeType Edge[MaxVertexNum][MaxVertexNum];  <span class="comment">//边的权</span></span><br><span class="line">    <span class="type">int</span> vexnum, arcnum;                     <span class="comment">//图的当前顶点数、弧数</span></span><br><span class="line">&#125; MGragh;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./assets/image-20230706153202614.png" alt="image-20230706153202614"></p>
+<h4 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h4><ul>
+<li>空间复杂度，n个顶点<ul>
+<li>存储顶点：O(n)</li>
+<li>存储边：O(n^2)</li>
+<li>总：O(|V|^2)       只和顶点数有关，和实际边数无关</li>
+</ul>
+</li>
+<li>适合存储稠密图（边数较多的图）</li>
+<li>无向图的邻接矩阵是对称矩阵，可以压缩存储（只存储上三角区&#x2F;下三角区）</li>
+</ul>
+<h4 id="回顾：对称矩阵的压缩存储"><a href="#回顾：对称矩阵的压缩存储" class="headerlink" title="回顾：对称矩阵的压缩存储"></a>回顾：对称矩阵的压缩存储</h4><p><img src="/./assets/image-20230706153557402.png" alt="image-20230706153557402"></p>
+<ul>
+<li>邻接矩阵自乘n次—&gt;等于从顶点i到顶点j的长度为n的路径的数目</li>
+</ul>
+<p><img src="/./assets/image-20230706153809492.png" alt="image-20230706153809492"></p>
+<p><img src="/./assets/image-20230706154051318.png" alt="image-20230706154051318"></p>
+<p><img src="/./assets/image-20230706154107656.png" alt="image-20230706154107656"></p>
+<h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><ul>
+<li>顺序存储+链式存储</li>
+</ul>
+<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p><img src="/./assets/image-20230717192008898.png" alt="image-20230717192008898"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//邻接表法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//“边/弧”</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">ArcNode</span>&#123;</span><br><span class="line">    <span class="type">int</span> adjvex;                             <span class="comment">//边/弧指向哪个节点</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">ArcNode</span> *next;                   <span class="comment">//指向下一条弧的指针</span></span><br><span class="line">    <span class="comment">//InfoType info;                        //边权值</span></span><br><span class="line">&#125;ArcNode;</span><br><span class="line"></span><br><span class="line"><span class="comment">//&quot;顶点&quot;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">VNode</span>&#123;</span><br><span class="line">    VertexType data;                        <span class="comment">//顶点信息</span></span><br><span class="line">    ArcNode *first;                         <span class="comment">//第一条边/弧</span></span><br><span class="line">&#125;VNode, AdjList[MaxVertexNum];</span><br><span class="line"></span><br><span class="line"><span class="comment">//用邻接表存储的图</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</span><br><span class="line">    AdjList vertices;</span><br><span class="line">    <span class="type">int</span> vexnum,arcnum;</span><br><span class="line">&#125; ALGragh;</span><br></pre></td></tr></table></figure>
+
+<h4 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h4><ul>
+<li>有向图：O(V+2E)</li>
+<li>无向图：O(V+E)</li>
+</ul>
+<p><img src="/./assets/image-20230717192221675.png" alt="image-20230717192221675"></p>
+<h4 id="入度、出度、度"><a href="#入度、出度、度" class="headerlink" title="入度、出度、度"></a>入度、出度、度</h4><ul>
+<li>无向图的度：节点连接的弧的数量</li>
+<li>有向图<ul>
+<li>入度：把所有点的边链表遍历一遍，找到其中指向该节点的边</li>
+<li>出度：节点连接的弧的数量</li>
+</ul>
+</li>
+</ul>
+<h4 id="邻接表不唯一（边链表的顺序任意）"><a href="#邻接表不唯一（边链表的顺序任意）" class="headerlink" title="邻接表不唯一（边链表的顺序任意）"></a>邻接表不唯一（边链表的顺序任意）</h4><p><img src="/./assets/image-20230717192719492.png" alt="image-20230717192719492"></p>
+<h3 id="邻接矩阵和邻接表的劣势"><a href="#邻接矩阵和邻接表的劣势" class="headerlink" title="邻接矩阵和邻接表的劣势"></a>邻接矩阵和邻接表的劣势</h3><ul>
+<li>邻接矩阵：空间复杂度高</li>
+<li>邻接表：找顶点的入度不方便（找到指向该节点的边不方便）</li>
+</ul>
+<p><img src="/./assets/image-20230715175549075.png" alt="image-20230715175549075"></p>
+<h3 id="十字链表（只能存储有向图）"><a href="#十字链表（只能存储有向图）" class="headerlink" title="十字链表（只能存储有向图）"></a>十字链表（只能存储有向图）</h3><h4 id="弧节点（存储弧）"><a href="#弧节点（存储弧）" class="headerlink" title="弧节点（存储弧）"></a>弧节点（存储弧）</h4><ul>
+<li>绿色tailvex：弧尾顶点编号，指示这条弧是由哪个节点出发的（弧尾）</li>
+<li>橙色headvex：弧头顶点编号，指示这条弧是指向哪个节点的（弧头）</li>
+<li>橙色hlink：弧头相同的下一条弧，可以找到所有指向该节点的弧</li>
+<li>绿色tlink：弧尾相同的下一条弧，可以找到所有从该节点出发的弧</li>
+<li>灰色info：权值，指示该条弧的weight</li>
+</ul>
+<p><img src="/./assets/image-20230715180410155.png" alt="image-20230715180410155"></p>
+<h4 id="性能分析-1"><a href="#性能分析-1" class="headerlink" title="性能分析"></a>性能分析</h4><ul>
+<li>空间复杂度：O(V+E)</li>
+</ul>
+<p><img src="/./assets/image-20230715181800049.png" alt="image-20230715181800049"></p>
+<h3 id="邻接多重表（存储无向图）"><a href="#邻接多重表（存储无向图）" class="headerlink" title="邻接多重表（存储无向图）"></a>邻接多重表（存储无向图）</h3><h4 id="改进邻接表"><a href="#改进邻接表" class="headerlink" title="改进邻接表"></a>改进邻接表</h4><ul>
+<li>邻接表的缺点<ul>
+<li>每条边对应两份冗余信息</li>
+<li>删除顶点、删除边等操作时间复杂度高</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230717193934926.png" alt="image-20230717193934926"></p>
+<h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>边节点<ul>
+<li>i：其中一个顶点的编号</li>
+<li>j：另一个顶点的编号</li>
+<li>iLink：依附于顶点i的下一条边（寻找与i有关的边，从iLink寻找下一个）</li>
+<li>jLink：依附于顶点j的下一条边（寻找与j有关的边，从jLink寻找下一个）</li>
+<li>info：权值</li>
+</ul>
+</li>
+</ul>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>空间复杂度：O(V+E)  （每条边只对应一份数据）</li>
+<li>删除边、删除节点等操作都很方便</li>
+<li>只适用于存储无向图</li>
+</ul>
+<p><img src="/./assets/image-20230717220112624.png" alt="image-20230717220112624"></p>
+<h2 id="图的基本操作"><a href="#图的基本操作" class="headerlink" title="图的基本操作"></a>图的基本操作</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><ul>
+<li>Adjacent(G,x,y): 判断图G是否存在边&lt;x,y&gt;或(x,y)</li>
+<li>Neighbors(G,x): 列出图G中与节点x邻接的边</li>
+<li>InsertVertex(G,x): 在图G中插入顶点x</li>
+<li>DeleteVertex(G,x): 从图G中删除顶点x</li>
+<li>AddEdge(G,x,y): 若无向边(x,y)或有向边&lt;x,y&gt;不存在，则向图G中添加该边</li>
+<li>RemoveEdge(G,x,y): 若无向边(x,y)或有向边&lt;x,y&gt;存在,则从图G中删除该边</li>
+<li>FirstNeighbor(G,x): 求图G中顶点x的第一个邻接点，若有则返回顶点号。若x没有邻接点，或图中不存在x，则返回-1</li>
+<li>NextNeighbor(G,x,y): 假设图G中顶点y是顶点x的一个邻接点，返回除y之外顶点x的下一个邻接点的顶点号，若y是x的最后一个邻接点，则返回-1</li>
+<li>Get_edge_value(G,x,y): 获取图G中边(x,y)或&lt;x,y&gt;对应的权值</li>
+<li>Set_edge_value(G,x,y,v): 设置图G中边(x,y)或&lt;x,y&gt;对应的权值为v</li>
+</ul>
+<p><img src="/./assets/image-20230717222335244.png" alt="image-20230717222335244"></p>
+<h3 id="判断是否存在边或-x-y"><a href="#判断是否存在边或-x-y" class="headerlink" title="判断是否存在边&lt;x,y&gt;或(x,y)"></a>判断是否存在边&lt;x,y&gt;或(x,y)</h3><ul>
+<li>有向图&#x2F;无向图<ul>
+<li>邻接矩阵 O(1)</li>
+<li>邻接表O(1)~O(V)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230717222759777.png" alt="image-20230717222759777"></p>
+<h3 id="列出与节点x邻接的边"><a href="#列出与节点x邻接的边" class="headerlink" title="列出与节点x邻接的边"></a>列出与节点x邻接的边</h3><p><img src="/./assets/image-20230717223003760.png" alt="image-20230717223003760"></p>
+<p><img src="/./assets/image-20230717223054367.png" alt="image-20230717223054367"></p>
+<h3 id="插入新顶点"><a href="#插入新顶点" class="headerlink" title="插入新顶点"></a>插入新顶点</h3><p><img src="/./assets/image-20230717224829999.png" alt="image-20230717224829999"></p>
+<h3 id="删除顶点"><a href="#删除顶点" class="headerlink" title="删除顶点"></a>删除顶点</h3><p><img src="/./assets/image-20230717224946032.png" alt="image-20230717224946032"></p>
+<p><img src="/./assets/image-20230717225047826.png" alt="image-20230717225047826"></p>
+<h3 id="添加新边"><a href="#添加新边" class="headerlink" title="添加新边"></a>添加新边</h3><ul>
+<li>邻接表可以采用头插法，减少时间复杂度</li>
+</ul>
+<p><img src="/./assets/image-20230717225158802.png" alt="image-20230717225158802"></p>
+<h3 id="找到第一个邻接点（重点）"><a href="#找到第一个邻接点（重点）" class="headerlink" title="找到第一个邻接点（重点）"></a>找到第一个邻接点（重点）</h3><p><img src="/./assets/image-20230718000001514.png" alt="image-20230718000001514"></p>
+<p><img src="/./assets/image-20230718000020682.png" alt="image-20230718000020682"></p>
+<h3 id="找到除了邻接点y以外的下一个邻接点-重点"><a href="#找到除了邻接点y以外的下一个邻接点-重点" class="headerlink" title="找到除了邻接点y以外的下一个邻接点(重点)"></a>找到除了邻接点y以外的下一个邻接点(重点)</h3><p><img src="/./assets/image-20230718000150388.png" alt="image-20230718000150388"></p>
+<h3 id="找边的权值-设置边的权值"><a href="#找边的权值-设置边的权值" class="headerlink" title="找边的权值&#x2F;设置边的权值"></a>找边的权值&#x2F;设置边的权值</h3><ul>
+<li>核心在于找到边<ul>
+<li>Adjacent(G,x,y)：判断图G中是否存在边&lt;x,y&gt;或(x,y)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230718000322650.png" alt="image-20230718000322650"></p>
+<h3 id="图的深度优先遍历（重点）（用栈实现）"><a href="#图的深度优先遍历（重点）（用栈实现）" class="headerlink" title="图的深度优先遍历（重点）（用栈实现）"></a>图的深度优先遍历（重点）（用栈实现）</h3><h4 id="树的深度优先遍历"><a href="#树的深度优先遍历" class="headerlink" title="树的深度优先遍历"></a>树的深度优先遍历</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//树的先根遍历</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">PreOrder</span><span class="params">(TreeNode *R)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (R!= <span class="literal">NULL</span>)&#123;</span><br><span class="line">    <span class="built_in">visit</span>(R);					<span class="comment">//访问根节点</span></span><br><span class="line">    <span class="keyword">while</span>(R还有下一个子树T)</span><br><span class="line">      <span class="built_in">PreOrder</span>(T);		<span class="comment">//先根遍历下一棵子树</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> visited[MAX_VERTEX_NUM];								<span class="comment">//访问标记数组</span></span><br><span class="line"><span class="comment">//图的深度优先遍历</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">DFS</span><span class="params">(MGragh G, <span class="type">int</span> v)</span></span>&#123;                  <span class="comment">//从顶点v出发，深度优先遍历图G</span></span><br><span class="line">    <span class="built_in">visit</span>(v);                               <span class="comment">//访问顶点v</span></span><br><span class="line">    visited[v]=<span class="literal">true</span>;                        <span class="comment">//设已访问标志</span></span><br><span class="line">    <span class="type">int</span> w;</span><br><span class="line">    <span class="keyword">for</span>(w=<span class="built_in">FirstNeighbor</span>(G,v);w&gt;=<span class="number">0</span>;w=<span class="built_in">NextNeighbor</span>(G,v,w))&#123;</span><br><span class="line">        <span class="keyword">if</span>(!visited[w])&#123;                    <span class="comment">//w为u的尚未访问的邻接顶点</span></span><br><span class="line">            <span class="built_in">DFS</span>(G,w);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./assets/image-20230718121855381.png" alt="image-20230718121855381"></p>
+<h4 id="算法存在的问题"><a href="#算法存在的问题" class="headerlink" title="算法存在的问题"></a>算法存在的问题</h4><ul>
+<li>如果是非连通图，无法遍历完所有节点</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> visited[MAX_VERTEX_NUM];								<span class="comment">//访问标记数组</span></span><br><span class="line"><span class="comment">//对图G进行深度优先遍历</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">DFSTraverse</span><span class="params">(MGragh G)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> v = <span class="number">0</span>; v &lt; G.vexnum; ++v)</span><br><span class="line">        visited[v]=<span class="literal">false</span>;                   <span class="comment">//初始化已访问标记数据</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> v = <span class="number">0</span>; v &lt; G.vexnum; ++v)</span><br><span class="line">        <span class="keyword">if</span>(!visited[v]) <span class="built_in">DFS</span>(G,v);           <span class="comment">//从v=0开始遍历</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//图的深度优先遍历</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">DFS</span><span class="params">(MGragh G, <span class="type">int</span> v)</span></span>&#123;                  <span class="comment">//从顶点v出发，深度优先遍历图G</span></span><br><span class="line">    <span class="built_in">visit</span>(v);                               <span class="comment">//访问顶点v</span></span><br><span class="line">    visited[v]=<span class="literal">true</span>;                        <span class="comment">//设已访问标志</span></span><br><span class="line">    <span class="type">int</span> w;</span><br><span class="line">    <span class="keyword">for</span>(w=<span class="built_in">FirstNeighbor</span>(G,v);w&gt;=<span class="number">0</span>;w=<span class="built_in">NextNeighbor</span>(G,v,w))&#123;</span><br><span class="line">        <span class="keyword">if</span>(!visited[w])&#123;                    <span class="comment">//w为u的尚未访问的邻接顶点</span></span><br><span class="line">            <span class="built_in">DFS</span>(G,w);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul>
+<li>空间复杂度<ul>
+<li>最坏情况：O(V)</li>
+<li>最好情况：O(1)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230718122433238.png" alt="image-20230718122433238"></p>
+<ul>
+<li><p>时间复杂度 &#x3D; 访问各个顶点+探索各条边</p>
+<ul>
+<li>邻接矩阵<ul>
+<li>访问V个顶点需要O(V)的时间</li>
+<li>查找每个顶点的邻接点都需要O(V)的时间，总共有V个顶点</li>
+<li>时间复杂度&#x3D;O(V^2)</li>
+</ul>
+</li>
+<li>邻接表<ul>
+<li>访问V个顶点需要O(V)的时间</li>
+<li>查找各个顶点的邻接点总共需要O(E)的时间</li>
+<li>时间复杂度&#x3D;O(V+E)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230718123014506.png" alt="image-20230718123014506"></p>
+<h4 id="深度优先遍历序列（邻接矩阵唯一，邻接表不唯一遍历序列也不唯一，但是一一对应）"><a href="#深度优先遍历序列（邻接矩阵唯一，邻接表不唯一遍历序列也不唯一，但是一一对应）" class="headerlink" title="深度优先遍历序列（邻接矩阵唯一，邻接表不唯一遍历序列也不唯一，但是一一对应）"></a>深度优先遍历序列（邻接矩阵唯一，邻接表不唯一遍历序列也不唯一，但是一一对应）</h4><h4 id="邻接矩阵的遍历序列可以直接从图中看出来，小的顶点先遍历"><a href="#邻接矩阵的遍历序列可以直接从图中看出来，小的顶点先遍历" class="headerlink" title="邻接矩阵的遍历序列可以直接从图中看出来，小的顶点先遍历"></a>邻接矩阵的遍历序列可以直接从图中看出来，小的顶点先遍历</h4><p><img src="/./assets/image-20230718123316421.png" alt="image-20230718123316421"></p>
+</li>
+</ul>
+<h4 id="邻接表的遍历序列要看邻接表，不能直接从图中得出"><a href="#邻接表的遍历序列要看邻接表，不能直接从图中得出" class="headerlink" title="邻接表的遍历序列要看邻接表，不能直接从图中得出"></a>邻接表的遍历序列要看邻接表，不能直接从图中得出</h4><p><img src="/./assets/image-20230718123823625.png" alt="image-20230718123823625"></p>
+<h4 id="深度优先生成树"><a href="#深度优先生成树" class="headerlink" title="深度优先生成树"></a>深度优先生成树</h4><ul>
+<li>同一个图的邻接矩阵表达方式唯一，因此深度优先遍历序列唯一，深度优先生成树也唯一</li>
+<li>同一个图邻接表表达方式不唯一，因此深度优先遍历序列不唯一，深度优先生成树也不唯一</li>
+</ul>
+<p><img src="/./assets/image-20230718124045455.png" alt="image-20230718124045455"></p>
+<p><img src="/./assets/image-20230718124111846.png" alt="image-20230718124111846"></p>
+<h4 id="深度优先生成森林"><a href="#深度优先生成森林" class="headerlink" title="深度优先生成森林"></a>深度优先生成森林</h4><p><img src="/./assets/image-20230718124204653.png" alt="image-20230718124204653"></p>
+<p><img src="/./assets/image-20230718124223134.png" alt="image-20230718124223134"></p>
+<h4 id="图的遍历与图的连通性"><a href="#图的遍历与图的连通性" class="headerlink" title="图的遍历与图的连通性"></a>图的遍历与图的连通性</h4><ul>
+<li>无向图<ul>
+<li>进行BFS&#x2F;DFS遍历</li>
+<li>调用BFS&#x2F;DFS函数的次数&#x3D;连通分量数</li>
+<li>对于连通图，只需调用一次BFS&#x2F;DFS</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230718124615536.png" alt="image-20230718124615536"></p>
+<ul>
+<li><p>有向图</p>
+<ul>
+<li><p>进行BFS&#x2F;DFS遍历</p>
+</li>
+<li><p>调用BFS&#x2F;DFS函数的次数要具体问题具体分析</p>
+</li>
+<li><p>若起始顶点到其他各顶点都有路径，则只需调用一次BFS&#x2F;DFS函数</p>
+</li>
+<li><p>对于强连通图之需要调用一次BFS&#x2F;DFS函数</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230718124600462.png" alt="image-20230718124600462"></p>
+<h3 id="图的广度优先遍历（重点）（用队列实现）"><a href="#图的广度优先遍历（重点）（用队列实现）" class="headerlink" title="图的广度优先遍历（重点）（用队列实现）"></a>图的广度优先遍历（重点）（用队列实现）</h3><h4 id="树的广度优先遍历-VS-图的广度优先遍历"><a href="#树的广度优先遍历-VS-图的广度优先遍历" class="headerlink" title="树的广度优先遍历 VS 图的广度优先遍历"></a>树的广度优先遍历 VS 图的广度优先遍历</h4><ul>
+<li>树🌲：不存在“回路”，搜索相邻的节点时，不可能搜到已经访问过的节点<ul>
+<li>若树非空，则根节点入队</li>
+<li>若队列非空，队头元素出队并访问，同时将该元素的孩子依次入队</li>
+<li>重复2直到队列为空</li>
+</ul>
+</li>
+<li>图✍️：搜索相邻的节点时，有可能搜到已经访问过的节点<ul>
+<li>找到与一个顶点相邻的所有顶点</li>
+<li>标记哪些顶点被访问过</li>
+<li>需要一个辅助队列<ul>
+<li>FirstNeighbor(G,x): 求图G中顶点x的第一个邻接点，若有则返回顶点号，若x没有邻接点或图中不存在x，则返回-1</li>
+<li>NextNeighbor(G,x,y): 假设图G中顶点y是顶点x的一个邻接点，返回除y之外顶点x的下一个邻接点的顶点号，若y是x的最后一个邻接点，则返回-1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230718001912351.png" alt="image-20230718001912351"></p>
+<p><img src="/./assets/image-20230718002515580.png" alt="image-20230718002515580"></p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//广度优先遍历</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">BFS</span><span class="params">(MGragh G,<span class="type">int</span> v)</span></span>&#123;                   <span class="comment">//从顶点v出发，广度优先遍历图G</span></span><br><span class="line">    <span class="built_in">visit</span>(v);                               <span class="comment">//访问初始顶点v</span></span><br><span class="line">    visited[v]=<span class="literal">true</span>;                        <span class="comment">//对x做已访问标记</span></span><br><span class="line">    SqQueue Q;</span><br><span class="line">    <span class="built_in">EnQueue</span>(Q,v);                           <span class="comment">//顶点v入队列Q</span></span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">QueueEmpty</span>(Q))&#123;</span><br><span class="line">        <span class="built_in">DeQueue</span>(Q,v);                       <span class="comment">//顶点v出队列</span></span><br><span class="line">        <span class="type">int</span> w;</span><br><span class="line">        <span class="keyword">for</span>(w=<span class="built_in">FirstNeighbor</span>(G,v); w&gt;=<span class="number">0</span>; w=<span class="built_in">NextNeighbor</span>(G,v,w))&#123;</span><br><span class="line">            <span class="comment">//检测v的所有邻接点</span></span><br><span class="line">            <span class="keyword">if</span>(!visited[w])&#123;                <span class="comment">//w为v的尚未访问的邻接顶点</span></span><br><span class="line">                <span class="built_in">visit</span>(w);                   <span class="comment">//访问顶点</span></span><br><span class="line">                visited[w]=<span class="literal">true</span>;            <span class="comment">//对w做已访问标记</span></span><br><span class="line">                <span class="built_in">EnQueue</span>(Q,w);               <span class="comment">//顶点w入队列</span></span><br><span class="line">            &#125;   <span class="comment">//if</span></span><br><span class="line">        &#125;<span class="comment">//while</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/./assets/image-20230718004600437.png" alt="image-20230718004600437"></p>
+<h4 id="手算"><a href="#手算" class="headerlink" title="手算"></a>手算</h4><p><img src="/./assets/image-20230718004856597.png" alt="image-20230718004856597"></p>
+<h4 id="遍历序列可变（邻接链表存储先后）"><a href="#遍历序列可变（邻接链表存储先后）" class="headerlink" title="遍历序列可变（邻接链表存储先后）"></a>遍历序列可变（邻接链表存储先后）</h4><p><img src="/./assets/image-20230718005050465.png" alt="image-20230718005050465"></p>
+<h4 id="算法存在的问题-1"><a href="#算法存在的问题-1" class="headerlink" title="算法存在的问题"></a>算法存在的问题</h4><ul>
+<li>如果是非连通图，则无法遍历完所有代码</li>
+</ul>
+<p><img src="/./assets/image-20230718005144167.png" alt="image-20230718005144167"></p>
+<ul>
+<li>但是可以通过visited数组找到未遍历的顶点</li>
+</ul>
+<p><img src="/./assets/image-20230718005949817.png" alt="image-20230718005949817"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MaxVertexNum 100                    <span class="comment">//顶点数目的最大值</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INFINITY 2147483647                 <span class="comment">//最大的int值 (2^31)-1=2147483647</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">bool</span> visited[MaxVertexNum];                 <span class="comment">//访问标记数组</span></span><br><span class="line"><span class="comment">//对图G进行广度优先遍历</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">BFSTraverse</span><span class="params">(MGragh G)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt;G.vexnum; ++i) visited[i]=<span class="literal">false</span>;  <span class="comment">//访问标记数组初始化</span></span><br><span class="line">    SqQueue Q;</span><br><span class="line">    <span class="built_in">InitQueue</span>(Q);                           <span class="comment">//初始化辅助队列Q</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; G.vexnum;++i)        <span class="comment">//从0号顶点开始遍历</span></span><br><span class="line">        <span class="keyword">if</span>(!visited[i]) <span class="built_in">BFS</span>(G,i);           <span class="comment">//对每个连通分量调用一次BFS，vi未访问过，从vi开始BFS</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//广度优先遍历</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">BFS</span><span class="params">(MGragh G,<span class="type">int</span> v)</span></span>&#123;                   <span class="comment">//从顶点v出发，广度优先遍历图G</span></span><br><span class="line">    <span class="built_in">visit</span>(v);                               <span class="comment">//访问初始顶点v</span></span><br><span class="line">    visited[v]=<span class="literal">true</span>;                        <span class="comment">//对x做已访问标记</span></span><br><span class="line">    SqQueue Q;</span><br><span class="line">    <span class="built_in">EnQueue</span>(Q,v);                           <span class="comment">//顶点v入队列Q</span></span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">QueueEmpty</span>(Q))&#123;</span><br><span class="line">        <span class="built_in">DeQueue</span>(Q,v);                       <span class="comment">//顶点v出队列</span></span><br><span class="line">        <span class="type">int</span> w;</span><br><span class="line">        <span class="keyword">for</span>(w=<span class="built_in">FirstNeighbor</span>(G,v); w&gt;=<span class="number">0</span>; w=<span class="built_in">NextNeighbor</span>(G,v,w))&#123;</span><br><span class="line">            <span class="comment">//检测v的所有邻接点</span></span><br><span class="line">            <span class="keyword">if</span>(!visited[w])&#123;                <span class="comment">//w为v的尚未访问的邻接顶点</span></span><br><span class="line">                <span class="built_in">visit</span>(w);                   <span class="comment">//访问顶点</span></span><br><span class="line">                visited[w]=<span class="literal">true</span>;            <span class="comment">//对w做已访问标记</span></span><br><span class="line">                <span class="built_in">EnQueue</span>(Q,w);               <span class="comment">//顶点w入队列</span></span><br><span class="line">            &#125;   <span class="comment">//if</span></span><br><span class="line">        &#125;<span class="comment">//while</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><h4 id="空间复杂度-1"><a href="#空间复杂度-1" class="headerlink" title="空间复杂度"></a>空间复杂度</h4><ul>
+<li>最坏情况：辅助队列O(V)</li>
+<li>所有其他节点都与1相邻</li>
+</ul>
+<p><img src="/./assets/image-20230718010216390.png" alt="image-20230718010216390"></p>
+<h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><ul>
+<li><p>邻接矩阵</p>
+<ul>
+<li><p>访问V个顶点需要O(V)的时间</p>
+</li>
+<li><p>查找每个顶点的邻接点都需要O(V)的时间，而总共有V个顶点</p>
+</li>
+<li><p>时间复杂度&#x3D;O(V^2)</p>
+</li>
+</ul>
+</li>
+<li><p>邻接表</p>
+<ul>
+<li>访问V个节点需要O(V)的时间</li>
+<li>查找各个顶点的邻接点共需要O(E)的时间</li>
+<li>时间复杂度&#x3D;O(V+E)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230718010608710.png" alt="image-20230718010608710"></p>
+<h4 id="广度优先生成树"><a href="#广度优先生成树" class="headerlink" title="广度优先生成树"></a>广度优先生成树</h4><ul>
+<li>n个顶点，n-1条边</li>
+<li>广度优先生成树由广度优先遍历过程确定。由于邻接表的表达方式不唯一，因此基于邻接表的广度优先生成树也不唯一</li>
+</ul>
+<p><img src="/./assets/image-20230718010903777.png" alt="image-20230718010903777"></p>
+<p><img src="/./assets/image-20230718010939467.png" alt="image-20230718010939467"></p>
+<p><img src="/./assets/image-20230718010957518.png" alt="image-20230718010957518"></p>
+<h4 id="广度优先生成森林"><a href="#广度优先生成森林" class="headerlink" title="广度优先生成森林"></a>广度优先生成森林</h4><ul>
+<li>对非连通图的广度优先遍历，可得到广度优先生成森林</li>
+</ul>
+<p><img src="/./assets/image-20230718011203751.png" alt="image-20230718011203751"></p>
+<h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h3><h4 id="生成树"><a href="#生成树" class="headerlink" title="生成树"></a>生成树</h4><ul>
+<li>连通图的生成树是包含图中所有顶点的一个极小连通子图（边要尽可能小，但要保持连通）</li>
+<li>若图中顶点数为n，则它的生成树含有n-1条边。</li>
+<li>对于生成树而言，若砍去它的一条边，则会变成非连通图，若加上一条边则会形成一个回路</li>
+</ul>
+<p><img src="/./assets/image-20230718142718791.png" alt="image-20230718142718791"></p>
+<h4 id="广度优先生成树-1"><a href="#广度优先生成树-1" class="headerlink" title="广度优先生成树"></a>广度优先生成树</h4><p><img src="/./assets/image-20230718142810106.png" alt="image-20230718142810106"></p>
+<h4 id="深度优先生成树-1"><a href="#深度优先生成树-1" class="headerlink" title="深度优先生成树"></a>深度优先生成树</h4><p><img src="/./assets/image-20230718142829309.png" alt="image-20230718142829309"></p>
+<h4 id="最小生成树（最小代价树）"><a href="#最小生成树（最小代价树）" class="headerlink" title="最小生成树（最小代价树）"></a>最小生成树（最小代价树）</h4><ul>
+<li>对于一个<strong>带权连通无向图</strong>G&#x3D;(V,E)，生成树不同，每棵树的权（即树中所有边上的权值之和）也可能不同</li>
+<li>设R为G的所有生成树的集合，若T为R中边的权值之和最小的生成树，则T称为G的最小生成树(Minimum-Spanning-Tree,MST)</li>
+</ul>
+<p><img src="/./assets/image-20230718143223844.png" alt="image-20230718143223844"></p>
+<ul>
+<li>不唯一<ul>
+<li>可能有多个，但边的权值之和总是唯一且最小的</li>
+</ul>
+</li>
+<li>最小生成树的边数 &#x3D; 顶点数 - 1<ul>
+<li>砍掉一条则不连通，增加一条边则会出现回路</li>
+</ul>
+</li>
+<li>如果连通图本身是一棵树，则其最小生成树就是它本身</li>
+<li>只有连通图才有生成树，非连通图只有生成森林</li>
+</ul>
+<p><img src="/./assets/image-20230718143451611.png" alt="image-20230718143451611"></p>
+<p><img src="/./assets/image-20230718144321711.png" alt="image-20230718144321711"></p>
+<h4 id="Prim算法（普里姆）（点）"><a href="#Prim算法（普里姆）（点）" class="headerlink" title="Prim算法（普里姆）（点）"></a>Prim算法（普里姆）（点）</h4><ul>
+<li><p>算法实现</p>
+<ul>
+<li><p>从某一个<strong>顶点</strong>开始构建生成树</p>
+</li>
+<li><p>每次将代价最小的新顶点纳入生成树，直到所有顶点都纳入为止</p>
+</li>
+</ul>
+</li>
+<li><p>时间复杂度</p>
+<ul>
+<li>O(V^2)，适合用于边稠密图<ul>
+<li>从V0开始，总共需要n-1轮处理</li>
+<li>每一轮循环：循环遍历所有节点，找到lowCast最低的，且还没有加入树的节点</li>
+<li>再次循环遍历，更新还没有加入各个节点的lowCast值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>机器实现</p>
+<ul>
+<li>初始：从V0开始<ul>
+<li>声明两个数组<ul>
+<li>isJoin[]: 标记各节点是否已加入树</li>
+<li>lowCost[]: 各节点加入树的最低代价</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第一轮<ul>
+<li>循环遍历所有的节点，找到lowCast最低的，且还没有加入树的节点</li>
+<li>将该节点加入正在构建的树里，isJoin数组对应元素变为true</li>
+<li>再次循环遍历。更新还没有加入各个顶点的lowCast值<ul>
+<li>遍历刚加入节点的所有边，将这些边的权值与lowCast数组中的值进行比较，取其中较小的一个</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>循环以上操作，直到isJoin数组中不存在false（n-1轮）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230718144504433.png" alt="image-20230718144504433"></p>
+<p><img src="/./assets/image-20230718145024457.png" alt="image-20230718145024457"></p>
+<h4 id="Kruskal算法（克鲁斯卡尔）（边）"><a href="#Kruskal算法（克鲁斯卡尔）（边）" class="headerlink" title="Kruskal算法（克鲁斯卡尔）（边）"></a>Kruskal算法（克鲁斯卡尔）（边）</h4><ul>
+<li><p>算法实现</p>
+<ul>
+<li><p>每次选择一条权值最小的<strong>边</strong>，使这条边的两头连通（原本已经连通的就不选）</p>
+</li>
+<li><p>直到所有节点都连通</p>
+</li>
+</ul>
+</li>
+<li><p>时间复杂度</p>
+<ul>
+<li>O(Elog2E)，适合用于边稀疏图<ul>
+<li>共执行e轮</li>
+<li>每轮判断两个顶点是否属于同一个集合，需要O(log2e)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>机器实现</p>
+<ul>
+<li>初始：<ul>
+<li>将各条边按权值排序</li>
+<li>三个属性<ul>
+<li>Weight: 权值</li>
+<li>Vertex1: 起始节点</li>
+<li>Vertex2: 末尾节点</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第一轮<ul>
+<li>检查第一条边的两个顶点是否连通（是否属于同一个集合）（并查集）</li>
+<li>如果不属于同一个集合，就将这条边选上，并将其两边的顶点放到同一个集合中</li>
+<li>如果属于同一个集合，就直接跳过</li>
+</ul>
+</li>
+<li>重复以上操作，直到所有顶点都属于一个集合（都连通）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230718145822232.png" alt="image-20230718145822232"></p>
+<h3 id="图的最短路径"><a href="#图的最短路径" class="headerlink" title="图的最短路径"></a>图的最短路径</h3><h4 id="单源最短路径"><a href="#单源最短路径" class="headerlink" title="单源最短路径"></a>单源最短路径</h4><ul>
+<li>一个点到其他点的最短路径</li>
+</ul>
+<h4 id="多源最短路径"><a href="#多源最短路径" class="headerlink" title="多源最短路径"></a>多源最短路径</h4><ul>
+<li>每对顶点间的最短路径</li>
+</ul>
+<p><img src="/./assets/image-20230718151235217.png" alt="image-20230718151235217"></p>
+<h3 id="BFS求无权图的单源最短路径（只适用于无权图，或所有边权值都相同的图）"><a href="#BFS求无权图的单源最短路径（只适用于无权图，或所有边权值都相同的图）" class="headerlink" title="BFS求无权图的单源最短路径（只适用于无权图，或所有边权值都相同的图）"></a>BFS求无权图的单源最短路径（只适用于无权图，或所有边权值都相同的图）</h3><ul>
+<li>无权图可以视为一种特殊的带权图，只是每条边的权值都为1</li>
+<li>就是对BFS的一个小修改，在visit一个顶点时，修改其最短路径长度d[]并在path[]记录前驱节点</li>
+</ul>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//广度优先遍历</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">BFS</span><span class="params">(MGragh G,<span class="type">int</span> v)</span></span>&#123;                   <span class="comment">//从顶点v出发，广度优先遍历图G</span></span><br><span class="line">    <span class="built_in">visit</span>(v);                               <span class="comment">//访问初始顶点v</span></span><br><span class="line">    visited[v]=<span class="literal">true</span>;                        <span class="comment">//对x做已访问标记</span></span><br><span class="line">    SqQueue Q;</span><br><span class="line">    <span class="built_in">EnQueue</span>(Q,v);                           <span class="comment">//顶点v入队列Q</span></span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">QueueEmpty</span>(Q))&#123;</span><br><span class="line">        <span class="built_in">DeQueue</span>(Q,v);                       <span class="comment">//顶点v出队列</span></span><br><span class="line">        <span class="type">int</span> w;</span><br><span class="line">        <span class="keyword">for</span>(w=<span class="built_in">FirstNeighbor</span>(G,v); w&gt;=<span class="number">0</span>; w=<span class="built_in">NextNeighbor</span>(G,v,w))&#123;</span><br><span class="line">            <span class="comment">//检测v的所有邻接点</span></span><br><span class="line">            <span class="keyword">if</span>(!visited[w])&#123;                <span class="comment">//w为v的尚未访问的邻接顶点</span></span><br><span class="line">                <span class="built_in">visit</span>(w);                   <span class="comment">//访问顶点</span></span><br><span class="line">                visited[w]=<span class="literal">true</span>;            <span class="comment">//对w做已访问标记</span></span><br><span class="line">                <span class="built_in">EnQueue</span>(Q,w);               <span class="comment">//顶点w入队列</span></span><br><span class="line">            &#125;   <span class="comment">//if</span></span><br><span class="line">        &#125;<span class="comment">//while</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//求顶点u到其他顶点到最短路径</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">BFS_MIN_Distance</span><span class="params">(MGragh G, <span class="type">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> d[MaxVertexNum];                     <span class="comment">//d[i]表示u到i的节点的最短路径</span></span><br><span class="line">    <span class="type">int</span> path[MaxVertexNum];                  <span class="comment">//最短路径从哪个顶点过来</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; ++i)&#123;</span><br><span class="line">        d[i]=INFINITY;                       <span class="comment">//初始化路径长度</span></span><br><span class="line">        path[i]=<span class="number">-1</span>;                          <span class="comment">//最短路径从哪个顶点过来</span></span><br><span class="line">    &#125;</span><br><span class="line">    d[u]=<span class="number">0</span>;</span><br><span class="line">    visited[u]=<span class="literal">true</span>;</span><br><span class="line">    SqQueue Q;</span><br><span class="line">    <span class="built_in">EnQueue</span>(Q,u);</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">QueueEmpty</span>(Q))&#123;                  <span class="comment">//BFS算法主过程</span></span><br><span class="line">        <span class="built_in">DeQueue</span>(Q,u);                       <span class="comment">//队头元素u出队</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> w=<span class="built_in">FirstNeighbor</span>(G,u); w&gt;=<span class="number">0</span>; w=<span class="built_in">NextNeighbor</span>(G,u,w))&#123;</span><br><span class="line">            <span class="keyword">if</span>(!visited[w])&#123;                <span class="comment">//w为u的尚未访问的邻接顶点</span></span><br><span class="line">                d[w]=d[u]+<span class="number">1</span>;                <span class="comment">//路径长度+1</span></span><br><span class="line">                path[w]=u;                  <span class="comment">//最短路径应从u到w</span></span><br><span class="line">                visited[w]=<span class="literal">true</span>;            <span class="comment">//设已访问标志</span></span><br><span class="line">                <span class="built_in">EnQueue</span>(Q,w);               <span class="comment">//顶点w入队</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./assets/image-20230718163858910.png" alt="image-20230718163858910"></p>
+<h3 id="狄杰斯特拉求单源最短路径（可以用于无权图、带权图，不能用于负权值的图）"><a href="#狄杰斯特拉求单源最短路径（可以用于无权图、带权图，不能用于负权值的图）" class="headerlink" title="狄杰斯特拉求单源最短路径（可以用于无权图、带权图，不能用于负权值的图）"></a>狄杰斯特拉求单源最短路径（可以用于无权图、带权图，不能用于负权值的图）</h3><ul>
+<li><p>Dijkstra</p>
+</li>
+<li><p>带权路径长度——当图是带权图时，一条路径上所有边的权值之和，称为该路径的带权路径长度</p>
+</li>
+<li><p>算法实现</p>
+<ul>
+<li>初始<ul>
+<li>从V0开始，初始化三个数组信息如下</li>
+<li>Final[]: 标记各顶点是否已找到最短路径</li>
+<li>Dist[]: 最短路径长度</li>
+<li>Path[]: 路径上的前驱</li>
+</ul>
+</li>
+<li>第一轮：<ul>
+<li>循环遍历所有节点，找到还没确定最短路径，且dist最小的顶点Vi，令final[i]&#x3D;true</li>
+<li>检查所有邻接自Vi的顶点，若其final值为false，则更新dist和path信息</li>
+<li>如果dist[]里面存储的值   小于   该点的最小距离+该点到另一点的距离，则更新dist和path</li>
+</ul>
+</li>
+<li>重复以上步骤</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230718165636642.png" alt="image-20230718165636642"></p>
+<p><img src="/./assets/image-20230718170122893.png" alt="image-20230718170122893"></p>
+<p><img src="/./assets/image-20230718170232665.png" alt="image-20230718170232665"></p>
+<p><img src="/./assets/image-20230718170606667.png" alt="image-20230718170606667"></p>
+<p><img src="/./assets/image-20230718170533775.png" alt="image-20230718170533775"></p>
+<ul>
+<li>使用dist[]和path[]数组可以找到最短带权路径</li>
+</ul>
+<p><img src="/./assets/image-20230718170739493.png" alt="image-20230718170739493"></p>
+<ul>
+<li>时间复杂度<ul>
+<li>O(V^2)</li>
+<li>初始<ul>
+<li>Arcs[i][j]表示Vi到Vj的弧的权值</li>
+<li>若从V0开始，令final[0]&#x3D;true; dist[0]&#x3D;0; path[0]&#x3D;-1;</li>
+<li>其余顶点final[k]&#x3D;false; dist[k]&#x3D;arcs[o][k]; path[k]&#x3D;(arcs[0][k]&#x3D;&#x3D;无穷大)? -1:0;</li>
+</ul>
+</li>
+<li>第n-1轮处理<ul>
+<li>循环遍历所有顶点，找到还确定最短路径，且dist最小的顶点Vi，令final[i]&#x3D;true</li>
+<li>检查所有邻接自Vi的顶点，对于邻接自Vi的顶点Vj，若final[j]&#x3D;&#x3D;false且dist[i]+arcs[i][j]&lt;dist[j],则令dist[j]&#x3D;dist[i]+arcs[i][j]; path[j]&#x3D;i</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="算法缺点"><a href="#算法缺点" class="headerlink" title="算法缺点"></a>算法缺点</h4><ul>
+<li>不适用于有负权值的带权图</li>
+</ul>
+<p><img src="/./assets/image-20230718172100109.png" alt="image-20230718172100109"></p>
+<h3 id="Floyd算法（求各顶点间最短路径）（可以用于负权图）"><a href="#Floyd算法（求各顶点间最短路径）（可以用于负权图）" class="headerlink" title="Floyd算法（求各顶点间最短路径）（可以用于负权图）"></a>Floyd算法（求各顶点间最短路径）（可以用于负权图）</h3><h4 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h4><ul>
+<li><p>求出每一对顶点之间的最短路径</p>
+</li>
+<li><p>使用<strong>动态规划</strong>思想，将问题的求解分为多个节点</p>
+</li>
+<li><p>对于n个顶点的图G，求任意一对顶点Vi-&gt;Vj之间的最短路径可分为如下几个阶段：</p>
+<ul>
+<li><p>#初始：不允许在其他顶点中转，最短路径是？</p>
+</li>
+<li><p>#0：若允许V0中转，最短路径是？</p>
+</li>
+<li><p>#1：若允许V0、V1中转，最短路径是？</p>
+</li>
+<li><p>#2：若允许V0、V1、V2中转，最短路径是？</p>
+</li>
+<li><p>…</p>
+</li>
+<li><p>#n-1：若允许V0、V1、V2……Vn-1中转，最短路径是？</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230719002515354.png" alt="image-20230719002515354"></p>
+<p><img src="/./assets/image-20230719002636465.png" alt="image-20230719002636465"></p>
+<p><img src="/./assets/image-20230719002812797.png" alt="image-20230719002812797"></p>
+<p><img src="/./assets/image-20230719002926947.png" alt="image-20230719002926947"></p>
+<p><img src="/./assets/image-20230719002901286.png" alt="image-20230719002901286"></p>
+<h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Floyd算法，求每个顶点间距离的最小值</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Floyd</span><span class="params">(MGragh G)</span></span>&#123;</span><br><span class="line">    <span class="comment">//准备工作，根据图的信息初始化矩阵A和path</span></span><br><span class="line">    <span class="type">int</span> A[MaxVertexNum][MaxVertexNum];</span><br><span class="line">    <span class="type">int</span> path[MaxVertexNum][MaxVertexNum];</span><br><span class="line">    <span class="type">int</span> n = G.vexnum;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">0</span>; k &lt; n; k ++)&#123;                    <span class="comment">//考虑以vk作为中转点</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i &lt; n; i ++)&#123;                  <span class="comment">//遍历整个矩阵，i为行号，j为列号</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>; j &lt; n; j ++)&#123;              </span><br><span class="line">                <span class="keyword">if</span>(A[i][j] &gt; A[i][k] + A[j][k])&#123;    <span class="comment">//以vk为中转点的路径更短</span></span><br><span class="line">                    A[i][j]=A[i][k]+A[j][k];        <span class="comment">//更新最短路径长度</span></span><br><span class="line">                    path[i][j]=k;                   <span class="comment">//中转点</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./assets/image-20230719004122837.png" alt="image-20230719004122837"></p>
+<h4 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h4><ul>
+<li>时间复杂度：O(V^3)</li>
+<li>空间复杂度：O(V^2)</li>
+</ul>
+<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><p><img src="/./assets/image-20230719004238079.png" alt="image-20230719004238079"></p>
+<p><img src="/./assets/image-20230719004655886.png" alt="image-20230719004655886"></p>
+<p><img src="/./assets/image-20230719005500094.png" alt="image-20230719005500094"></p>
+<p><img src="/./assets/image-20230719005624147.png" alt="image-20230719005624147"></p>
+<p><img src="/./assets/image-20230719005659212.png" alt="image-20230719005659212"></p>
+<h4 id="寻找完整路径"><a href="#寻找完整路径" class="headerlink" title="寻找完整路径"></a>寻找完整路径</h4><ul>
+<li>通过path矩阵递归地找到完整路径</li>
+</ul>
+<p><img src="/./assets/image-20230719005938122.png" alt="image-20230719005938122"></p>
+<h4 id="算法存在问题"><a href="#算法存在问题" class="headerlink" title="算法存在问题"></a>算法存在问题</h4><ul>
+<li>可以解决负权图的问题</li>
+<li>但是不能解决带有“负权回路”的图（有负权值的边组成回路），这种图可能没有最短路径</li>
+</ul>
+<p><img src="/./assets/image-20230719010215338.png" alt="image-20230719010215338"></p>
+<h2 id="有向无环图-DAG"><a href="#有向无环图-DAG" class="headerlink" title="有向无环图(DAG)"></a>有向无环图(DAG)</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>若一个有向图中不存在环，则称为有向无环图，建成DAG图(Directed Acyclic Gragh)</li>
+</ul>
+<p><img src="/./assets/image-20230719010643791.png" alt="image-20230719010643791"></p>
+<h3 id="有向无环图描述表达式（简化存储结构）（不唯一）"><a href="#有向无环图描述表达式（简化存储结构）（不唯一）" class="headerlink" title="有向无环图描述表达式（简化存储结构）（不唯一）"></a>有向无环图描述表达式（简化存储结构）（不唯一）</h3><h4 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h4><p><img src="/./assets/image-20230719011019240.png" alt="image-20230719011019240"></p>
+<p><img src="/./assets/image-20230719011034513.png" alt="image-20230719011034513"></p>
+<p><img src="/./assets/image-20230719011052975.png" alt="image-20230719011052975"></p>
+<p><img src="/./assets/image-20230719011121655.png" alt="image-20230719011121655"></p>
+<p><img src="/./assets/image-20230719011134744.png" alt="image-20230719011134744"></p>
+<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><p><img src="/./assets/image-20230719011228174.png" alt="image-20230719011228174"></p>
+<p><img src="/./assets/image-20230719011258644.png" alt="image-20230719011258644"></p>
+<p><img src="/./assets/image-20230719011309795.png" alt="image-20230719011309795"></p>
+<h4 id="总结方法"><a href="#总结方法" class="headerlink" title="总结方法"></a>总结方法</h4><ul>
+<li>思想：顶点中不可能出现重复的操作数</li>
+<li>第一步<ul>
+<li>把各个操作数不重复地排成一排</li>
+</ul>
+</li>
+<li>第二步<ul>
+<li>标出各个运算符的生效顺序（先后顺序无所谓）</li>
+</ul>
+</li>
+<li>第三步<ul>
+<li>按顺序加入运算符，注意分层</li>
+</ul>
+</li>
+<li>第四步<ul>
+<li><strong>自底向上</strong>逐层检查<strong>同层</strong>的运算符是否可以合体</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230719011351606.png" alt="image-20230719011351606"></p>
+<p><img src="/./assets/image-20230719011623851.png" alt="image-20230719011623851"></p>
+<p><img src="/./assets/image-20230719011800244.png" alt="image-20230719011800244"></p>
+<p><img src="/./assets/image-20230719011906622.png" alt="image-20230719011906622"></p>
+<p><img src="/./assets/image-20230719011926673.png" alt="image-20230719011926673"></p>
+<p><img src="/./assets/image-20230719011949901.png" alt="image-20230719011949901"></p>
+<h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3><ul>
+<li>可以用 DFS 实现拓扑排序</li>
+</ul>
+<h4 id="AOV网（用顶点表示活动）"><a href="#AOV网（用顶点表示活动）" class="headerlink" title="AOV网（用顶点表示活动）"></a>AOV网（用顶点表示活动）</h4><ul>
+<li>AOV网(Activity on Vertex NetWork，用顶点表示活动的网)</li>
+<li>用DAG图（有向无环图）表示一个工程。顶点表示活动，有向边&lt;Vi,Vj&gt;表示活动Vi必须先于活动Vj进行</li>
+<li>有环路就不是AOV网</li>
+</ul>
+<p><img src="/./assets/image-20230719012714728.png" alt="image-20230719012714728"></p>
+<h4 id="拓扑排序定义"><a href="#拓扑排序定义" class="headerlink" title="拓扑排序定义"></a>拓扑排序定义</h4><ul>
+<li>在图论中，由一个有向无环图的顶点组成的序列，当且仅当满足下列条件时，称为该图的一个拓扑排序<ul>
+<li>每个顶点出现且只出现一次</li>
+<li>若顶点A在序列中排在顶点B的前面，则在图中不存在从顶点B到顶点A的路径</li>
+</ul>
+</li>
+<li>或定义为<ul>
+<li>拓扑排序是对有向无环图的顶点的一种排序，它使得若存在一条从顶点A到顶点B的路径，则在排序中顶点B出现在A的后面</li>
+<li>每个AOV网都有一个或多个拓扑排序序列</li>
+</ul>
+</li>
+</ul>
+<h4 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h4><ul>
+<li>先找到做事的先后顺序</li>
+</ul>
+<p><img src="/./assets/image-20230719013108763.png" alt="image-20230719013108763"></p>
+<p><img src="/./assets/image-20230719013138338.png" alt="image-20230719013138338"></p>
+<ul>
+<li><p>机器实现</p>
+<ul>
+<li>从AOV网中选择一个没有前驱（入度为0）的顶点并输出</li>
+<li>从网中删除该顶点和所有以它为起点的有向边</li>
+<li>重复以上步骤知道当前的AOV网为空或当前网中不存在无前驱的顶点为止</li>
+</ul>
+</li>
+<li><p>数据结构</p>
+<ul>
+<li>两个数组<ul>
+<li>Indegree[]: 当前顶点的入度</li>
+<li>Print[]: 记录拓扑序列</li>
+</ul>
+</li>
+<li>栈&#x2F;队列<ul>
+<li>S：保存度为0的顶点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//拓扑排序</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">TopologicalSort</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">    <span class="built_in">InitStack</span>(S);                           <span class="comment">//初始化栈，存储入度为0的顶点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)</span><br><span class="line">        <span class="keyword">if</span>(indegree[i]==<span class="number">0</span>)</span><br><span class="line">            <span class="built_in">Push</span>(S,i);                      <span class="comment">//将所有入度为0的顶点入栈</span></span><br><span class="line">    <span class="type">int</span> count=<span class="number">0</span>;                            <span class="comment">//计数，记录当前已经输出的顶点数</span></span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">IsEmpty</span>(S))&#123;                     <span class="comment">//栈不空，则存在入度为0的顶点</span></span><br><span class="line">        <span class="built_in">Pop</span>(S,i);                           <span class="comment">//栈顶元素出栈</span></span><br><span class="line">        print[count++]= i;                  <span class="comment">//输出顶点i</span></span><br><span class="line">        <span class="keyword">for</span>(p=G.vertices[i].firstarc;p;p=p-&gt;nextarc)&#123;</span><br><span class="line">            <span class="comment">//将所有i指向的顶点的入度-1，并且将入度减为0的顶点压入栈S</span></span><br><span class="line">            v=p-&gt;adjvex;</span><br><span class="line">            <span class="keyword">if</span>(!(--indegree[v])) Push[S,v]; <span class="comment">//入度为0，则入栈</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(count &lt; G.vexnum) <span class="keyword">return</span> <span class="literal">false</span>;      <span class="comment">//排序失败，有向图中有回路</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">true</span>;                       <span class="comment">//拓扑排序成功</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> VertexType int</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">ArcNode</span>&#123;                     <span class="comment">//边表节点</span></span><br><span class="line">    <span class="type">int</span> adjvex;                             <span class="comment">//该弧所指向的顶点的位置</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">ArcNode</span> *nextarc;                <span class="comment">//指向下一条弧的指针</span></span><br><span class="line">    <span class="comment">//InfoType info;                        //网的边权值</span></span><br><span class="line">&#125;ArcNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">VNode</span>                        <span class="comment">//顶点表节点</span></span><br><span class="line">&#123;</span><br><span class="line">    VertexType data;                        <span class="comment">//顶点信息</span></span><br><span class="line">    ArcNode *firstarc;                      <span class="comment">//指向第一条依附该顶点的弧的指针</span></span><br><span class="line">&#125; VNode, AdjList[MaxVertexNum];</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">    AdjList vertices;                       <span class="comment">//邻接表</span></span><br><span class="line">    <span class="type">int</span> vexnum, arcnum;                     <span class="comment">//图的顶点数和弧数</span></span><br><span class="line">&#125; Graph;																		<span class="comment">//Graph是以邻接表存储的图类型</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/./assets/image-20230719013657678.png" alt="image-20230719013657678"></p>
+<h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><p><img src="/./assets/image-20230719155110778.png" alt="image-20230719155110778"></p>
+<p><img src="/./assets/image-20230719155314319.png" alt="image-20230719155314319"></p>
+<p><img src="/./assets/image-20230719155421430.png" alt="image-20230719155421430"></p>
+<p><img src="/./assets/image-20230719155408611.png" alt="image-20230719155408611"></p>
+<p><img src="/./assets/image-20230719155604735.png" alt="image-20230719155604735"></p>
+<p><img src="/./assets/image-20230719155630295.png" alt="image-20230719155630295"></p>
+<h4 id="时间复杂度-1"><a href="#时间复杂度-1" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><ul>
+<li>邻接表：O(V+E)</li>
+<li>邻接矩阵：O(V^2)</li>
+</ul>
+<p><img src="/./assets/image-20230719155751183.png" alt="image-20230719155751183"></p>
+<h4 id="无法进行拓扑排序：有回路的图"><a href="#无法进行拓扑排序：有回路的图" class="headerlink" title="无法进行拓扑排序：有回路的图"></a>无法进行拓扑排序：有回路的图</h4><p><img src="/./assets/image-20230719013605807.png" alt="image-20230719013605807"></p>
+<ul>
+<li>当前AOV图中每个节点的入度都&gt;0</li>
+</ul>
+<p><img src="/./assets/image-20230719013455492.png" alt="image-20230719013455492"></p>
+<h3 id="逆拓扑排序"><a href="#逆拓扑排序" class="headerlink" title="逆拓扑排序"></a>逆拓扑排序</h3><ul>
+<li>拓扑排序是删除入度&#x3D;0的点</li>
+<li>逆拓扑排序是删除出度&#x3D;0的点</li>
+</ul>
+<p><img src="/./assets/image-20230719155859372.png" alt="image-20230719155859372"></p>
+<h4 id="举例-1"><a href="#举例-1" class="headerlink" title="举例"></a>举例</h4><p><img src="/./assets/image-20230719155923334.png" alt="image-20230719155923334"></p>
+<p><img src="/./assets/image-20230719155938429.png" alt="image-20230719155938429"></p>
+<h4 id="逆拓扑排序的实现"><a href="#逆拓扑排序的实现" class="headerlink" title="逆拓扑排序的实现"></a>逆拓扑排序的实现</h4><ul>
+<li>邻接表<ul>
+<li>保存的是从这个节点出去的边</li>
+</ul>
+</li>
+<li>逆邻接表<ul>
+<li>保存的是指向这个顶点的边</li>
+</ul>
+</li>
+<li>邻接矩阵<ul>
+<li>横行：从该节点出去的边</li>
+<li>竖列：指向这个顶点的边</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230719160056829.png" alt="image-20230719160056829"></p>
+<h4 id="DFS实现逆拓扑排序"><a href="#DFS实现逆拓扑排序" class="headerlink" title="DFS实现逆拓扑排序"></a>DFS实现逆拓扑排序</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//逆拓扑排序（DFS算法）</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">DFSTraverse</span><span class="params">(Graph G)</span></span>&#123;                  <span class="comment">//对图G进行深度优先遍历</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> v=<span class="number">0</span>; v&lt;G.vexnum; ++v)</span><br><span class="line">        visited[v]=<span class="literal">false</span>;                   <span class="comment">//初始化已访问标记数据</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> v=<span class="number">0</span>; v&lt;G.vexnum; ++v)</span><br><span class="line">        <span class="keyword">if</span>(!visited[v])</span><br><span class="line">            <span class="built_in">DFS</span>(G,v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//DFS，从顶点v出发，深度优先遍历图G</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">DFS</span><span class="params">(Graph G,<span class="type">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="built_in">visit</span>(v);                               <span class="comment">//访问顶点</span></span><br><span class="line">    visited[v]=<span class="literal">true</span>;                        <span class="comment">//设已访问标记</span></span><br><span class="line">    <span class="keyword">for</span>(w=<span class="built_in">FirstNeighbor</span>(G,v);w&gt;=<span class="number">0</span>;w=<span class="built_in">NextNeighbor</span>(G,v,w))</span><br><span class="line">        <span class="keyword">if</span>(!visited[w])&#123;                    <span class="comment">//w为u的尚未访问的邻接顶点</span></span><br><span class="line">            <span class="built_in">DFS</span>(G,w);</span><br><span class="line">        &#125;</span><br><span class="line">  	<span class="built_in">print</span>(v);                               <span class="comment">//输出顶点</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h4><p><img src="/./assets/image-20230720001307281.png" alt="image-20230720001307281"></p>
+<p><img src="/./assets/image-20230720001337456.png" alt="image-20230720001337456"></p>
+<p><img src="/./assets/image-20230720001354364.png" alt="image-20230720001354364"></p>
+<p><img src="/./assets/image-20230720001411582.png" alt="image-20230720001411582"></p>
+<p><img src="/./assets/image-20230720001433264.png" alt="image-20230720001433264"></p>
+<p><img src="/./assets/image-20230720001522660.png" alt="image-20230720001522660"></p>
+<p><img src="/./assets/image-20230720001545539.png" alt="image-20230720001545539"></p>
+<p><img src="/./assets/image-20230720001605059.png" alt="image-20230720001605059"></p>
+<p><img src="/./assets/image-20230720001623820.png" alt="image-20230720001623820"></p>
+<p><img src="/./assets/image-20230720001651750-9783412.png" alt="image-20230720001651750"></p>
+<h3 id="关键路径"><a href="#关键路径" class="headerlink" title="关键路径"></a>关键路径</h3><h4 id="AOE网（用边表示活动）"><a href="#AOE网（用边表示活动）" class="headerlink" title="AOE网（用边表示活动）"></a>AOE网（用边表示活动）</h4><ul>
+<li>在带权有向图中，以<strong>顶点</strong>表示事件，以<strong>有向边</strong>表示活动，以<strong>边上的权值</strong>表示完成该活动的开销（如完成活动所需时间），称之为用边表示活动的网络，简称AOE网（Activity On Edge Network）</li>
+</ul>
+<p><img src="/./assets/image-20230720002543969.png" alt="image-20230720002543969"></p>
+<ul>
+<li><p>AOV网的性质</p>
+<ul>
+<li><p>只有在某个顶点所代表的事件发生后，从该顶点出发的各有向边所代表的活动才能开始</p>
+</li>
+<li><p>只有在进入某个顶点的各有向边所代表的活动都已经结束时，该顶点所代表的事件才能发生</p>
+</li>
+<li><p>另外，有些活动是可以并行进行的</p>
+</li>
+</ul>
+</li>
+<li><p>AOE网的组成</p>
+<ul>
+<li>在AOE网中仅有一个入度为0的顶点，称为<strong>开始顶点（源点）</strong>，表示整个工程的开始</li>
+<li>仅有一个出度为0的点，称为<strong>结束顶点（汇点）</strong>，表示整个工程的结束</li>
+<li>从源点到汇点的有向路径可能有多条，所有路径中，具有最大路径长度的路径称为<strong>关键路径</strong>，而把关键路径上的活动称为<strong>关键活动</strong></li>
+<li>完成整个工程的最短时间就是<strong>关键路径的长度</strong>，若关键路径不能按时完成，则整个工程完成时间就会延长</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230720003025269.png" alt="image-20230720003025269"></p>
+<p><img src="/./assets/image-20230720003229716.png" alt="image-20230720003229716"></p>
+<h4 id="关键路径（类似软件项目管理的里程碑）"><a href="#关键路径（类似软件项目管理的里程碑）" class="headerlink" title="关键路径（类似软件项目管理的里程碑）"></a>关键路径（类似软件项目管理的里程碑）</h4><ul>
+<li>事件Vk的最早发生时间Ve(k)——决定了所有从Vk开始的活动能够开工的最早时间</li>
+<li>活动ai的最早开始时间e(i)——指该活动弧的起点所表示的事件的最早发生时间</li>
+</ul>
+<p><img src="/./assets/image-20230720003544094.png" alt="image-20230720003544094"></p>
+<ul>
+<li>事件Vk的最早发生时间Vl(k)——指在不推迟整个工程完成的前提下，该事件最迟必须发生的时间</li>
+<li>活动ai的最早开始时间l(i)——指该活动弧的终点所表示的事件的最迟发生时间与该活动所需时间之差</li>
+</ul>
+<p><img src="/./assets/image-20230720140959200.png" alt="image-20230720140959200"></p>
+<ul>
+<li>活动最早时间e(i) VS 活动最迟开始时间l(i)</li>
+<li>活动ai的时间余量d(i)&#x3D;l(i)-e(i)<ul>
+<li>表示在不增加完成整个工程所需总时间的情况下，活动ai可以拖延的时间</li>
+<li>若一个活动的时间余量&#x3D;0，则说明该活动必须要如期完成，d(i)&#x3D;0即l(i)&#x3D;e(i)的活动ai是关键活动，由关键活动组成的路径就是关键路径</li>
+</ul>
+</li>
+</ul>
+<p><img src="/./assets/image-20230720141529642.png" alt="image-20230720141529642"></p>
+<h4 id="求关键路径的步骤"><a href="#求关键路径的步骤" class="headerlink" title="求关键路径的步骤"></a>求关键路径的步骤</h4><ol>
+<li>求所有事件的最早发生时间Ve()<ul>
+<li>按<strong>拓扑排序</strong>序列，依次求各个顶点的Ve(k)</li>
+<li>Ve(源点)&#x3D;0</li>
+<li>Ve(k)&#x3D;Max{Ve(j) + Weight(Vj,Vk)}.  Vj为Vk的任意前驱（即找到前驱节点+事件时间最大的路径）</li>
+</ul>
+</li>
+<li>求所有事件的最迟发生时间Vl()<ul>
+<li>按逆拓扑排序序列，依次求各个顶点的Vl(k)</li>
+<li>Vl(汇点)&#x3D;Ve(汇点)</li>
+<li>Vl(k)&#x3D;Min{Vl(j)+Weight(Vk,Vj)}.     Vj为Vk的任意后继</li>
+</ul>
+</li>
+<li>求所有活动的最早发生时间e()<ul>
+<li>若边&lt;Vk,Vj&gt;表示活动ai，则有e(i)&#x3D;Ve(k)</li>
+</ul>
+</li>
+<li>求所有活动的最迟发生时间l()<ul>
+<li>若边&lt;Vk,Vj&gt;表示活动ai，则有l(i)&#x3D;Vl(j)-Weight(Vk,Vj)</li>
+</ul>
+</li>
+<li>求所有活动的时间余量d()<ul>
+<li>d(i)&#x3D;l(i)-e(i)</li>
+</ul>
+</li>
+<li>求得关键活动、关键路径<ul>
+<li>将d[i]&#x3D;0的路径连接成一条线</li>
+</ul>
+</li>
+</ol>
+<p><strong>d(i)&#x3D;0的活动就是关键活动，由关键活动可得关键路径</strong></p>
+<p><img src="/./assets/image-20230720141956503.png" alt="image-20230720141956503"></p>
+<ul>
+<li>求所有事件的最早发生时间</li>
+</ul>
+<p><img src="/./assets/image-20230720142518121.png" alt="image-20230720142518121"></p>
+<ul>
+<li>求所有事件的最迟发生时间</li>
+</ul>
+<p><img src="/./assets/image-20230720142714515.png" alt="image-20230720142714515"></p>
+<ul>
+<li>求所有活动的最早发生时间</li>
+</ul>
+<p><img src="/./assets/image-20230720143204437.png" alt="image-20230720143204437"></p>
+<ul>
+<li>求所有活动的最迟发生时间</li>
+</ul>
+<p><img src="/./assets/image-20230720143240311.png" alt="image-20230720143240311"></p>
+<ul>
+<li>求所有活动的最迟发生时间</li>
+</ul>
+<p><img src="/./assets/image-20230720143420904.png" alt="image-20230720143420904"></p>
+<ul>
+<li>求所有活动的时间余量</li>
+</ul>
+<p><img src="/./assets/image-20230720143524191.png" alt="image-20230720143524191"></p>
+<ul>
+<li>求得关键活动、关键路径</li>
+</ul>
+<p><img src="/./assets/image-20230720143604260.png" alt="image-20230720143604260"></p>
+<h4 id="关键活动、关键路径的特性"><a href="#关键活动、关键路径的特性" class="headerlink" title="关键活动、关键路径的特性"></a>关键活动、关键路径的特性</h4><ul>
+<li>若关键活动耗时增加，则整个工程的工期将曾长</li>
+<li>缩短关键活动的时间，可以缩短整个工程的工期</li>
+<li>当缩短到一定程度时，关键活动可能会变成非关键活动（并不是只要压缩关键路径的时间，工期就可以提前）</li>
+<li>可能有多条关键路径，只提高一条关键路径上的关键活动速度并不能缩短整个工程的工期，只有加快那些包括在所有关键路径上的关键活动才能达到缩短工期的目的（或者缩短每一条关键路径上的关键活动）</li>
+</ul>
+<p><img src="/./assets/image-20230720143931809.png" alt="image-20230720143931809"></p>
+<p><img src="/./assets/image-20230720144157251.png" alt="image-20230720144157251"></p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="1-练习：有向图的BFS过程"><a href="#1-练习：有向图的BFS过程" class="headerlink" title="1.练习：有向图的BFS过程"></a>1.练习：有向图的BFS过程</h3><p><img src="/./assets/image-20230718011319698.png" alt="image-20230718011319698"></p>
+<h3 id="2-练习：如果存在回路，则不存在逆拓扑排序序列，如何判断回路？"><a href="#2-练习：如果存在回路，则不存在逆拓扑排序序列，如何判断回路？" class="headerlink" title="2.练习：如果存在回路，则不存在逆拓扑排序序列，如何判断回路？"></a>2.练习：如果存在回路，则不存在逆拓扑排序序列，如何判断回路？</h3><p><img src="/./assets/image-20230720001940125.png" alt="image-20230720001940125"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://sdumoist.github.io">SDUMoist</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://sdumoist.github.io/2023/07/06/%E5%9B%BE/">https://sdumoist.github.io/2023/07/06/%E5%9B%BE/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://sdumoist.github.io" target="_blank">Moist</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/background/9.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/20/%E6%9F%A5%E6%89%BE/" title=""><img class="cover" src="/img/background/5.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2023/07/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" title=""><img class="cover" src="/img/background/3.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">SDUMoist</div><div class="author-info__description">一个会点拍照，会点写作，会点生活的程序员</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sdumoist"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/sdumoist" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/2076520410@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-number">1.</span> <span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E7%82%B9%E6%80%BB%E7%BB%93"><span class="toc-number">1.1.</span> <span class="toc-text">考点总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E7%94%9F%E6%88%90%E6%A0%91%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%94%9F%E6%88%90%E6%A0%91"><span class="toc-number">1.1.1.</span> <span class="toc-text">深度优先生成树和广度优先生成树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93"><span class="toc-number">1.2.</span> <span class="toc-text">知识总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.</span> <span class="toc-text">图的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">图的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">逻辑结构的应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%90%91%E5%9B%BE%E3%80%81%E6%9C%89%E5%90%91%E5%9B%BE"><span class="toc-number">1.3.3.</span> <span class="toc-text">无向图、有向图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%9B%BE%E3%80%81%E5%A4%9A%E9%87%8D%E5%9B%BE"><span class="toc-number">1.3.4.</span> <span class="toc-text">简单图、多重图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B6%E7%82%B9%E7%9A%84%E5%BA%A6%E3%80%81%E5%85%A5%E5%BA%A6%E3%80%81%E5%87%BA%E5%BA%A6"><span class="toc-number">1.3.5.</span> <span class="toc-text">顶点的度、入度、出度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B6%E7%82%B9-%E9%A1%B6%E7%82%B9%E7%9A%84%E5%85%B3%E7%B3%BB%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.3.6.</span> <span class="toc-text">顶点-顶点的关系描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E9%80%9A%E5%9B%BE%E3%80%81%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%9B%BE"><span class="toc-number">1.3.7.</span> <span class="toc-text">连通图、强连通图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E5%9B%BE%E3%80%81%E7%94%9F%E6%88%90%E5%AD%90%E5%9B%BE"><span class="toc-number">1.3.8.</span> <span class="toc-text">子图、生成子图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F%E3%80%81%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F"><span class="toc-number">1.3.9.</span> <span class="toc-text">连通分量、强连通分量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%A0%91%E3%80%81%E7%94%9F%E6%88%90%E6%A3%AE%E6%9E%97%EF%BC%88%E4%B8%80%E7%A7%8D%E4%BF%9D%E6%8C%81%E8%BF%9E%E9%80%9A%E7%9A%84%E4%B8%B4%E7%95%8C%EF%BC%89"><span class="toc-number">1.3.10.</span> <span class="toc-text">生成树、生成森林（一种保持连通的临界）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%B9%E7%9A%84%E6%9D%83%E3%80%81%E5%B8%A6%E6%9D%83%E5%9B%BE-%E7%BD%91"><span class="toc-number">1.3.11.</span> <span class="toc-text">边的权、带权图&#x2F;网</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%A0%E7%A7%8D%E7%89%B9%E6%AE%8A%E7%8A%B6%E6%80%81%E7%9A%84%E5%9B%BE"><span class="toc-number">1.3.12.</span> <span class="toc-text">几种特殊状态的图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E5%90%91%E5%AE%8C%E5%85%A8%E5%9B%BE"><span class="toc-number">1.3.12.1.</span> <span class="toc-text">无向完全图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%90%91%E5%AE%8C%E5%85%A8%E5%9B%BE"><span class="toc-number">1.3.12.2.</span> <span class="toc-text">有向完全图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%80%E7%96%8F%E5%9B%BE"><span class="toc-number">1.3.12.3.</span> <span class="toc-text">稀疏图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%A0%E5%AF%86%E5%9B%BE"><span class="toc-number">1.3.12.4.</span> <span class="toc-text">稠密图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%91%E3%80%81%E6%9C%89%E5%90%91%E6%A0%91"><span class="toc-number">1.3.12.5.</span> <span class="toc-text">树、有向树</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">1.4.</span> <span class="toc-text">图的存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="toc-number">1.4.1.</span> <span class="toc-text">邻接矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%97%A0%E6%9D%83%E5%9B%BE"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">存储无权图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%B8%A6%E6%9D%83%E5%9B%BE%EF%BC%88%E7%BD%91%EF%BC%89"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">存储带权图（网）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9E%E9%A1%BE%EF%BC%9A%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="toc-number">1.4.1.4.</span> <span class="toc-text">回顾：对称矩阵的压缩存储</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-number">1.4.2.</span> <span class="toc-text">邻接表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">空间复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A5%E5%BA%A6%E3%80%81%E5%87%BA%E5%BA%A6%E3%80%81%E5%BA%A6"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">入度、出度、度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8%E4%B8%8D%E5%94%AF%E4%B8%80%EF%BC%88%E8%BE%B9%E9%93%BE%E8%A1%A8%E7%9A%84%E9%A1%BA%E5%BA%8F%E4%BB%BB%E6%84%8F%EF%BC%89"><span class="toc-number">1.4.2.4.</span> <span class="toc-text">邻接表不唯一（边链表的顺序任意）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E5%92%8C%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%9A%84%E5%8A%A3%E5%8A%BF"><span class="toc-number">1.4.3.</span> <span class="toc-text">邻接矩阵和邻接表的劣势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E5%AD%97%E9%93%BE%E8%A1%A8%EF%BC%88%E5%8F%AA%E8%83%BD%E5%AD%98%E5%82%A8%E6%9C%89%E5%90%91%E5%9B%BE%EF%BC%89"><span class="toc-number">1.4.4.</span> <span class="toc-text">十字链表（只能存储有向图）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%A7%E8%8A%82%E7%82%B9%EF%BC%88%E5%AD%98%E5%82%A8%E5%BC%A7%EF%BC%89"><span class="toc-number">1.4.4.1.</span> <span class="toc-text">弧节点（存储弧）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90-1"><span class="toc-number">1.4.4.2.</span> <span class="toc-text">性能分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E5%A4%9A%E9%87%8D%E8%A1%A8%EF%BC%88%E5%AD%98%E5%82%A8%E6%97%A0%E5%90%91%E5%9B%BE%EF%BC%89"><span class="toc-number">1.4.5.</span> <span class="toc-text">邻接多重表（存储无向图）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-number">1.4.5.1.</span> <span class="toc-text">改进邻接表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="toc-number">1.4.5.2.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">1.4.5.3.</span> <span class="toc-text">优点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.5.</span> <span class="toc-text">图的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.5.1.</span> <span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E8%BE%B9%E6%88%96-x-y"><span class="toc-number">1.5.2.</span> <span class="toc-text">判断是否存在边&lt;x,y&gt;或(x,y)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E5%87%BA%E4%B8%8E%E8%8A%82%E7%82%B9x%E9%82%BB%E6%8E%A5%E7%9A%84%E8%BE%B9"><span class="toc-number">1.5.3.</span> <span class="toc-text">列出与节点x邻接的边</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%96%B0%E9%A1%B6%E7%82%B9"><span class="toc-number">1.5.4.</span> <span class="toc-text">插入新顶点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E9%A1%B6%E7%82%B9"><span class="toc-number">1.5.5.</span> <span class="toc-text">删除顶点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%B0%E8%BE%B9"><span class="toc-number">1.5.6.</span> <span class="toc-text">添加新边</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E5%88%B0%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%82%BB%E6%8E%A5%E7%82%B9%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-number">1.5.7.</span> <span class="toc-text">找到第一个邻接点（重点）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E5%88%B0%E9%99%A4%E4%BA%86%E9%82%BB%E6%8E%A5%E7%82%B9y%E4%BB%A5%E5%A4%96%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E9%82%BB%E6%8E%A5%E7%82%B9-%E9%87%8D%E7%82%B9"><span class="toc-number">1.5.8.</span> <span class="toc-text">找到除了邻接点y以外的下一个邻接点(重点)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E8%BE%B9%E7%9A%84%E6%9D%83%E5%80%BC-%E8%AE%BE%E7%BD%AE%E8%BE%B9%E7%9A%84%E6%9D%83%E5%80%BC"><span class="toc-number">1.5.9.</span> <span class="toc-text">找边的权值&#x2F;设置边的权值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89%EF%BC%88%E7%94%A8%E6%A0%88%E5%AE%9E%E7%8E%B0%EF%BC%89"><span class="toc-number">1.5.10.</span> <span class="toc-text">图的深度优先遍历（重点）（用栈实现）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">1.5.10.1.</span> <span class="toc-text">树的深度优先遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">1.5.10.2.</span> <span class="toc-text">深度优先遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.10.3.</span> <span class="toc-text">算法存在的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.5.10.4.</span> <span class="toc-text">复杂度分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%EF%BC%88%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E5%94%AF%E4%B8%80%EF%BC%8C%E9%82%BB%E6%8E%A5%E8%A1%A8%E4%B8%8D%E5%94%AF%E4%B8%80%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E4%B9%9F%E4%B8%8D%E5%94%AF%E4%B8%80%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%80%E4%B8%80%E5%AF%B9%E5%BA%94%EF%BC%89"><span class="toc-number">1.5.10.5.</span> <span class="toc-text">深度优先遍历序列（邻接矩阵唯一，邻接表不唯一遍历序列也不唯一，但是一一对应）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E7%9A%84%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E4%BB%8E%E5%9B%BE%E4%B8%AD%E7%9C%8B%E5%87%BA%E6%9D%A5%EF%BC%8C%E5%B0%8F%E7%9A%84%E9%A1%B6%E7%82%B9%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">1.5.10.6.</span> <span class="toc-text">邻接矩阵的遍历序列可以直接从图中看出来，小的顶点先遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%9A%84%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E8%A6%81%E7%9C%8B%E9%82%BB%E6%8E%A5%E8%A1%A8%EF%BC%8C%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E4%BB%8E%E5%9B%BE%E4%B8%AD%E5%BE%97%E5%87%BA"><span class="toc-number">1.5.10.7.</span> <span class="toc-text">邻接表的遍历序列要看邻接表，不能直接从图中得出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E7%94%9F%E6%88%90%E6%A0%91"><span class="toc-number">1.5.10.8.</span> <span class="toc-text">深度优先生成树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E7%94%9F%E6%88%90%E6%A3%AE%E6%9E%97"><span class="toc-number">1.5.10.9.</span> <span class="toc-text">深度优先生成森林</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86%E4%B8%8E%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7"><span class="toc-number">1.5.10.10.</span> <span class="toc-text">图的遍历与图的连通性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89%EF%BC%88%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%EF%BC%89"><span class="toc-number">1.5.11.</span> <span class="toc-text">图的广度优先遍历（重点）（用队列实现）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86-VS-%E5%9B%BE%E7%9A%84%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">1.5.11.1.</span> <span class="toc-text">树的广度优先遍历 VS 图的广度优先遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.5.11.2.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%8B%E7%AE%97"><span class="toc-number">1.5.11.3.</span> <span class="toc-text">手算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E5%8F%AF%E5%8F%98%EF%BC%88%E9%82%BB%E6%8E%A5%E9%93%BE%E8%A1%A8%E5%AD%98%E5%82%A8%E5%85%88%E5%90%8E%EF%BC%89"><span class="toc-number">1.5.11.4.</span> <span class="toc-text">遍历序列可变（邻接链表存储先后）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98-1"><span class="toc-number">1.5.11.5.</span> <span class="toc-text">算法存在的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-1"><span class="toc-number">1.5.11.6.</span> <span class="toc-text">复杂度分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6-1"><span class="toc-number">1.5.11.7.</span> <span class="toc-text">空间复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.5.11.8.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%94%9F%E6%88%90%E6%A0%91"><span class="toc-number">1.5.11.9.</span> <span class="toc-text">广度优先生成树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%94%9F%E6%88%90%E6%A3%AE%E6%9E%97"><span class="toc-number">1.5.11.10.</span> <span class="toc-text">广度优先生成森林</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="toc-number">1.5.12.</span> <span class="toc-text">最小生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%A0%91"><span class="toc-number">1.5.12.1.</span> <span class="toc-text">生成树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%94%9F%E6%88%90%E6%A0%91-1"><span class="toc-number">1.5.12.2.</span> <span class="toc-text">广度优先生成树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E7%94%9F%E6%88%90%E6%A0%91-1"><span class="toc-number">1.5.12.3.</span> <span class="toc-text">深度优先生成树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%EF%BC%88%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7%E6%A0%91%EF%BC%89"><span class="toc-number">1.5.12.4.</span> <span class="toc-text">最小生成树（最小代价树）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Prim%E7%AE%97%E6%B3%95%EF%BC%88%E6%99%AE%E9%87%8C%E5%A7%86%EF%BC%89%EF%BC%88%E7%82%B9%EF%BC%89"><span class="toc-number">1.5.12.5.</span> <span class="toc-text">Prim算法（普里姆）（点）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kruskal%E7%AE%97%E6%B3%95%EF%BC%88%E5%85%8B%E9%B2%81%E6%96%AF%E5%8D%A1%E5%B0%94%EF%BC%89%EF%BC%88%E8%BE%B9%EF%BC%89"><span class="toc-number">1.5.12.6.</span> <span class="toc-text">Kruskal算法（克鲁斯卡尔）（边）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-number">1.5.13.</span> <span class="toc-text">图的最短路径</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-number">1.5.13.1.</span> <span class="toc-text">单源最短路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-number">1.5.13.2.</span> <span class="toc-text">多源最短路径</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFS%E6%B1%82%E6%97%A0%E6%9D%83%E5%9B%BE%E7%9A%84%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%88%E5%8F%AA%E9%80%82%E7%94%A8%E4%BA%8E%E6%97%A0%E6%9D%83%E5%9B%BE%EF%BC%8C%E6%88%96%E6%89%80%E6%9C%89%E8%BE%B9%E6%9D%83%E5%80%BC%E9%83%BD%E7%9B%B8%E5%90%8C%E7%9A%84%E5%9B%BE%EF%BC%89"><span class="toc-number">1.5.14.</span> <span class="toc-text">BFS求无权图的单源最短路径（只适用于无权图，或所有边权值都相同的图）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-1"><span class="toc-number">1.5.14.1.</span> <span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8B%84%E6%9D%B0%E6%96%AF%E7%89%B9%E6%8B%89%E6%B1%82%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%88%E5%8F%AF%E4%BB%A5%E7%94%A8%E4%BA%8E%E6%97%A0%E6%9D%83%E5%9B%BE%E3%80%81%E5%B8%A6%E6%9D%83%E5%9B%BE%EF%BC%8C%E4%B8%8D%E8%83%BD%E7%94%A8%E4%BA%8E%E8%B4%9F%E6%9D%83%E5%80%BC%E7%9A%84%E5%9B%BE%EF%BC%89"><span class="toc-number">1.5.15.</span> <span class="toc-text">狄杰斯特拉求单源最短路径（可以用于无权图、带权图，不能用于负权值的图）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E7%BC%BA%E7%82%B9"><span class="toc-number">1.5.15.1.</span> <span class="toc-text">算法缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Floyd%E7%AE%97%E6%B3%95%EF%BC%88%E6%B1%82%E5%90%84%E9%A1%B6%E7%82%B9%E9%97%B4%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%89%EF%BC%88%E5%8F%AF%E4%BB%A5%E7%94%A8%E4%BA%8E%E8%B4%9F%E6%9D%83%E5%9B%BE%EF%BC%89"><span class="toc-number">1.5.16.</span> <span class="toc-text">Floyd算法（求各顶点间最短路径）（可以用于负权图）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3"><span class="toc-number">1.5.16.1.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-2"><span class="toc-number">1.5.16.2.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.5.16.3.</span> <span class="toc-text">算法复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.5.16.4.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E5%AE%8C%E6%95%B4%E8%B7%AF%E5%BE%84"><span class="toc-number">1.5.16.5.</span> <span class="toc-text">寻找完整路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%AD%98%E5%9C%A8%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.16.6.</span> <span class="toc-text">算法存在问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%90%91%E6%97%A0%E7%8E%AF%E5%9B%BE-DAG"><span class="toc-number">1.6.</span> <span class="toc-text">有向无环图(DAG)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="toc-number">1.6.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%90%91%E6%97%A0%E7%8E%AF%E5%9B%BE%E6%8F%8F%E8%BF%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88%E7%AE%80%E5%8C%96%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%EF%BC%89%EF%BC%88%E4%B8%8D%E5%94%AF%E4%B8%80%EF%BC%89"><span class="toc-number">1.6.2.</span> <span class="toc-text">有向无环图描述表达式（简化存储结构）（不唯一）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.6.2.1.</span> <span class="toc-text">算法实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">1.6.2.2.</span> <span class="toc-text">例题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E6%96%B9%E6%B3%95"><span class="toc-number">1.6.2.3.</span> <span class="toc-text">总结方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="toc-number">1.6.3.</span> <span class="toc-text">拓扑排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AOV%E7%BD%91%EF%BC%88%E7%94%A8%E9%A1%B6%E7%82%B9%E8%A1%A8%E7%A4%BA%E6%B4%BB%E5%8A%A8%EF%BC%89"><span class="toc-number">1.6.3.1.</span> <span class="toc-text">AOV网（用顶点表示活动）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%AE%9A%E4%B9%89"><span class="toc-number">1.6.3.2.</span> <span class="toc-text">拓扑排序定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">1.6.3.3.</span> <span class="toc-text">实现方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B"><span class="toc-number">1.6.3.4.</span> <span class="toc-text">过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6-1"><span class="toc-number">1.6.3.5.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E8%BF%9B%E8%A1%8C%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%EF%BC%9A%E6%9C%89%E5%9B%9E%E8%B7%AF%E7%9A%84%E5%9B%BE"><span class="toc-number">1.6.3.6.</span> <span class="toc-text">无法进行拓扑排序：有回路的图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%86%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="toc-number">1.6.4.</span> <span class="toc-text">逆拓扑排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-1"><span class="toc-number">1.6.4.1.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%86%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.6.4.2.</span> <span class="toc-text">逆拓扑排序的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DFS%E5%AE%9E%E7%8E%B0%E9%80%86%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="toc-number">1.6.4.3.</span> <span class="toc-text">DFS实现逆拓扑排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="toc-number">1.6.4.4.</span> <span class="toc-text">实现过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84"><span class="toc-number">1.6.5.</span> <span class="toc-text">关键路径</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AOE%E7%BD%91%EF%BC%88%E7%94%A8%E8%BE%B9%E8%A1%A8%E7%A4%BA%E6%B4%BB%E5%8A%A8%EF%BC%89"><span class="toc-number">1.6.5.1.</span> <span class="toc-text">AOE网（用边表示活动）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84%EF%BC%88%E7%B1%BB%E4%BC%BC%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E9%87%8C%E7%A8%8B%E7%A2%91%EF%BC%89"><span class="toc-number">1.6.5.2.</span> <span class="toc-text">关键路径（类似软件项目管理的里程碑）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.6.5.3.</span> <span class="toc-text">求关键路径的步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E6%B4%BB%E5%8A%A8%E3%80%81%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">1.6.5.4.</span> <span class="toc-text">关键活动、关键路径的特性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.7.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BB%83%E4%B9%A0%EF%BC%9A%E6%9C%89%E5%90%91%E5%9B%BE%E7%9A%84BFS%E8%BF%87%E7%A8%8B"><span class="toc-number">1.7.1.</span> <span class="toc-text">1.练习：有向图的BFS过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BB%83%E4%B9%A0%EF%BC%9A%E5%A6%82%E6%9E%9C%E5%AD%98%E5%9C%A8%E5%9B%9E%E8%B7%AF%EF%BC%8C%E5%88%99%E4%B8%8D%E5%AD%98%E5%9C%A8%E9%80%86%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%BA%8F%E5%88%97%EF%BC%8C%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%9B%9E%E8%B7%AF%EF%BC%9F"><span class="toc-number">1.7.2.</span> <span class="toc-text">2.练习：如果存在回路，则不存在逆拓扑排序序列，如何判断回路？</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/121-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="121. 买卖股票的最佳时机"><img src="/img/background/5.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="121. 买卖股票的最佳时机"/></a><div class="content"><a class="title" href="/2024/03/26/121-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="121. 买卖股票的最佳时机">121. 买卖股票的最佳时机</a><time datetime="2024-03-26T12:09:11.000Z" title="发表于 2024-03-26 20:09:11">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/2642-%E8%AE%BE%E8%AE%A1%E5%8F%AF%E4%BB%A5%E6%B1%82%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%9A%84%E5%9B%BE%E7%B1%BB/" title="2642. 设计可以求最短路径的图类"><img src="/img/background/11.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2642. 设计可以求最短路径的图类"/></a><div class="content"><a class="title" href="/2024/03/26/2642-%E8%AE%BE%E8%AE%A1%E5%8F%AF%E4%BB%A5%E6%B1%82%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%9A%84%E5%9B%BE%E7%B1%BB/" title="2642. 设计可以求最短路径的图类">2642. 设计可以求最短路径的图类</a><time datetime="2024-03-26T08:36:39.000Z" title="发表于 2024-03-26 16:36:39">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/25/hello-world/" title="Hello World"><img src="/img/background/6.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2024/03/25/hello-world/" title="Hello World">Hello World</a><time datetime="2024-03-25T10:50:58.339Z" title="发表于 2024-03-25 18:50:58">2024-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/24/%E6%8E%92%E5%BA%8F/" title="无题"><img src="/img/background/6.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/07/24/%E6%8E%92%E5%BA%8F/" title="无题">无题</a><time datetime="2023-07-24T14:41:52.306Z" title="发表于 2023-07-24 22:41:52">2023-07-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/20/%E6%9F%A5%E6%89%BE/" title="无题"><img src="/img/background/5.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/07/20/%E6%9F%A5%E6%89%BE/" title="无题">无题</a><time datetime="2023-07-20T06:47:23.233Z" title="发表于 2023-07-20 14:47:23">2023-07-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By SDUMoist</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://sdumoist.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
