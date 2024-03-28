@@ -1,0 +1,206 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>1997. 访问完所有房间的第一天 | Moist</title><meta name="author" content="SDUMoist"><meta name="copyright" content="SDUMoist"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1997. 访问完所有房间的第一天题目你需要访问 n 个房间，房间从 0 到 n - 1 编号。同时，每一天都有一个日期编号，从 0 开始，依天数递增。你每天都会访问一个房间。 最开始的第 0 天，你访问 0 号房间。给你一个长度为 n 且 下标从 0 开始 的数组 nextVisit 。在接下来的几天中，你访问房间的 次序 将根据下面的 规则 决定：  假设某一天，你访问 i 号房间。 如果算上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1997. 访问完所有房间的第一天">
+<meta property="og:url" content="https://sdumoist.github.io/2024/03/29/1997-%E8%AE%BF%E9%97%AE%E5%AE%8C%E6%89%80%E6%9C%89%E6%88%BF%E9%97%B4%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9/index.html">
+<meta property="og:site_name" content="Moist">
+<meta property="og:description" content="1997. 访问完所有房间的第一天题目你需要访问 n 个房间，房间从 0 到 n - 1 编号。同时，每一天都有一个日期编号，从 0 开始，依天数递增。你每天都会访问一个房间。 最开始的第 0 天，你访问 0 号房间。给你一个长度为 n 且 下标从 0 开始 的数组 nextVisit 。在接下来的几天中，你访问房间的 次序 将根据下面的 规则 决定：  假设某一天，你访问 i 号房间。 如果算上">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sdumoist.github.io/img/background/20.jpeg">
+<meta property="article:published_time" content="2024-03-28T18:27:49.000Z">
+<meta property="article:modified_time" content="2024-03-28T18:44:00.061Z">
+<meta property="article:author" content="SDUMoist">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="数组">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sdumoist.github.io/img/background/20.jpeg"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://sdumoist.github.io/2024/03/29/1997-%E8%AE%BF%E9%97%AE%E5%AE%8C%E6%89%80%E6%9C%89%E6%88%BF%E9%97%B4%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: SDUMoist","link":"链接: ","source":"来源: Moist","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '1997. 访问完所有房间的第一天',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-29 02:44:00'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Moist" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/background/20.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="Moist"><img class="site-icon" src="/img/logo.png"/><span class="site-name">Moist</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">1997. 访问完所有房间的第一天</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-28T18:27:49.000Z" title="发表于 2024-03-29 02:27:49">2024-03-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-28T18:44:00.061Z" title="更新于 2024-03-29 02:44:00">2024-03-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="1997. 访问完所有房间的第一天"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1997-访问完所有房间的第一天"><a href="#1997-访问完所有房间的第一天" class="headerlink" title="1997. 访问完所有房间的第一天"></a>1997. 访问完所有房间的第一天</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>你需要访问 <code>n</code> 个房间，房间从 <code>0</code> 到 <code>n - 1</code> 编号。同时，每一天都有一个日期编号，从 <code>0</code> 开始，依天数递增。你每天都会访问一个房间。</p>
+<p>最开始的第 <code>0</code> 天，你访问 <code>0</code> 号房间。给你一个长度为 <code>n</code> 且 <strong>下标从 0 开始</strong> 的数组 <code>nextVisit</code> 。在接下来的几天中，你访问房间的 <strong>次序</strong> 将根据下面的 <strong>规则</strong> 决定：</p>
+<ul>
+<li>假设某一天，你访问 <code>i</code> 号房间。</li>
+<li>如果算上本次访问，访问 <code>i</code> 号房间的次数为 <strong>奇数</strong> ，那么 <strong>第二天</strong> 需要访问 <code>nextVisit[i]</code> 所指定的房间，其中 <code>0 &lt;= nextVisit[i] &lt;= i</code> 。</li>
+<li>如果算上本次访问，访问 <code>i</code> 号房间的次数为 <strong>偶数</strong> ，那么 <strong>第二天</strong> 需要访问 <code>(i + 1) mod n</code> 号房间。</li>
+</ul>
+<p>请返回你访问完所有房间的第一天的日期编号。题目数据保证总是存在这样的一天。由于答案可能很大，返回对 <code>109 + 7</code> 取余后的结果。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入：nextVisit = [0,0]</span><br><span class="line">输出：2</span><br><span class="line">解释：</span><br><span class="line">- 第 0 天，你访问房间 0 。访问 0 号房间的总次数为 1 ，次数为奇数。</span><br><span class="line">  下一天你需要访问房间的编号是 nextVisit[0] = 0</span><br><span class="line">- 第 1 天，你访问房间 0 。访问 0 号房间的总次数为 2 ，次数为偶数。</span><br><span class="line">  下一天你需要访问房间的编号是 (0 + 1) mod 2 = 1</span><br><span class="line">- 第 2 天，你访问房间 1 。这是你第一次完成访问所有房间的那天。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：nextVisit = [0,0,2]</span><br><span class="line">输出：6</span><br><span class="line">解释：</span><br><span class="line">你每天访问房间的次序是 [0,0,1,0,0,1,2,...] 。</span><br><span class="line">第 6 天是你访问完所有房间的第一天。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：nextVisit = [0,1,2,0]</span><br><span class="line">输出：6</span><br><span class="line">解释：</span><br><span class="line">你每天访问房间的次序是 [0,0,1,1,2,2,3,...] 。</span><br><span class="line">第 6 天是你访问完所有房间的第一天。</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>n == nextVisit.length</code></li>
+<li><code>2 &lt;= n &lt;= 105</code></li>
+<li><code>0 &lt;= nextVisit[i] &lt;= i</code></li>
+</ul>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>很经典的一道动态规划题目，唯一需要的注意的是更新数组时注意求 mod 时会出现负数</p>
+<p>由于规定了<code>0 &lt;= nextVisit[i] &lt;= i</code> 所以每次更新下一个数据只需要</p>
+<ul>
+<li>+2 : 从 res[i] 到 res[i+1] 需要两步</li>
+<li>+res[i] : 需要先到 i 才能到 i+1 (因为只有 <strong>访问 <code>i</code> 号房间的次数为 偶数 ，那么 第二天 需要访问 (i + 1) mod n 号房间</strong> 时，才能往后走一步)</li>
+<li>+res[i]-res[nextVisit[i]] : 每次重新走的时候，不需要走 nextVisit[i] 之前的路了</li>
+</ul>
+<h3 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h3><h4 id="自己答案"><a href="#自己答案" class="headerlink" title="自己答案"></a>自己答案</h4><p>自己一开始的，未考虑负数， 所以出错</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">firstDayBeenInAllRooms</span><span class="params">(<span class="type">int</span>[] nextVisit)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">mod</span> <span class="operator">=</span> <span class="number">1000000007</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> nextVisit.length;</span><br><span class="line">        <span class="keyword">if</span>(len == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="type">int</span>[] res = <span class="keyword">new</span> <span class="title class_">int</span>[len];</span><br><span class="line"></span><br><span class="line">        res[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        res[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; len-<span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i == nextVisit[i]) res[i+<span class="number">1</span>] = res[i]+<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                res[i+<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line">                res[i+<span class="number">1</span>] += <span class="number">2</span>*res[i];</span><br><span class="line">                <span class="keyword">if</span>(nextVisit[i] != <span class="number">0</span>) res[i+<span class="number">1</span>] = (res[i+<span class="number">1</span>] - res[nextVisit[i]] + mod) % mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res[len-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>考虑负数之后，但是运行很慢</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">firstDayBeenInAllRooms</span><span class="params">(<span class="type">int</span>[] nextVisit)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">mod</span> <span class="operator">=</span> <span class="number">1000000007</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> nextVisit.length;</span><br><span class="line">        <span class="keyword">if</span>(len == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="type">int</span>[] res = <span class="keyword">new</span> <span class="title class_">int</span>[len];</span><br><span class="line"></span><br><span class="line">        res[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        res[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; len-<span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i == nextVisit[i]) res[i+<span class="number">1</span>] = res[i]+<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                res[i+<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line">                res[i+<span class="number">1</span>] += (<span class="number">2</span>*res[i])%mod;</span><br><span class="line">                res[i+<span class="number">1</span>] = (res[i+<span class="number">1</span>] - res[nextVisit[i]] + mod) % mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res[len-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>查看别人做法之后，进行优化，只需要检验一次</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">firstDayBeenInAllRooms</span><span class="params">(<span class="type">int</span>[] nextVisit)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">mod</span> <span class="operator">=</span> <span class="number">1000000007</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> nextVisit.length;</span><br><span class="line">        <span class="keyword">if</span>(len == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="type">int</span>[] res = <span class="keyword">new</span> <span class="title class_">int</span>[len];</span><br><span class="line"></span><br><span class="line">        res[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        res[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; len-<span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i == nextVisit[i]) res[i+<span class="number">1</span>] = res[i]+<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                res[i+<span class="number">1</span>] = (<span class="number">2</span> + <span class="number">2</span> * res[i]- res[nextVisit[i]]) % mod;</span><br><span class="line">                <span class="keyword">if</span>(res[i+<span class="number">1</span>] &lt; <span class="number">0</span>) res[i+<span class="number">1</span>] += mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res[len-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="官方答案"><a href="#官方答案" class="headerlink" title="官方答案"></a>官方答案</h4><p><strong>思路</strong></p>
+<p><img src="/../image/assets/WechatIMG7351.png" alt="思路"></p>
+<p><strong>代码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">firstDayBeenInAllRooms</span><span class="params">(<span class="type">int</span>[] nextVisit)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">mod</span> <span class="operator">=</span> <span class="number">1000000007</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> nextVisit.length;</span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[len];</span><br><span class="line"></span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">2</span>; <span class="comment">//初始化原地待一天 + 访问下一个房间一天</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">to</span> <span class="operator">=</span> nextVisit[i];</span><br><span class="line">            dp[i] = <span class="number">2</span> + dp[i - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (to != <span class="number">0</span>) &#123;</span><br><span class="line">                dp[i] = (dp[i] - dp[to - <span class="number">1</span>] + mod) % mod; <span class="comment">//避免负数</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            dp[i] = (dp[i] + dp[i - <span class="number">1</span>]) % mod;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[len - <span class="number">2</span>]; <span class="comment">//题目保证n &gt;= 2</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>作者：力扣官方题解<br>链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/first-day-where-you-have-been-in-all-the-rooms/solutions/2710218/fang-wen-wan-suo-you-fang-jian-de-di-yi-p7fc2/">https://leetcode.cn/problems/first-day-where-you-have-been-in-all-the-rooms/solutions/2710218/fang-wen-wan-suo-you-fang-jian-de-di-yi-p7fc2/</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://sdumoist.github.io">SDUMoist</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://sdumoist.github.io/2024/03/29/1997-%E8%AE%BF%E9%97%AE%E5%AE%8C%E6%89%80%E6%9C%89%E6%88%BF%E9%97%B4%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9/">https://sdumoist.github.io/2024/03/29/1997-%E8%AE%BF%E9%97%AE%E5%AE%8C%E6%89%80%E6%9C%89%E6%88%BF%E9%97%B4%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://sdumoist.github.io" target="_blank">Moist</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a><a class="post-meta__tags" href="/tags/%E4%B8%AD%E7%AD%89/">中等</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E7%BB%84/">数组</a></div><div class="post_share"><div class="social-share" data-image="/img/background/20.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/03/26/121-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="121. 买卖股票的最佳时机"><img class="cover" src="/img/background/15.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">121. 买卖股票的最佳时机</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">SDUMoist</div><div class="author-info__description">一个会点拍照，会点写作，会点生活的程序员</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sdumoist"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/sdumoist" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/2076520410@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1997-%E8%AE%BF%E9%97%AE%E5%AE%8C%E6%89%80%E6%9C%89%E6%88%BF%E9%97%B4%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9"><span class="toc-number">1.</span> <span class="toc-text">1997. 访问完所有房间的第一天</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%E6%A1%88"><span class="toc-number">1.3.</span> <span class="toc-text">答案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%B7%B1%E7%AD%94%E6%A1%88"><span class="toc-number">1.3.1.</span> <span class="toc-text">自己答案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E7%AD%94%E6%A1%88"><span class="toc-number">1.3.2.</span> <span class="toc-text">官方答案</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/29/1997-%E8%AE%BF%E9%97%AE%E5%AE%8C%E6%89%80%E6%9C%89%E6%88%BF%E9%97%B4%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9/" title="1997. 访问完所有房间的第一天"><img src="/img/background/20.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="1997. 访问完所有房间的第一天"/></a><div class="content"><a class="title" href="/2024/03/29/1997-%E8%AE%BF%E9%97%AE%E5%AE%8C%E6%89%80%E6%9C%89%E6%88%BF%E9%97%B4%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9/" title="1997. 访问完所有房间的第一天">1997. 访问完所有房间的第一天</a><time datetime="2024-03-28T18:27:49.000Z" title="发表于 2024-03-29 02:27:49">2024-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/121-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="121. 买卖股票的最佳时机"><img src="/img/background/15.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="121. 买卖股票的最佳时机"/></a><div class="content"><a class="title" href="/2024/03/26/121-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="121. 买卖股票的最佳时机">121. 买卖股票的最佳时机</a><time datetime="2024-03-26T12:09:11.000Z" title="发表于 2024-03-26 20:09:11">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/26/2642-%E8%AE%BE%E8%AE%A1%E5%8F%AF%E4%BB%A5%E6%B1%82%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%9A%84%E5%9B%BE%E7%B1%BB/" title="2642. 设计可以求最短路径的图类"><img src="/img/background/21.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2642. 设计可以求最短路径的图类"/></a><div class="content"><a class="title" href="/2024/03/26/2642-%E8%AE%BE%E8%AE%A1%E5%8F%AF%E4%BB%A5%E6%B1%82%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%9A%84%E5%9B%BE%E7%B1%BB/" title="2642. 设计可以求最短路径的图类">2642. 设计可以求最短路径的图类</a><time datetime="2024-03-26T08:36:39.000Z" title="发表于 2024-03-26 16:36:39">2024-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/25/hello-world/" title="Hello World"><img src="/img/background/4.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2024/03/25/hello-world/" title="Hello World">Hello World</a><time datetime="2024-03-25T10:50:58.339Z" title="发表于 2024-03-25 18:50:58">2024-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/24/%E6%8E%92%E5%BA%8F/" title="排序"><img src="/img/background/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="排序"/></a><div class="content"><a class="title" href="/2023/07/24/%E6%8E%92%E5%BA%8F/" title="排序">排序</a><time datetime="2023-07-24T14:41:52.306Z" title="发表于 2023-07-24 22:41:52">2023-07-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By SDUMoist</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://sdumoist.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
